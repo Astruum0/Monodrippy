@@ -1,0 +1,22 @@
+// colors 
+
+$red        : #f21900;
+$white      : #ffffff;
+$grey       : #232323;
+
+// btn
+
+.btn {
+
+  background-color: $red !important;
+  border-color: $grey !important;
+  border-radius: 2px !important;
+  box-shadow: 1px 1px 5px $grey !important;
+  
+  .btn-primary{
+    background-color: $red !important;
+    border-color: $grey !important;
+    border-radius: 2px !important;
+  }
+
+}
