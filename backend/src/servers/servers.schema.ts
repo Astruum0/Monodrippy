@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
+import { player } from 'src/player/player.schema';
 
 export type serverDocument = server & mongoose.Document;
 
@@ -11,8 +12,8 @@ export class server {
   @Prop()
   name: string;
 
-  @Prop()
-  playersConnected: number;
+  @Prop([player])
+  playersConnected: player[];
 
   @Prop()
   status: string;
