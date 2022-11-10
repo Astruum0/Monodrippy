@@ -2,10 +2,10 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 import { player } from 'src/player/player.schema';
 
-export type moduleDocument = module & mongoose.Document;
+export type tilesDocument = tiles & mongoose.Document;
 
 @Schema()
-export class module {
+export class tiles {
   @Prop()
   id: number;
 
@@ -37,4 +37,4 @@ export class module {
   type: string;
 }
 
-export const moduleSchema = SchemaFactory.createForClass(module);
+export const tilesSchema = SchemaFactory.createForClass(tiles);
