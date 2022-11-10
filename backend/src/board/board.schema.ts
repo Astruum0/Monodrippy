@@ -9,7 +9,7 @@ export type boardDocument = board & mongoose.Document;
 @Schema()
 export class board {
   @Prop()
-  street: module;
+  tiles: module;
 
   @Prop()
   player: player;

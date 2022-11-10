@@ -13,7 +13,13 @@ export class module {
   name: string;
 
   @Prop()
-  price: number;
+  color: string;
+
+  @Prop()
+  prices: {
+    base: number;
+    upgradeCost: number;
+  };
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'player' })
   owner: player;
@@ -25,7 +31,16 @@ export class module {
   value: number;
 
   @Prop()
-  rent: number;
+  rent: {
+    base: number;
+    level1: number;
+    level2: number;
+    level3: number;
+    level4: number;
+  };
+
+  @Prop()
+  type: string;
 }
 
 export const moduleSchema = SchemaFactory.createForClass(module);

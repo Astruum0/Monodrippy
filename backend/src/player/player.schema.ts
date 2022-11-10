@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
+import { module } from 'src/module/module.schema';
 
 export type playerDocument = player & mongoose.Document;
 
@@ -14,8 +15,8 @@ export class player {
   @Prop()
   money: number;
 
-  @Prop()
-  properties: number;
+  @Prop([module])
+  properties: module[];
 
   @Prop()
   isImprisoned: number;
