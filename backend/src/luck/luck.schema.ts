@@ -16,6 +16,12 @@ export class luck {
 
   @Prop()
   keep: boolean;
+
+  @Prop()
+  cardEffect: {
+    effect: string;
+    value: number;
+  };
 }
 
 export const luckSchema = SchemaFactory.createForClass(luck);

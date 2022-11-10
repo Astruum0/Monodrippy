@@ -21,14 +21,8 @@ export class module {
     upgradeCost: number;
   };
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'player' })
-  owner: player;
-
   @Prop()
-  upgrade: number;
-
-  @Prop()
-  value: number;
+  owner: player['id'];
 
   @Prop()
   rent: {
