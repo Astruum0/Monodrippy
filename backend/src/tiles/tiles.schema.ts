@@ -2,10 +2,10 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 import { player } from 'src/player/player.schema';
 
-export type moduleDocument = module & mongoose.Document;
+export type tilesDocument = tiles & mongoose.Document;
 
 @Schema()
-export class module {
+export class tiles {
   @Prop()
   id: number;
 
@@ -21,9 +21,12 @@ export class module {
     upgradeCost: number;
   };
 
+<<<<<<< HEAD:backend/src/module/module.schema.ts
   @Prop()
   owner: player['id'];
 
+=======
+>>>>>>> 10e1736 (added plein de json sa mere):backend/src/tiles/tiles.schema.ts
   @Prop()
   rent: {
     base: number;
@@ -35,6 +38,9 @@ export class module {
 
   @Prop()
   type: string;
+
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'player' })
+  owner: player;
 }
 
-export const moduleSchema = SchemaFactory.createForClass(module);
+export const tilesSchema = SchemaFactory.createForClass(tiles);

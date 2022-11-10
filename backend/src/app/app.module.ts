@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { boardModule } from 'src/board/board.module';
 import { luckModule } from 'src/luck/luck.module';
-import { moduleModule } from 'src/module/module.module';
+import { moduleModule } from 'src/tiles/module.module';
 import { playerModule } from 'src/player/player.module';
 import { serverModule } from 'src/servers/servers.module';
 import { AppController } from './app.controller';
