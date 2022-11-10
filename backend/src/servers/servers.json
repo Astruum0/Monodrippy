@@ -1,0 +1,16 @@
+{
+    "servers": [
+       {
+        "id" : 0,
+        "name": "server1",
+        "playersConnected": null,
+        "status": "available"
+       },
+       {
+        "id" : 1,
+        "name": "server2",
+        "playersConnected": null,
+        "status": "available"
+       }
+    ]
+ }
