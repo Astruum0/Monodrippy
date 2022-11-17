@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { server } from './servers.schema';
 import { serverService } from './servers.service';
 
@@ -9,5 +9,12 @@ export class serverController {
   @Get()
   async findAll(): Promise<server[]> {
     return this.serverService.findAll();
+  }
+
+  @Get(':id')
+  async findById(
+    @Param('id') id: string,
+  ): Promise<server> {
+    return this.serverService.findById(id);
   }
 }

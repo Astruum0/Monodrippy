@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { player } from './player.schema';
 import { playerService } from './player.service';
 
@@ -9,5 +9,12 @@ export class playerController {
   @Get()
   async findAll(): Promise<player[]> {
     return this.playerService.findAll();
+  }
+
+  @Get(':id')
+  async findById(
+    @Param('id') id: string,
+  ): Promise<player> {
+    return this.playerService.findById(id);
   }
 }

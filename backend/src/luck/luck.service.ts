@@ -10,4 +10,8 @@ export class luckService {
   async findAll(): Promise<luck[]> {
     return this.luckModel.find().exec();
   }
+
+  async findById(luckId: string): Promise<luck> {
+    return this.luckModel.findOne({"id": luckId}).exec();
+  }
 }
