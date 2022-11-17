@@ -22,7 +22,7 @@ export class tiles {
     upgradeCost: number;
   };
 
-  @Prop()
+  @Prop({ type: Any })
   owner: player['id'];
 
   @Prop()

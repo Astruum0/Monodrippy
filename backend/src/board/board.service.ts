@@ -12,11 +12,8 @@ export class boardService {
   async findAll(): Promise<board[]> {
     return this.boardModel.find().exec();
   }
-<<<<<<< HEAD
-=======
 
   async findById(boardId: string): Promise<board> {
     return this.boardModel.findOne({"id": boardId}).exec();
   }
->>>>>>> feat/databaseConnection
 }
