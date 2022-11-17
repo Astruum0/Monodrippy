@@ -20,6 +20,8 @@ import
 P5 from "./P5.vue";
 import {P5Sketch, P5Image, P5Geometry, P5Vector} from "vue-p5-component";
 import { Vector } from "p5";
+import { Board } from "@/models/board";
+import { getBoard } from "../lib/getGame"
 
 function randint(min: number, max: number) : number{
 	min = Math.ceil(min);
@@ -37,6 +39,8 @@ const cornersCoords = [
 var boardImg: P5Image
 var bgImg: P5Image
 var pawnModel: P5Geometry
+
+var currentBoard: Board
 
 const boardSize = 300
 
@@ -67,8 +71,11 @@ export default Vue.extend({
 components: { P5 },
 methods: {
     setup(sketch: P5Sketch) {
+
         sketch.createCanvas(sketch.windowWidth, sketch.windowHeight, sketch.WEBGL);
         sketch.background(20);
+
+        getBoard(1).then(res => {currentBoard = res})
 
         boardImg = sketch.loadImage("Board3D.png")
         pawnModel = sketch.loadModel("PawnLowPoly.obj")
@@ -81,6 +88,7 @@ methods: {
         sketch.keyPressed = function() {
             if (sketch.key === " ") {pawnCase = (pawnCase + 1) % 36}
         }
+
 
         
         

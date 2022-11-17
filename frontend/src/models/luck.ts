@@ -1,4 +1,4 @@
-export class Luck {
+export interface Luck {
     id: number
 
     name: string

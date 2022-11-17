@@ -2,7 +2,7 @@ import { Luck } from "./luck"
 import { Player } from "./player"
 import { Tile } from "./tile"
 
-export class Board {
+export interface Board {
 
     id: number
     hasStarted: boolean

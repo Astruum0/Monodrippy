@@ -1,6 +1,6 @@
 import { Player } from "./player"
 
-export class Tile {
+export interface Tile {
     id: number
     name: string
     color: string
