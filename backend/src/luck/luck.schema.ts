@@ -15,10 +15,7 @@ export class luck {
   @Prop()
   content: string;
 
-  @Prop()
-  keep: boolean;
-
-  @Prop({type:Any})
+  @Prop({ type: Any })
   cardEffect: {
     effect: string;
     value: number;

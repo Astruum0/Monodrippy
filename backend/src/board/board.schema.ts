@@ -15,10 +15,16 @@ export class board {
   tiles: tiles;
 
   @Prop()
-  player: player;
+  hasStarted: boolean;
 
   @Prop()
-  luck: luck;
+  tiles: [tiles];
+
+  @Prop()
+  players: [player];
+
+  @Prop()
+  lucks: [luck];
 
   @Prop()
   ycircus: number;
