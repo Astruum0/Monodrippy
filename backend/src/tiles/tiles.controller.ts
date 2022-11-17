@@ -10,4 +10,9 @@ export class tilesController {
   async findAll(): Promise<tiles[]> {
     return this.tilesService.findAll();
   }
+
+  @Get("/id:id")
+  async findById(): Promise<tiles[]> {
+    return this.tilesService.findById();
+  }
 }
