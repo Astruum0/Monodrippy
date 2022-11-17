@@ -21,6 +21,9 @@ export class board {
   lucks: [luck];
 
   @Prop()
+  tiles: [tiles];
+
+  @Prop()
   ycircus: number;
 }
 
