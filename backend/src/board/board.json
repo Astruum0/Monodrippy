@@ -12,17 +12,1067 @@
 =======
 [
    {
-      "id" : 0,
-      "tiles" : null,
-      "player" : null,
-      "luck" : null,
+      "id": 0,
+      "hasStarted": false,
+      "tiles": [
+         {
+            "id": 0,
+            "name": "Départ",
+            "type": "start"
+         },
+         {
+            "id": 1,
+            "name": "Windows Server",
+            "color": "#8ad4ff",
+            "prices": {
+               "base": 60,
+               "upgrade_cost": 50
+            },
+            "rent": [2, 10, 30, 90, 160],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 2,
+            "name": "CVEC",
+            "type": "special_cvec"
+         },
+         {
+            "id": 3,
+            "name": "Dev Mobile",
+            "color": "#8ad4ff",
+            "prices": {
+               "base": 60,
+               "upgrade_cost": 50
+            },
+            "rent": [4, 20, 60, 180, 320],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 4,
+            "name": "Annexes",
+            "color": "#000000",
+            "prices": {
+               "base": 200
+            },
+            "rent": [25, 50, 100, 200],
+            "type": "gare"
+         },
+         {
+            "id": 5,
+            "name": "C embarqué",
+            "color": "#686e96",
+            "prices": {
+               "base": 100,
+               "upgrade_cost": 50
+            },
+            "rent": [6, 30, 90, 270, 400],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 6,
+            "name": "Chance",
+            "type": "chance"
+         },
+         {
+            "id": 7,
+            "name": "Voltaire",
+            "color": "#686e96",
+            "prices": {
+               "base": 100,
+               "upgrade_cost": 50
+            },
+            "rent": [6, 30, 90, 270, 400],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 8,
+            "name": "Golang",
+            "color": "#686e96",
+            "prices": {
+               "base": 120,
+               "upgrade_cost": 50
+            },
+            "rent": [8, 40, 100, 300, 450],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 9,
+            "name": "Prison",
+            "type": "chance"
+         },
+         {
+            "id": 10,
+            "name": "Java",
+            "color": "#ff496a",
+            "prices": {
+               "base": 140,
+               "upgrade_cost": 100
+            },
+            "rent": [10, 50, 150, 450, 625],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 11,
+            "name": "Math",
+            "color": "#ff496a",
+            "prices": {
+               "base": 140,
+               "upgrade_cost": 100
+            },
+            "rent": [10, 50, 150, 450, 625],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 12,
+            "name": "Chance",
+            "type": "chance"
+         },
+         {
+            "id": 13,
+            "name": "Dev API",
+            "color": "#ff496a",
+            "prices": {
+               "base": 160,
+               "upgrade_cost": 100
+            },
+            "rent": [12, 60, 180, 500, 700],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 14,
+            "name": "Conrad",
+            "color": "#000000",
+            "prices": {
+               "base": 200
+            },
+            "rent": [25, 50, 100, 200],
+            "type": "gare"
+         },
+         {
+            "id": 15,
+            "name": "NoSQL",
+            "color": "#fe8c5b",
+            "prices": {
+               "base": 180,
+               "upgrade_cost": 100
+            },
+            "rent": [14, 70, 200, 550, 750],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 16,
+            "name": "Electron",
+            "color": "#fe8c5b",
+            "prices": {
+               "base": 180,
+               "upgrade_cost": 100
+            },
+            "rent": [14, 70, 200, 550, 750],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 17,
+            "name": "DevOps",
+            "color": "#fe8c5b",
+            "prices": {
+               "base": 200,
+               "upgrade_cost": 100
+            },
+            "rent": [16, 80, 220, 600, 800],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 18,
+            "name": "Ynov Circus",
+            "type": "chance"
+         },
+         {
+            "id": 19,
+            "name": "Projet Pro",
+            "color": "#eb2a00",
+            "prices": {
+               "base": 220,
+               "upgrade_cost": 150
+            },
+            "rent": [18, 90, 250, 700, 875],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 20,
+            "name": "PHP",
+            "color": "#eb2a00",
+            "prices": {
+               "base": 220,
+               "upgrade_cost": 150
+            },
+            "rent": [18, 90, 250, 700, 875],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 21,
+            "name": "Chance",
+            "type": "chance"
+         },
+         {
+            "id": 22,
+            "name": "Linux",
+            "color": "#eb2a00",
+            "prices": {
+               "base": 240,
+               "upgrade_cost": 150
+            },
+            "rent": [20, 100, 300, 750, 925],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 23,
+            "name": "Condé",
+            "color": "#000000",
+            "prices": {
+               "base": 200
+            },
+            "rent": [25, 50, 100, 200],
+            "type": "gare"
+         },
+         {
+            "id": 24,
+            "name": "Cybersec",
+            "color": "#ffe401",
+            "prices": {
+               "base": 260,
+               "upgrade_cost": 150
+            },
+            "rent": [22, 110, 330, 800, 975],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 25,
+            "name": "Csharp",
+            "color": "#ffe401",
+            "prices": {
+               "base": 0,
+               "upgrade_cost": 150
+            },
+            "rent": [22, 110, 330, 800, 975],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 26,
+            "name": "Javascript",
+            "color": "#ffe401",
+            "prices": {
+               "base": 0,
+               "upgrade_cost": 150
+            },
+            "rent": [22, 120, 360, 850, 1025],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 27,
+            "name": "GoToPrison",
+            "type": "chance"
+         },
+         {
+            "id": 28,
+            "name": "Python",
+            "color": "#00a61b",
+            "prices": {
+               "base": 300,
+               "upgrade_cost": 200
+            },
+            "rent": [26, 130, 390, 900, 1100],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 29,
+            "name": "OSINT",
+            "color": "#00a61b",
+            "prices": {
+               "base": 300,
+               "upgrade_cost": 200
+            },
+            "rent": [26, 130, 390, 900, 1100],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 30,
+            "name": "Chance",
+            "type": "chance"
+         },
+         {
+            "id": 31,
+            "name": "Réseau",
+            "color": "#00a61b",
+            "prices": {
+               "base": 320,
+               "upgrade_cost": 200
+            },
+            "rent": [28, 150, 450, 1000, 1200],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 32,
+            "name": "Chartrons",
+            "color": "#000000",
+            "prices": {
+               "base": 200
+            },
+            "rent": [25, 50, 100, 200],
+            "type": "gare"
+         },
+         {
+            "id": 33,
+            "name": "React",
+            "color": "#001d85",
+            "prices": {
+               "base": 350,
+               "upgrade_cost": 200
+            },
+            "rent": [35, 175, 500, 1100, 1300],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 34,
+            "name": "Prêt étudiant",
+            "type": "special_pret"
+         },
+         {
+            "id": 35,
+            "name": "SQL",
+            "color": "#001d85",
+            "prices": {
+               "base": 400,
+               "upgrade_cost": 200
+            },
+            "rent": [50, 200, 600, 1400, 1700],
+            "type": "street",
+            "owner": null
+         }
+      ],
+      "players": [
+         {
+            "id": 0,
+            "name": "",
+            "money": 0,
+            "properties": [],
+            "isImprisoned": 0,
+            "hasGOOJCard": false
+         },
+         {
+            "id": 1,
+            "name": "",
+            "money": 0,
+            "properties": [],
+            "isImprisoned": 0,
+            "hasGOOJCard": false
+         },
+         {
+            "id": 2,
+            "name": "",
+            "money": 0,
+            "properties": [],
+            "isImprisoned": 0,
+            "hasGOOJCard": false
+         },
+         {
+            "id": 3,
+            "name": "",
+            "money": 0,
+            "properties": [],
+            "isImprisoned": 0,
+            "hasGOOJCard": false
+         }
+      ],
+      "luck": [
+         {
+            "id": 1,
+            "name": "Scammed",
+            "content": "Adrien vous à proposé un “bon plan no risque no cap”. Vous perdez 10K",
+            "cardEffect": {
+               "effect": "giveMoneyTo",
+               "value": 10
+            }
+         },
+         {
+            "id": 2,
+            "name": "Boursorama",
+            "content": "Contre toute attente Adrien vous propose un nouveau plan argent et il fonctionne recevez 10K, mais restez vigilant",
+            "cardEffect": {
+               "effect": "giveMoney",
+               "value": 10
+            }
+         },
+         {
+            "id": 3,
+            "name": "Norvitas",
+            "content": "Le plan de l'année tombe, Adrien vous contacte pour parler de Norvitas, ce ponzy a l'air safe (perdez 15K)",
+            "cardEffect": {
+               "effect": "giveMoney",
+               "value": 15
+            }
+         },
+         {
+            "id": 4,
+            "name": "Oh Snap",
+            "content": "vous n'avez pas GO Fmt (il y a un retour à la ligne à la fin du fichier) attendez 15 h (il est 9h). passez 2 tours",
+            "cardEffect": {
+               "effect": "wait",
+               "value": 2
+            }
+         },
+         {
+            "id": 5,
+            "name": "Arthured",
+            "content": "Vous avez pécho une 2004, allez en prison, ne passez pas par la case départ.",
+            "cardEffect": {
+               "effect": "moveToStraight",
+               "value": 27
+            }
+         },
+         {
+            "id": 6,
+            "name": "Snack time with PA",
+            "content": "Snack Time with PA",
+            "cardEffect": {
+               "effect": "giveMoneyTo",
+               "value": 5
+            }
+         },
+         {
+            "id": 7,
+            "name": "Poppy break",
+            "content": "Benjam doit allez aux toilettes. Attendez le pendant 2 tours.",
+            "cardEffect": {
+               "effect": "wait",
+               "value": 2
+            }
+         },
+         {
+            "id": 8,
+            "name": "Tacos 3 viandes",
+            "content": "Vous vous sentez lourd, votre prochain jet de dé est divisé par deux.",
+            "cardEffect": {
+               "effect": "NextThrow",
+               "value": 0.5
+            }
+         },
+         {
+            "id": 9,
+            "name": "MANGO LOCO",
+            "content": "vous êtes boost, votre prochain lancé est doublé",
+            "cardEffect": {
+               "effect": "NextThrow",
+               "value": 2
+            }
+         },
+         {
+            "id": 10,
+            "name": "Patrick Piquart",
+            "content": "MR Piquart vous raconte 1% de sa vie attedendez 3 tours",
+            "cardEffect": {
+               "effect": "wait",
+               "value": 3
+            }
+         },
+         {
+            "id": 11,
+            "name": "Ravezie",
+            "content": "Ynov vous demande une cotisation pour payer les nouveaux locaux : tout les joueurs payent 5k",
+            "cardEffect": {
+               "effect": "giveMoneyAll",
+               "value": 5
+            }
+         },
+         {
+            "id": 12,
+            "name": "Nouvelle année",
+            "content": "C’est la nouvelle année et vous n’avez pas d’alternance : Rendez-vous à la case départ, ne recevez pas l’argent, payez 8k",
+            "cardEffect": {
+               "effect": "moveToStraight",
+               "value": 2
+            }
+         },
+         {
+            "id": 13,
+            "name": "grève TBM",
+            "content": "malgré un réveil à l'heure votre tram ne passe pas, voud n'aviez pas vus la grève annoncé. prochain jet diviser par 2",
+            "cardEffect": {
+               "effect": "NextThrow",
+               "value": 0.5
+            }
+         },
+         {
+            "id": 14,
+            "name": "BUBLIZ",
+            "content": "Après un perdu pari vous vous enfilez un sandwich poulet crudité fourré au bubliz, éttonament bien qu'immonde cette recette vous fait retentir puissant, prochain jet doublé",
+            "cardEffect": {
+               "effect": "NextThrow",
+               "value": 2
+            }
+         },
+         {
+            "id": 15,
+            "name": "casque VRED",
+            "content": "Mattéo vous embarque dans sa hype de casque VR, vous vous rendez chez la fnac et ressortez pauvre. payer 50k",
+            "cardEffect": {
+               "effect": "giveMoney",
+               "value": 50
+            }
+         }
+      ],
       "ycircus": 0
    },
    {
-      "id" : 1,
-      "tiles" : null,
-      "player" : null,
-      "luck" : null,
+      "id": 1,
+      "hasStarted": false,
+      "tiles": [
+         {
+            "id": 0,
+            "name": "Départ",
+            "type": "start"
+         },
+         {
+            "id": 1,
+            "name": "Windows Server",
+            "color": "#8ad4ff",
+            "prices": {
+               "base": 60,
+               "upgrade_cost": 50
+            },
+            "rent": [2, 10, 30, 90, 160],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 2,
+            "name": "CVEC",
+            "type": "special_cvec"
+         },
+         {
+            "id": 3,
+            "name": "Dev Mobile",
+            "color": "#8ad4ff",
+            "prices": {
+               "base": 60,
+               "upgrade_cost": 50
+            },
+            "rent": [4, 20, 60, 180, 320],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 4,
+            "name": "Annexes",
+            "color": "#000000",
+            "prices": {
+               "base": 200
+            },
+            "rent": [25, 50, 100, 200],
+            "type": "gare"
+         },
+         {
+            "id": 5,
+            "name": "C embarqué",
+            "color": "#686e96",
+            "prices": {
+               "base": 100,
+               "upgrade_cost": 50
+            },
+            "rent": [6, 30, 90, 270, 400],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 6,
+            "name": "Chance",
+            "type": "chance"
+         },
+         {
+            "id": 7,
+            "name": "Voltaire",
+            "color": "#686e96",
+            "prices": {
+               "base": 100,
+               "upgrade_cost": 50
+            },
+            "rent": [6, 30, 90, 270, 400],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 8,
+            "name": "Golang",
+            "color": "#686e96",
+            "prices": {
+               "base": 120,
+               "upgrade_cost": 50
+            },
+            "rent": [8, 40, 100, 300, 450],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 9,
+            "name": "Prison",
+            "type": "chance"
+         },
+         {
+            "id": 10,
+            "name": "Java",
+            "color": "#ff496a",
+            "prices": {
+               "base": 140,
+               "upgrade_cost": 100
+            },
+            "rent": [10, 50, 150, 450, 625],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 11,
+            "name": "Math",
+            "color": "#ff496a",
+            "prices": {
+               "base": 140,
+               "upgrade_cost": 100
+            },
+            "rent": [10, 50, 150, 450, 625],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 12,
+            "name": "Chance",
+            "type": "chance"
+         },
+         {
+            "id": 13,
+            "name": "Dev API",
+            "color": "#ff496a",
+            "prices": {
+               "base": 160,
+               "upgrade_cost": 100
+            },
+            "rent": [12, 60, 180, 500, 700],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 14,
+            "name": "Conrad",
+            "color": "#000000",
+            "prices": {
+               "base": 200
+            },
+            "rent": [25, 50, 100, 200],
+            "type": "gare"
+         },
+         {
+            "id": 15,
+            "name": "NoSQL",
+            "color": "#fe8c5b",
+            "prices": {
+               "base": 180,
+               "upgrade_cost": 100
+            },
+            "rent": [14, 70, 200, 550, 750],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 16,
+            "name": "Electron",
+            "color": "#fe8c5b",
+            "prices": {
+               "base": 180,
+               "upgrade_cost": 100
+            },
+            "rent": [14, 70, 200, 550, 750],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 17,
+            "name": "DevOps",
+            "color": "#fe8c5b",
+            "prices": {
+               "base": 200,
+               "upgrade_cost": 100
+            },
+            "rent": [16, 80, 220, 600, 800],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 18,
+            "name": "Ynov Circus",
+            "type": "chance"
+         },
+         {
+            "id": 19,
+            "name": "Projet Pro",
+            "color": "#eb2a00",
+            "prices": {
+               "base": 220,
+               "upgrade_cost": 150
+            },
+            "rent": [18, 90, 250, 700, 875],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 20,
+            "name": "PHP",
+            "color": "#eb2a00",
+            "prices": {
+               "base": 220,
+               "upgrade_cost": 150
+            },
+            "rent": [18, 90, 250, 700, 875],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 21,
+            "name": "Chance",
+            "type": "chance"
+         },
+         {
+            "id": 22,
+            "name": "Linux",
+            "color": "#eb2a00",
+            "prices": {
+               "base": 240,
+               "upgrade_cost": 150
+            },
+            "rent": [20, 100, 300, 750, 925],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 23,
+            "name": "Condé",
+            "color": "#000000",
+            "prices": {
+               "base": 200
+            },
+            "rent": [25, 50, 100, 200],
+            "type": "gare"
+         },
+         {
+            "id": 24,
+            "name": "Cybersec",
+            "color": "#ffe401",
+            "prices": {
+               "base": 260,
+               "upgrade_cost": 150
+            },
+            "rent": [22, 110, 330, 800, 975],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 25,
+            "name": "Csharp",
+            "color": "#ffe401",
+            "prices": {
+               "base": 0,
+               "upgrade_cost": 150
+            },
+            "rent": [22, 110, 330, 800, 975],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 26,
+            "name": "Javascript",
+            "color": "#ffe401",
+            "prices": {
+               "base": 0,
+               "upgrade_cost": 150
+            },
+            "rent": [22, 120, 360, 850, 1025],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 27,
+            "name": "GoToPrison",
+            "type": "chance"
+         },
+         {
+            "id": 28,
+            "name": "Python",
+            "color": "#00a61b",
+            "prices": {
+               "base": 300,
+               "upgrade_cost": 200
+            },
+            "rent": [26, 130, 390, 900, 1100],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 29,
+            "name": "OSINT",
+            "color": "#00a61b",
+            "prices": {
+               "base": 300,
+               "upgrade_cost": 200
+            },
+            "rent": [26, 130, 390, 900, 1100],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 30,
+            "name": "Chance",
+            "type": "chance"
+         },
+         {
+            "id": 31,
+            "name": "Réseau",
+            "color": "#00a61b",
+            "prices": {
+               "base": 320,
+               "upgrade_cost": 200
+            },
+            "rent": [28, 150, 450, 1000, 1200],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 32,
+            "name": "Chartrons",
+            "color": "#000000",
+            "prices": {
+               "base": 200
+            },
+            "rent": [25, 50, 100, 200],
+            "type": "gare"
+         },
+         {
+            "id": 33,
+            "name": "React",
+            "color": "#001d85",
+            "prices": {
+               "base": 350,
+               "upgrade_cost": 200
+            },
+            "rent": [35, 175, 500, 1100, 1300],
+            "type": "street",
+            "owner": null
+         },
+         {
+            "id": 34,
+            "name": "Prêt étudiant",
+            "type": "special_pret"
+         },
+         {
+            "id": 35,
+            "name": "SQL",
+            "color": "#001d85",
+            "prices": {
+               "base": 400,
+               "upgrade_cost": 200
+            },
+            "rent": [50, 200, 600, 1400, 1700],
+            "type": "street",
+            "owner": null
+         }
+      ],
+      "players": [
+         {
+            "id": 4,
+            "name": "",
+            "money": 0,
+            "properties": [],
+            "isImprisoned": 0,
+            "hasGOOJCard": false
+         },
+         {
+            "id": 5,
+            "name": "",
+            "money": 0,
+            "properties": [],
+            "isImprisoned": 0,
+            "hasGOOJCard": false
+         },
+         {
+            "id": 6,
+            "name": "",
+            "money": 0,
+            "properties": [],
+            "isImprisoned": 0,
+            "hasGOOJCard": false
+         },
+         {
+            "id": 7,
+            "name": "",
+            "money": 0,
+            "properties": [],
+            "isImprisoned": 0,
+            "hasGOOJCard": false
+         }
+      ],
+      "luck": [
+         {
+            "id": 1,
+            "name": "Scammed",
+            "content": "Adrien vous à proposé un “bon plan no risque no cap”. Vous perdez 10K",
+            "cardEffect": {
+               "effect": "giveMoneyTo",
+               "value": 10
+            }
+         },
+         {
+            "id": 2,
+            "name": "Boursorama",
+            "content": "Contre toute attente Adrien vous propose un nouveau plan argent et il fonctionne recevez 10K, mais restez vigilant",
+            "cardEffect": {
+               "effect": "giveMoney",
+               "value": 10
+            }
+         },
+         {
+            "id": 3,
+            "name": "Norvitas",
+            "content": "Le plan de l'année tombe, Adrien vous contacte pour parler de Norvitas, ce ponzy a l'air safe (perdez 15K)",
+            "cardEffect": {
+               "effect": "giveMoney",
+               "value": 15
+            }
+         },
+         {
+            "id": 4,
+            "name": "Oh Snap",
+            "content": "vous n'avez pas GO Fmt (il y a un retour à la ligne à la fin du fichier) attendez 15 h (il est 9h). passez 2 tours",
+            "cardEffect": {
+               "effect": "wait",
+               "value": 2
+            }
+         },
+         {
+            "id": 5,
+            "name": "Arthured",
+            "content": "Vous avez pécho une 2004, allez en prison, ne passez pas par la case départ.",
+            "cardEffect": {
+               "effect": "moveToStraight",
+               "value": 27
+            }
+         },
+         {
+            "id": 6,
+            "name": "Snack time with PA",
+            "content": "Snack Time with PA",
+            "cardEffect": {
+               "effect": "giveMoneyTo",
+               "value": 5
+            }
+         },
+         {
+            "id": 7,
+            "name": "Poppy break",
+            "content": "Benjam doit allez aux toilettes. Attendez le pendant 2 tours.",
+            "cardEffect": {
+               "effect": "wait",
+               "value": 2
+            }
+         },
+         {
+            "id": 8,
+            "name": "Tacos 3 viandes",
+            "content": "Vous vous sentez lourd, votre prochain jet de dé est divisé par deux.",
+            "cardEffect": {
+               "effect": "NextThrow",
+               "value": 0.5
+            }
+         },
+         {
+            "id": 9,
+            "name": "MANGO LOCO",
+            "content": "vous êtes boost, votre prochain lancé est doublé",
+            "cardEffect": {
+               "effect": "NextThrow",
+               "value": 2
+            }
+         },
+         {
+            "id": 10,
+            "name": "Patrick Piquart",
+            "content": "MR Piquart vous raconte 1% de sa vie attedendez 3 tours",
+            "cardEffect": {
+               "effect": "wait",
+               "value": 3
+            }
+         },
+         {
+            "id": 11,
+            "name": "Ravezie",
+            "content": "Ynov vous demande une cotisation pour payer les nouveaux locaux : tout les joueurs payent 5k",
+            "cardEffect": {
+               "effect": "giveMoneyAll",
+               "value": 5
+            }
+         },
+         {
+            "id": 12,
+            "name": "Nouvelle année",
+            "content": "C’est la nouvelle année et vous n’avez pas d’alternance : Rendez-vous à la case départ, ne recevez pas l’argent, payez 8k",
+            "cardEffect": {
+               "effect": "moveToStraight",
+               "value": 2
+            }
+         },
+         {
+            "id": 13,
+            "name": "grève TBM",
+            "content": "malgré un réveil à l'heure votre tram ne passe pas, voud n'aviez pas vus la grève annoncé. prochain jet diviser par 2",
+            "cardEffect": {
+               "effect": "NextThrow",
+               "value": 0.5
+            }
+         },
+         {
+            "id": 14,
+            "name": "BUBLIZ",
+            "content": "Après un perdu pari vous vous enfilez un sandwich poulet crudité fourré au bubliz, éttonament bien qu'immonde cette recette vous fait retentir puissant, prochain jet doublé",
+            "cardEffect": {
+               "effect": "NextThrow",
+               "value": 2
+            }
+         },
+         {
+            "id": 15,
+            "name": "casque VRED",
+            "content": "Mattéo vous embarque dans sa hype de casque VR, vous vous rendez chez la fnac et ressortez pauvre. payer 50k",
+            "cardEffect": {
+               "effect": "giveMoney",
+               "value": 50
+            }
+         }
+      ],
       "ycircus": 0
    }
 ]
