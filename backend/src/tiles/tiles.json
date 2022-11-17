@@ -12,13 +12,13 @@
          "base": 60,
          "upgrade_cost": 50
       },
-      "rent": {
-         "base": 2,
-         "level1": 10,
-         "level2": 30,
-         "level3": 90,
-         "level4": 160
-      },
+      "rent": [
+         2,
+         10,
+         30,
+         90,
+         160
+      ],
       "type": "street",
       "owner": null
    },
@@ -35,13 +35,13 @@
          "base": 60,
          "upgrade_cost": 50
       },
-      "rent": {
-         "base": 4,
-         "level1": 20,
-         "level2": 60,
-         "level3": 180,
-         "level4": 320
-      },
+      "rent": [
+         4,
+         20,
+         60,
+         180,
+         320
+      ],
       "type": "street",
       "owner": null
    },
@@ -52,12 +52,12 @@
       "prices": {
          "base": 200
       },
-      "rent": {
-         "base": 25,
-         "level1": 50,
-         "level2": 100,
-         "level3": 200
-      },
+      "rent": [
+         25,
+         50,
+         100,
+         200
+      ],
       "type": "gare"
    },
    {
@@ -68,13 +68,13 @@
          "base": 100,
          "upgrade_cost": 50
       },
-      "rent": {
-         "base": 6,
-         "level1": 30,
-         "level2": 90,
-         "level3": 270,
-         "level4": 400
-      },
+      "rent": [
+         6,
+         30,
+         90,
+         270,
+         400
+      ],
       "type": "street",
       "owner": null
    },
@@ -91,13 +91,13 @@
          "base": 100,
          "upgrade_cost": 50
       },
-      "rent": {
-         "base": 6,
-         "level1": 30,
-         "level2": 90,
-         "level3": 270,
-         "level4": 400
-      },
+      "rent": [
+         6,
+         30,
+         90,
+         270,
+         400
+      ],
       "type": "street",
       "owner": null
    },
@@ -109,13 +109,13 @@
          "base": 120,
          "upgrade_cost": 50
       },
-      "rent": {
-         "base": 8,
-         "level1": 40,
-         "level2": 100,
-         "level3": 300,
-         "level4": 450
-      },
+      "rent": [
+         8,
+         40,
+         100,
+         300,
+         450
+      ],
       "type": "street",
       "owner": null
    },
@@ -132,13 +132,13 @@
          "base": 140,
          "upgrade_cost": 100
       },
-      "rent": {
-         "base": 10,
-         "level1": 50,
-         "level2": 150,
-         "level3": 450,
-         "level4": 625
-      },
+      "rent": [
+         10,
+         50,
+         150,
+         450,
+         625
+      ],
       "type": "street",
       "owner": null
    },
@@ -150,13 +150,13 @@
          "base": 140,
          "upgrade_cost": 100
       },
-      "rent": {
-         "base": 10,
-         "level1": 50,
-         "level2": 150,
-         "level3": 450,
-         "level4": 625
-      },
+      "rent": [
+         10,
+         50,
+         150,
+         450,
+         625
+      ],
       "type": "street",
       "owner": null
    },
@@ -173,13 +173,13 @@
          "base": 160,
          "upgrade_cost": 100
       },
-      "rent": {
-         "base": 12,
-         "level1": 60,
-         "level2": 180,
-         "level3": 500,
-         "level4": 700
-      },
+      "rent": [
+         12,
+         60,
+         180,
+         500,
+         700
+      ],
       "type": "street",
       "owner": null
    },
@@ -190,12 +190,12 @@
       "prices": {
          "base": 200
       },
-      "rent": {
-         "base": 25,
-         "level1": 50,
-         "level2": 100,
-         "level3": 200
-      },
+      "rent": [
+         25,
+         50,
+         100,
+         200
+      ],
       "type": "gare"
    },
    {
@@ -206,13 +206,13 @@
          "base": 180,
          "upgrade_cost": 100
       },
-      "rent": {
-         "base": 14,
-         "level1": 70,
-         "level2": 200,
-         "level3": 550,
-         "level4": 750
-      },
+      "rent": [
+         14,
+         70,
+         200,
+         550,
+         750
+      ],
       "type": "street",
       "owner": null
    },
@@ -224,13 +224,13 @@
          "base": 180,
          "upgrade_cost": 100
       },
-      "rent": {
-         "base": 14,
-         "level1": 70,
-         "level2": 200,
-         "level3": 550,
-         "level4": 750
-      },
+      "rent": [
+         14,
+         70,
+         200,
+         550,
+         750
+      ],
       "type": "street",
       "owner": null
    },
@@ -242,13 +242,13 @@
          "base": 200,
          "upgrade_cost": 100
       },
-      "rent": {
-         "base": 16,
-         "level1": 80,
-         "level2": 220,
-         "level3": 600,
-         "level4": 800
-      },
+      "rent": [
+         16,
+         80,
+         220,
+         600,
+         800
+      ],
       "type": "street",
       "owner": null
    },
@@ -265,13 +265,13 @@
          "base": 220,
          "upgrade_cost": 150
       },
-      "rent": {
-         "base": 18,
-         "level1": 90,
-         "level2": 250,
-         "level3": 700,
-         "level4": 875
-      },
+      "rent": [
+         18,
+         90,
+         250,
+         700,
+         875
+      ],
       "type": "street",
       "owner": null
    },
@@ -283,13 +283,13 @@
          "base": 220,
          "upgrade_cost": 150
       },
-      "rent": {
-         "base": 18,
-         "level1": 90,
-         "level2": 250,
-         "level3": 700,
-         "level4": 875
-      },
+      "rent": [
+         18,
+         90,
+         250,
+         700,
+         875
+      ],
       "type": "street",
       "owner": null
    },
@@ -306,13 +306,13 @@
          "base": 240,
          "upgrade_cost": 150
       },
-      "rent": {
-         "base": 20,
-         "level1": 100,
-         "level2": 300,
-         "level3": 750,
-         "level4": 925
-      },
+      "rent": [
+         20,
+         100,
+         300,
+         750,
+         925
+      ],
       "type": "street",
       "owner": null
    },
@@ -323,12 +323,12 @@
       "prices": {
          "base": 200
       },
-      "rent": {
-         "base": 25,
-         "level1": 50,
-         "level2": 100,
-         "level3": 200
-      },
+      "rent": [
+         25,
+         50,
+         100,
+         200
+      ],
       "type": "gare"
    },
    {
@@ -339,13 +339,13 @@
          "base": 260,
          "upgrade_cost": 150
       },
-      "rent": {
-         "base": 22,
-         "level1": 110,
-         "level2": 330,
-         "level3": 800,
-         "level4": 975
-      },
+      "rent": [
+         22,
+         110,
+         330,
+         800,
+         975
+      ],
       "type": "street",
       "owner": null
    },
@@ -357,13 +357,13 @@
          "base": 0,
          "upgrade_cost": 150
       },
-      "rent": {
-         "base": 22,
-         "level1": 110,
-         "level2": 330,
-         "level3": 800,
-         "level4": 975
-      },
+      "rent": [
+         22,
+         110,
+         330,
+         800,
+         975
+      ],
       "type": "street",
       "owner": null
    },
@@ -375,13 +375,13 @@
          "base": 0,
          "upgrade_cost": 150
       },
-      "rent": {
-         "base": 22,
-         "level1": 120,
-         "level2": 360,
-         "level3": 850,
-         "level4": 1025
-      },
+      "rent": [
+         22,
+         120,
+         360,
+         850,
+         1025
+      ],
       "type": "street",
       "owner": null
    },
@@ -398,13 +398,13 @@
          "base": 300,
          "upgrade_cost": 200
       },
-      "rent": {
-         "base": 26,
-         "level1": 130,
-         "level2": 390,
-         "level3": 900,
-         "level4": 1100
-      },
+      "rent": [
+         26,
+         130,
+         390,
+         900,
+         1100
+      ],
       "type": "street",
       "owner": null
    },
@@ -416,13 +416,13 @@
          "base": 300,
          "upgrade_cost": 200
       },
-      "rent": {
-         "base": 26,
-         "level1": 130,
-         "level2": 390,
-         "level3": 900,
-         "level4": 1100
-      },
+      "rent": [
+         26,
+         130,
+         390,
+         900,
+         1100
+      ],
       "type": "street",
       "owner": null
    },
@@ -439,13 +439,13 @@
          "base": 320,
          "upgrade_cost": 200
       },
-      "rent": {
-         "base": 28,
-         "level1": 150,
-         "level2": 450,
-         "level3": 1000,
-         "level4": 1200
-      },
+      "rent": [
+         28,
+         150,
+         450,
+         1000,
+         1200
+      ],
       "type": "street",
       "owner": null
    },
@@ -456,12 +456,12 @@
       "prices": {
          "base": 200
       },
-      "rent": {
-         "base": 25,
-         "level1": 50,
-         "level2": 100,
-         "level3": 200
-      },
+      "rent": [
+         25,
+         50,
+         100,
+         200
+      ],
       "type": "gare"
    },
    {
@@ -472,13 +472,13 @@
          "base": 350,
          "upgrade_cost": 200
       },
-      "rent": {
-         "base": 35,
-         "level1": 175,
-         "level2": 500,
-         "level3": 1100,
-         "level4": 1300
-      },
+      "rent": [
+         35,
+         175,
+         500,
+         1100,
+         1300
+      ],
       "type": "street",
       "owner": null
    },
@@ -495,13 +495,13 @@
          "base": 400,
          "upgrade_cost": 200
       },
-      "rent": {
-         "base": 50,
-         "level1": 200,
-         "level2": 600,
-         "level3": 1400,
-         "level4": 1700
-      },
+      "rent": [
+         50,
+         200,
+         600,
+         1400,
+         1700
+      ],
       "type": "street",
       "owner": null
    }

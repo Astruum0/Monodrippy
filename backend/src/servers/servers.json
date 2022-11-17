@@ -2,7 +2,6 @@
    {
       "id": 0,
       "name": "server1",
-      "playersConnected": null,
       "status": "available"
    },
    {
