@@ -5,15 +5,15 @@
         <img alt="Vue logo" src="../assets/logo.png" class="w-50">
       </div>
       <div class="row">
-        <div class="col-3">
+        <div class="col-3 d-none d-md-block">
           
         </div>
-        <div class="col-6">
-          <div class="col-12 mb-5 px-5">
+        <div class="col-12 col-md-6">
+          <div class="col-12 mb-5 px-lg-2 px-3">
             <JoinRoom/>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-3 d-none d-md-block">
 
         </div>
       </div>

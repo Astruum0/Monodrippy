@@ -1,9 +1,9 @@
 <template>
   <div>
     <div v-for="room in rooms" :key="room">
-      <div class="card card-primary mt-5 container">
+      <div class="card card-primary mt-5 container room">
         <div class="row">
-          <div class="col-6 my-3">
+          <div class="col-12 col-md-6 my-3">
             <h1 class="room-name">{{room.name}}</h1>
             <div v-if="room.locked == true" class="d-flex justify-content-center">
               <p class="mb-0">Partie en cours</p>
@@ -13,8 +13,11 @@
               <div id="cercle" class="mx-2 my-auto"></div>
             </div>
           </div>
-          <div class="col-6 d-flex justify-content-end">
+          <div class="col-12 col-md-6 d-none d-md-flex justify-content-end">
             <span class="room-people my-auto me-3">{{room.people}}/4</span>
+          </div>
+          <div class="col-12 col-md-6 d-flex d-md-none justify-content-center">
+            <span class="room-people my-auto ">{{room.people}}/4</span>
           </div>
         </div>
       </div>
