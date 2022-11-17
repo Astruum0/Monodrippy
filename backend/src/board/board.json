@@ -358,7 +358,7 @@
             "owner": null
          }
       ],
-      "player": [
+      "players": [
          {
             "id": 0,
             "name": "",
@@ -890,7 +890,7 @@
             "owner": null
          }
       ],
-      "player": [
+      "players": [
          {
             "id": 4,
             "name": "",
