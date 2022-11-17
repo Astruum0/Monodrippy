@@ -75,7 +75,8 @@ methods: {
         sketch.createCanvas(sketch.windowWidth, sketch.windowHeight, sketch.WEBGL);
         sketch.background(20);
 
-        getBoard(1).then(res => {currentBoard = res})
+        getBoard(1).then(res => {currentBoard = res; console.log(currentBoard);
+        })
 
         boardImg = sketch.loadImage("Board3D.png")
         pawnModel = sketch.loadModel("PawnLowPoly.obj")
@@ -113,7 +114,7 @@ methods: {
         sketch.pop()
 
         sketch.push()
-        sketch.fill(120)
+        sketch.fill(255, 192, 203)
         sketch.translate(pawnCoords.x, 0, pawnCoords.y);
         sketch.scale(5)
         sketch.rotateZ(sketch.PI)
