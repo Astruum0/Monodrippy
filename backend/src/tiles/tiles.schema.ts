@@ -16,26 +16,23 @@ export class tiles {
   @Prop()
   color: string;
 
-  @Prop({type:Any})
+  @Prop({ type: Any })
   prices: {
     base: number;
     upgradeCost: number;
   };
 
-  @Prop({type:Any})
+  @Prop({ type: Any })
   owner: player['id'];
 
-  @Prop({type:Any})
-  rent: {
-    base: number;
-    level1: number;
-    level2: number;
-    level3: number;
-    level4: number;
-  };
+  @Prop()
+  rent: [number];
 
   @Prop()
   type: string;
+
+  @Prop()
+  currentLevel: number;
 }
 
 export const tilesSchema = SchemaFactory.createForClass(tiles);
