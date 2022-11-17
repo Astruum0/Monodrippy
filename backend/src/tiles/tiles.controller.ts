@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { tiles } from './tiles.schema';
 import { tilesService } from './tiles.service';
 
@@ -11,8 +11,10 @@ export class tilesController {
     return this.tilesService.findAll();
   }
 
-  @Get("/id:id")
-  async findById(): Promise<tiles[]> {
-    return this.tilesService.findById();
+  @Get(':id')
+  async findById(
+    @Param('id') id: string,
+  ): Promise<tiles> {
+    return this.tilesService.findById(id);
   }
 }

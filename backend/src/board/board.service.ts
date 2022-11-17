@@ -12,4 +12,8 @@ export class boardService {
   async findAll(): Promise<board[]> {
     return this.boardModel.find().exec();
   }
+
+  async findById(tilesId: string): Promise<board> {
+    return this.boardModel.findOne({"id": tilesId}).exec();
+  }
 }

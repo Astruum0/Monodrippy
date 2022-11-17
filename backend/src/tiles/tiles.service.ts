@@ -13,7 +13,7 @@ export class tilesService {
     return this.tilesModel.find().exec();
   }
 
-  async findById(): Promise<tiles[]> {
-    return this.tilesModel.find(id=).exec();
+  async findById(tilesId: string): Promise<tiles> {
+    return this.tilesModel.findOne({"id": tilesId}).exec();
   }
 }

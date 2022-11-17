@@ -1,10 +1,16 @@
-{
-   "board": [
-      {
-         "tiles" : null,
-         "player" : null,
-         "luck" : null,
-         "ycircus": 0
-      }
-   ]
-}
+[
+   {
+      "id" : 0,
+      "tiles" : null,
+      "player" : null,
+      "luck" : null,
+      "ycircus": 0
+   },
+   {
+      "id" : 1,
+      "tiles" : null,
+      "player" : null,
+      "luck" : null,
+      "ycircus": 0
+   }
+]

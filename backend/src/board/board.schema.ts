@@ -9,6 +9,9 @@ export type boardDocument = board & mongoose.Document;
 @Schema()
 export class board {
   @Prop()
+  id: number;
+  
+  @Prop()
   tiles: tiles;
 
   @Prop()
