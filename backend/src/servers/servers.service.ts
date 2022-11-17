@@ -12,4 +12,8 @@ export class serverService {
   async findAll(): Promise<server[]> {
     return this.serverModel.find().exec();
   }
+
+  async findById(serverId: string): Promise<server> {
+    return this.serverModel.findOne({"id": serverId}).exec();
+  }
 }

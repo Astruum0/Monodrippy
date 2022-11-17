@@ -15,9 +15,6 @@ export class board {
   hasStarted: boolean;
 
   @Prop()
-  tiles: [tiles];
-
-  @Prop()
   players: [player];
 
   @Prop()
