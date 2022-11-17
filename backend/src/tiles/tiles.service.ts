@@ -12,4 +12,8 @@ export class tilesService {
   async findAll(): Promise<tiles[]> {
     return this.tilesModel.find().exec();
   }
+
+  async findById(tileId: string): Promise<tiles> {
+    return this.tilesModel.findOne({"id": tileId}).exec();
+  }
 }

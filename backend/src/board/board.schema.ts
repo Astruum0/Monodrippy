@@ -9,6 +9,7 @@ export type boardDocument = board & mongoose.Document;
 @Schema()
 export class board {
   @Prop()
+<<<<<<< HEAD
   tiles: tiles;
 
   @Prop()
@@ -16,6 +17,18 @@ export class board {
 
   @Prop()
   luck: luck;
+=======
+  id: number;
+
+  @Prop()
+  hasStarted: boolean;
+
+  @Prop()
+  players: [player];
+
+  @Prop()
+  lucks: [luck];
+>>>>>>> feat/databaseConnection
 
   @Prop()
   ycircus: number;
