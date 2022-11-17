@@ -2,7 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 import { tiles } from './tiles.schema';
 import { tilesService } from './tiles.service';
 
-@Controller('tiless')
+@Controller('tiles')
 export class tilesController {
   constructor(private readonly tilesService: tilesService) {}
 

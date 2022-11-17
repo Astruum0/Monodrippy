@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
+import { Any } from 'typeorm';
 
 export type luckDocument = luck & mongoose.Document;
 
@@ -17,7 +18,7 @@ export class luck {
   @Prop()
   keep: boolean;
 
-  @Prop()
+  @Prop({type:Any})
   cardEffect: {
     effect: string;
     value: number;

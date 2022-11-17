@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 import { player } from 'src/player/player.schema';
+import { Any } from 'typeorm';
 
 export type tilesDocument = tiles & mongoose.Document;
 
@@ -15,16 +16,16 @@ export class tiles {
   @Prop()
   color: string;
 
-  @Prop()
+  @Prop({type:Any})
   prices: {
     base: number;
     upgradeCost: number;
   };
 
-  @Prop()
+  @Prop({type:Any})
   owner: player['id'];
 
-  @Prop()
+  @Prop({type:Any})
   rent: {
     base: number;
     level1: number;
