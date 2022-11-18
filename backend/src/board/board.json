@@ -359,38 +359,6 @@
          }
       ],
       "player": [
-         {
-            "id": 0,
-            "name": "",
-            "money": 0,
-            "properties": [],
-            "isImprisoned": 0,
-            "hasGOOJCard": false
-         },
-         {
-            "id": 1,
-            "name": "",
-            "money": 0,
-            "properties": [],
-            "isImprisoned": 0,
-            "hasGOOJCard": false
-         },
-         {
-            "id": 2,
-            "name": "",
-            "money": 0,
-            "properties": [],
-            "isImprisoned": 0,
-            "hasGOOJCard": false
-         },
-         {
-            "id": 3,
-            "name": "",
-            "money": 0,
-            "properties": [],
-            "isImprisoned": 0,
-            "hasGOOJCard": false
-         }
       ],
       "luck": [
          {
@@ -891,38 +859,6 @@
          }
       ],
       "player": [
-         {
-            "id": 4,
-            "name": "",
-            "money": 0,
-            "properties": [],
-            "isImprisoned": 0,
-            "hasGOOJCard": false
-         },
-         {
-            "id": 5,
-            "name": "",
-            "money": 0,
-            "properties": [],
-            "isImprisoned": 0,
-            "hasGOOJCard": false
-         },
-         {
-            "id": 6,
-            "name": "",
-            "money": 0,
-            "properties": [],
-            "isImprisoned": 0,
-            "hasGOOJCard": false
-         },
-         {
-            "id": 7,
-            "name": "",
-            "money": 0,
-            "properties": [],
-            "isImprisoned": 0,
-            "hasGOOJCard": false
-         }
       ],
       "luck": [
          {
