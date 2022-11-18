@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 import { tiles } from 'src/tiles/tiles.schema';
+import { Any } from 'typeorm';
 
 export type playerDocument = player & mongoose.Document;
 
@@ -23,6 +24,9 @@ export class player {
 
   @Prop()
   hasGOOJCard: boolean;
+
+  @Prop({ type: Any })
+  position: tiles['id'];
 }
 
 export const playerSchema = SchemaFactory.createForClass(player);

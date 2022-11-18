@@ -4,7 +4,6 @@ import { boardModule } from 'src/board/board.module';
 import { luckModule } from 'src/luck/luck.module';
 import { tilesModule } from 'src/tiles/tiles.module';
 import { playerModule } from 'src/player/player.module';
-import { serverModule } from 'src/servers/servers.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -15,7 +14,6 @@ import { AppService } from './app.service';
     playerModule,
     luckModule,
     tilesModule,
-    serverModule,
   ],
   controllers: [AppController],
   providers: [AppService],
