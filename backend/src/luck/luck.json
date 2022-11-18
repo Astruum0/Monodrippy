@@ -1,0 +1,137 @@
+[
+    {
+        "id": 1,
+        "name": "Scammed",
+        "content": "Adrien vous à proposé un “bon plan no risque no cap”. Vous perdez 10K",
+        "cardEffect": {
+            "effect": "giveMoneyTo",
+            "value": 10
+        }
+    },
+    {
+        "id": 2,
+        "name": "Boursorama",
+        "content": "Contre toute attente Adrien vous propose un nouveau plan argent et il fonctionne recevez 10K, mais restez vigilant",
+        "cardEffect": {
+            "effect": "giveMoney",
+            "value": 10
+        }
+    },
+    {
+        "id": 3,
+        "name": "Norvitas",
+        "content": "Le plan de l'année tombe, Adrien vous contacte pour parler de Norvitas, ce ponzy a l'air safe (perdez 15K)",
+        "cardEffect": {
+            "effect": "giveMoney",
+            "value": 15
+        }
+    },
+    {
+        "id": 4,
+        "name": "Oh Snap",
+        "content": "vous n'avez pas GO Fmt (il y a un retour à la ligne à la fin du fichier) attendez 15 h (il est 9h). passez 2 tours",
+        "cardEffect": {
+            "effect": "wait",
+            "value": 2
+        }
+    },
+    {
+        "id": 5,
+        "name": "Arthured",
+        "content": "Vous avez pécho une 2004, allez en prison, ne passez pas par la case départ.",
+        "cardEffect": {
+            "effect": "moveToStraight",
+            "value": 27
+        }
+    },
+    {
+        "id": 6,
+        "name": "Snack time with PA",
+        "content": "Snack Time with PA",
+        "cardEffect": {
+            "effect": "giveMoneyTo",
+            "value": 5
+        }
+    },
+    {
+        "id": 7,
+        "name": "Poppy break",
+        "content": "Benjam doit allez aux toilettes. Attendez le pendant 2 tours.",
+        "cardEffect": {
+            "effect": "wait",
+            "value": 2
+        }
+    },
+    {
+        "id": 8,
+        "name": "Tacos 3 viandes",
+        "content": "Vous vous sentez lourd, votre prochain jet de dé est divisé par deux.",
+        "cardEffect": {
+            "effect": "NextThrow",
+            "value": 0.5
+        }
+    },
+    {
+        "id": 9,
+        "name": "MANGO LOCO",
+        "content": "vous êtes boost, votre prochain lancé est doublé",
+        "cardEffect": {
+            "effect": "NextThrow",
+            "value": 2
+        }
+    },
+    {
+        "id": 10,
+        "name": "Patrick Piquart",
+        "content": "MR Piquart vous raconte 1% de sa vie attedendez 3 tours",
+        "cardEffect": {
+            "effect": "wait",
+            "value": 3
+        }
+    },
+    {
+        "id": 11,
+        "name": "Ravezie",
+        "content": "Ynov vous demande une cotisation pour payer les nouveaux locaux : tout les joueurs payent 5k",
+        "cardEffect": {
+            "effect": "giveMoneyAll",
+            "value": 5
+        }
+    },
+    {
+        "id": 12,
+        "name": "Nouvelle année",
+        "content": "C’est la nouvelle année et vous n’avez pas d’alternance : Rendez-vous à la case départ, ne recevez pas l’argent, payez 8k",
+        "cardEffect": {
+            "effect": "moveToStraight",
+            "value": 2
+        }
+    },
+    {
+        "id": 13,
+        "name": "grève TBM",
+        "content": "malgré un réveil à l'heure votre tram ne passe pas, voud n'aviez pas vus la grève annoncé. prochain jet diviser par 2",
+        "cardEffect": {
+            "effect": "NextThrow",
+            "value": 0.5
+        }
+    },
+    {
+        "id": 14,
+        "name": "BUBLIZ",
+        "content": "Après un perdu pari vous vous enfilez un sandwich poulet crudité fourré au bubliz, éttonament bien qu'immonde cette recette vous fait retentir puissant, prochain jet doublé",
+        "cardEffect": {
+            "effect": "NextThrow",
+            "value": 2
+        }
+    },
+    {
+        "id": 15,
+        "name": "casque VRED",
+        "content": "Mattéo vous embarque dans sa hype de casque VR, vous vous rendez chez la fnac et ressortez pauvre. payer 50k",
+        "cardEffect": {
+            "effect": "giveMoney",
+            "value": 50
+        }
+    }
+]

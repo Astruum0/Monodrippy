@@ -1,0 +1,508 @@
+[
+   {
+      "id": 0,
+      "name": "Départ",
+      "type": "start"
+   },
+   {
+      "id": 1,
+      "name": "Windows Server",
+      "color": "#8ad4ff",
+      "prices": {
+         "base": 60,
+         "upgrade_cost": 50
+      },
+      "rent": [
+         2,
+         10,
+         30,
+         90,
+         160
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 2,
+      "name": "CVEC",
+      "type": "special_cvec"
+   },
+   {
+      "id": 3,
+      "name": "Dev Mobile",
+      "color": "#8ad4ff",
+      "prices": {
+         "base": 60,
+         "upgrade_cost": 50
+      },
+      "rent": [
+         4,
+         20,
+         60,
+         180,
+         320
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 4,
+      "name": "Annexes",
+      "color": "#000000",
+      "prices": {
+         "base": 200
+      },
+      "rent": [
+         25,
+         50,
+         100,
+         200
+      ],
+      "type": "gare"
+   },
+   {
+      "id": 5,
+      "name": "C embarqué",
+      "color": "#686e96",
+      "prices": {
+         "base": 100,
+         "upgrade_cost": 50
+      },
+      "rent": [
+         6,
+         30,
+         90,
+         270,
+         400
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 6,
+      "name": "Chance",
+      "type": "chance"
+   },
+   {
+      "id": 7,
+      "name": "Voltaire",
+      "color": "#686e96",
+      "prices": {
+         "base": 100,
+         "upgrade_cost": 50
+      },
+      "rent": [
+         6,
+         30,
+         90,
+         270,
+         400
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 8,
+      "name": "Golang",
+      "color": "#686e96",
+      "prices": {
+         "base": 120,
+         "upgrade_cost": 50
+      },
+      "rent": [
+         8,
+         40,
+         100,
+         300,
+         450
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 9,
+      "name": "Prison",
+      "type": "chance"
+   },
+   {
+      "id": 10,
+      "name": "Java",
+      "color": "#ff496a",
+      "prices": {
+         "base": 140,
+         "upgrade_cost": 100
+      },
+      "rent": [
+         10,
+         50,
+         150,
+         450,
+         625
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 11,
+      "name": "Math",
+      "color": "#ff496a",
+      "prices": {
+         "base": 140,
+         "upgrade_cost": 100
+      },
+      "rent": [
+         10,
+         50,
+         150,
+         450,
+         625
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 12,
+      "name": "Chance",
+      "type": "chance"
+   },
+   {
+      "id": 13,
+      "name": "Dev API",
+      "color": "#ff496a",
+      "prices": {
+         "base": 160,
+         "upgrade_cost": 100
+      },
+      "rent": [
+         12,
+         60,
+         180,
+         500,
+         700
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 14,
+      "name": "Conrad",
+      "color": "#000000",
+      "prices": {
+         "base": 200
+      },
+      "rent": [
+         25,
+         50,
+         100,
+         200
+      ],
+      "type": "gare"
+   },
+   {
+      "id": 15,
+      "name": "NoSQL",
+      "color": "#fe8c5b",
+      "prices": {
+         "base": 180,
+         "upgrade_cost": 100
+      },
+      "rent": [
+         14,
+         70,
+         200,
+         550,
+         750
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 16,
+      "name": "Electron",
+      "color": "#fe8c5b",
+      "prices": {
+         "base": 180,
+         "upgrade_cost": 100
+      },
+      "rent": [
+         14,
+         70,
+         200,
+         550,
+         750
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 17,
+      "name": "DevOps",
+      "color": "#fe8c5b",
+      "prices": {
+         "base": 200,
+         "upgrade_cost": 100
+      },
+      "rent": [
+         16,
+         80,
+         220,
+         600,
+         800
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 18,
+      "name": "Ynov Circus",
+      "type": "chance"
+   },
+   {
+      "id": 19,
+      "name": "Projet Pro",
+      "color": "#eb2a00",
+      "prices": {
+         "base": 220,
+         "upgrade_cost": 150
+      },
+      "rent": [
+         18,
+         90,
+         250,
+         700,
+         875
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 20,
+      "name": "PHP",
+      "color": "#eb2a00",
+      "prices": {
+         "base": 220,
+         "upgrade_cost": 150
+      },
+      "rent": [
+         18,
+         90,
+         250,
+         700,
+         875
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 21,
+      "name": "Chance",
+      "type": "chance"
+   },
+   {
+      "id": 22,
+      "name": "Linux",
+      "color": "#eb2a00",
+      "prices": {
+         "base": 240,
+         "upgrade_cost": 150
+      },
+      "rent": [
+         20,
+         100,
+         300,
+         750,
+         925
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 23,
+      "name": "Condé",
+      "color": "#000000",
+      "prices": {
+         "base": 200
+      },
+      "rent": [
+         25,
+         50,
+         100,
+         200
+      ],
+      "type": "gare"
+   },
+   {
+      "id": 24,
+      "name": "Cybersec",
+      "color": "#ffe401",
+      "prices": {
+         "base": 260,
+         "upgrade_cost": 150
+      },
+      "rent": [
+         22,
+         110,
+         330,
+         800,
+         975
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 25,
+      "name": "Csharp",
+      "color": "#ffe401",
+      "prices": {
+         "base": 0,
+         "upgrade_cost": 150
+      },
+      "rent": [
+         22,
+         110,
+         330,
+         800,
+         975
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 26,
+      "name": "Javascript",
+      "color": "#ffe401",
+      "prices": {
+         "base": 0,
+         "upgrade_cost": 150
+      },
+      "rent": [
+         22,
+         120,
+         360,
+         850,
+         1025
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 27,
+      "name": "GoToPrison",
+      "type": "chance"
+   },
+   {
+      "id": 28,
+      "name": "Python",
+      "color": "#00a61b",
+      "prices": {
+         "base": 300,
+         "upgrade_cost": 200
+      },
+      "rent": [
+         26,
+         130,
+         390,
+         900,
+         1100
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 29,
+      "name": "OSINT",
+      "color": "#00a61b",
+      "prices": {
+         "base": 300,
+         "upgrade_cost": 200
+      },
+      "rent": [
+         26,
+         130,
+         390,
+         900,
+         1100
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 30,
+      "name": "Chance",
+      "type": "chance"
+   },
+   {
+      "id": 31,
+      "name": "Réseau",
+      "color": "#00a61b",
+      "prices": {
+         "base": 320,
+         "upgrade_cost": 200
+      },
+      "rent": [
+         28,
+         150,
+         450,
+         1000,
+         1200
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 32,
+      "name": "Chartrons",
+      "color": "#000000",
+      "prices": {
+         "base": 200
+      },
+      "rent": [
+         25,
+         50,
+         100,
+         200
+      ],
+      "type": "gare"
+   },
+   {
+      "id": 33,
+      "name": "React",
+      "color": "#001d85",
+      "prices": {
+         "base": 350,
+         "upgrade_cost": 200
+      },
+      "rent": [
+         35,
+         175,
+         500,
+         1100,
+         1300
+      ],
+      "type": "street",
+      "owner": null
+   },
+   {
+      "id": 34,
+      "name": "Prêt étudiant",
+      "type": "special_pret"
+   },
+   {
+      "id": 35,
+      "name": "SQL",
+      "color": "#001d85",
+      "prices": {
+         "base": 400,
+         "upgrade_cost": 200
+      },
+      "rent": [
+         50,
+         200,
+         600,
+         1400,
+         1700
+      ],
+      "type": "street",
+      "owner": null
+   }
+]
