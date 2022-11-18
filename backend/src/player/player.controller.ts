@@ -31,7 +31,7 @@ export class playerController {
       "isImprisoned": false,
       "hasGOOJCard": false
     }
-    await this.playerService.add_to_game(payload, id)
+    await this.playerService.addToGame(payload, id)
     return await this.playerService.create(payload);
   }
 }
