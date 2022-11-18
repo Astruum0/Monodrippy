@@ -48,8 +48,8 @@ var pawnCase = 0;
 var pawnCoords = new Vector(0, 0);
 
 function convertCaseToCoords(caseNumber: number): P5Vector {
-    const side = Math.floor(pawnCase / 9)
-    const positionRelativeToSide = pawnCase % 9
+    const side = Math.floor(caseNumber / 9)
+    const positionRelativeToSide = caseNumber % 9
     const coords = new Vector(cornersCoords[side].x, cornersCoords[side].y); 
     
     const extraCoords = positionRelativeToSide * 26
@@ -62,8 +62,6 @@ function convertCaseToCoords(caseNumber: number): P5Vector {
     } else {
         coords.y += extraCoords
     }
-
-
     return coords
 }
 
@@ -75,7 +73,7 @@ methods: {
         sketch.createCanvas(sketch.windowWidth, sketch.windowHeight, sketch.WEBGL);
         sketch.background(20);
 
-        getBoard(1).then(res => currentBoard = res)
+        getBoard(1).then(res => {currentBoard = res})
 
         boardImg = sketch.loadImage("Board3D.png")
         pawnModel = sketch.loadModel("PawnLowPoly.obj")
@@ -86,12 +84,8 @@ methods: {
             sketch.resizeCanvas(sketch.windowWidth, sketch.windowHeight)
         }
         sketch.keyPressed = function() {
-            if (sketch.key === " ") {pawnCase = (pawnCase + 1) % 36}
+            currentBoard.players[0].moveTo(10, () => {console.log("done")}) 
         }
-
-
-        
-        
     },
     draw(sketch: P5Sketch) {
         
@@ -120,7 +114,9 @@ methods: {
         sketch.model(pawnModel)
         sketch.pop()
 
-        pawnCoords = convertCaseToCoords(pawnCase);
+        pawnCoords = convertCaseToCoords(currentBoard?.players[0]?.position || 0);
+
+        
     }
 },
 });

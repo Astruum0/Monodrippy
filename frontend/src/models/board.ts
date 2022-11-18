@@ -28,13 +28,20 @@ export class Board implements Board {
     constructor(payload: Partial<Board>) {
         this.id = payload.id || 0
         this.hasStarted = payload.hasStarted || false
-        this.players = payload.players || new Array<Player>() as [Player]
+        this.players = new Array<Player>() as [Player]
+        for (const p of payload.players || Array<Player>() as [Player]) {
+            this.players.push(new Player(p))
+        }
         this.tiles = payload.tiles || new Array<Tile>() as [Tile]
         this.lucks = payload.lucks || new Array<Luck>() as [Luck]
         this.ycircus = payload.ycircus || 0
     }
 
     draw(sketch: P5Sketch) {
-        console.log(sketch)
+        console.log(this.id, sketch)
+
+        this.players.forEach(p => {
+            p.draw(sketch)
+        })
     } 
 }
