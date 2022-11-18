@@ -10,7 +10,7 @@ export class playerService {
   constructor(
     @InjectModel(player.name) private playerModel: Model<playerDocument>,
     @InjectModel(board.name) private boardModel: Model<boardDocument>,
-    private readonly boardService: boardService
+    private readonly boardService: boardService,
   ) {}
 
   async create(payload: any): Promise<player> {
@@ -19,9 +19,18 @@ export class playerService {
   }
 
   async addToGame(payload: any, game_id: Number) {
-    let board = await this.boardModel.findOne({"id": game_id}).exec()
-    board.players.push(payload)
-    return board.save()
+    let board = await this.boardModel.findOne({ id: game_id }).exec();
+    board.players.push(payload);
+    return board.save();
+  }
+
+  async removeFromGame(gameId: Number) {
+    let board = await this.boardModel.findOne({ id: gameId }).exec();
+    for (let index = board.players.length; index >= 0; index--) {
+      board.players.pop();
+    }
+    board.save();
+    return this.playerModel.remove().deleteMany();
   }
 
   async findAll(): Promise<player[]> {
@@ -29,6 +38,6 @@ export class playerService {
   }
 
   async findById(playerId: Number): Promise<player> {
-    return this.playerModel.findOne({"id": playerId}).exec();
+    return this.playerModel.findOne({ id: playerId }).exec();
   }
 }
