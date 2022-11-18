@@ -13,7 +13,7 @@ export class luckController {
 
   @Get(':id')
   async findById(
-    @Param('id') id: string,
+    @Param('id') id: Number,
   ): Promise<luck> {
     return this.luckService.findById(id);
   }

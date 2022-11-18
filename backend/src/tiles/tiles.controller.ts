@@ -13,7 +13,7 @@ export class tilesController {
 
   @Get(':id')
   async findById(
-    @Param('id') id: string,
+    @Param('id') id: Number,
   ): Promise<tiles> {
     return this.tilesService.findById(id);
   }
