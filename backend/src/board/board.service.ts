@@ -13,7 +13,7 @@ export class boardService {
     return this.boardModel.find().exec();
   }
 
-  async findById(boardId: string): Promise<board> {
+  async findById(boardId: Number): Promise<board> {
     return this.boardModel.findOne({"id": boardId}).exec();
   }
 }

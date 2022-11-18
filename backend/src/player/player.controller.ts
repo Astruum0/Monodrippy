@@ -1,5 +1,4 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { CreatePlayerDto } from './create-player.dto';
 import { player } from './player.schema';
 import { playerService } from './player.service';
 
@@ -14,15 +13,25 @@ export class playerController {
 
   @Get(':id')
   async findById(
-    @Param('id') id: string,
+    @Param('id') id: Number,
   ): Promise<player> {
     console.log(id)
     return this.playerService.findById(id);
   }
 
-  @Post()
-  async create(@Body() createPlayerDto: CreatePlayerDto) {
-    return await this.playerService.create(createPlayerDto);
+  @Post('join/:id')
+  async create(
+    @Body() json: String,
+    @Param('id') id: Number
+  ) {
+    let payload = {
+      "name": json["name"],
+      "money": 0,
+      "properties": [],
+      "isImprisoned": false,
+      "hasGOOJCard": false
+    }
+    await this.playerService.add_to_game(payload, id)
+    return await this.playerService.create(payload);
   }
 }
-

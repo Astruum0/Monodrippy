@@ -13,7 +13,7 @@ export class boardController {
 
   @Get(':id')
   async findById(
-    @Param('id') id: string,
+    @Param('id') id: Number,
   ): Promise<board> {
     return this.boardService.findById(id);
   }
