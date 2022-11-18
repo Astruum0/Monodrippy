@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-{
-   "board": [
-      {
-         "tiles" : null,
-         "player" : null,
-         "luck" : null,
-         "ycircus": 0
-      }
-   ]
-}
-=======
 [
    {
       "id": 0,
@@ -1076,4 +1064,3 @@
       "ycircus": 0
    }
 ]
->>>>>>> feat/databaseConnection

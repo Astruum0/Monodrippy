@@ -75,8 +75,7 @@ methods: {
         sketch.createCanvas(sketch.windowWidth, sketch.windowHeight, sketch.WEBGL);
         sketch.background(20);
 
-        getBoard(1).then(res => {currentBoard = res; console.log(currentBoard);
-        })
+        getBoard(1).then(res => currentBoard = res)
 
         boardImg = sketch.loadImage("Board3D.png")
         pawnModel = sketch.loadModel("PawnLowPoly.obj")
