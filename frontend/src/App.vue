@@ -1,12 +1,9 @@
 <template>
   
   <div id="app">
-<<<<<<< HEAD
     <nav>
       <router-link to="/"></router-link>
     </nav>
-=======
->>>>>>> feat/gameCanvas
     <router-view/>
   </div>
 </template>
@@ -21,7 +18,6 @@ body {
 }
 
 #app {
-<<<<<<< HEAD
   @import 'assets/variable.scss';
   @import 'node_modules/bootstrap/scss/bootstrap.scss';
   background: url('assets/bg.jpg');
@@ -30,12 +26,6 @@ body {
   color: #2c3e50;
 
   
-=======
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center; 
->>>>>>> feat/gameCanvas
 }
 
 body {
