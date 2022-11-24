@@ -1,6 +1,8 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { player } from './player.schema';
 import { playerService } from './player.service';
+import { v4 as uuidv4 } from 'uuid';
+import { ObjectID } from 'typeorm';
 
 @Controller('players')
 export class playerController {
@@ -20,6 +22,7 @@ export class playerController {
   @Post('join/:id')
   async create(@Body() json: String, @Param('id') id: Number) {
     let payload = {
+      id: uuidv4(),
       name: json['name'],
       money: 0,
       properties: [],

@@ -8,7 +8,7 @@ export type playerDocument = player & mongoose.Document;
 @Schema()
 export class player {
   @Prop()
-  id: number;
+  id: string;
 
   @Prop()
   name: string;

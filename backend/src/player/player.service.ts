@@ -20,6 +20,7 @@ export class playerService {
 
   async addToGame(payload: any, game_id: Number) {
     let board = await this.boardModel.findOne({ id: game_id }).exec();
+    console.log(payload)
     board.players.push(payload);
     return board.save();
   }
