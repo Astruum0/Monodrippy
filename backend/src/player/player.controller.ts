@@ -34,7 +34,7 @@ export class playerController {
       return await this.playerService.create(payload);
     }
     catch(err) {
-      return "Game already full"
+      return {"error": "Game already full"}
     }
   }
 }
