@@ -1,4 +1,5 @@
-import { P5Sketch } from "vue-p5-component"
+import { dividePawns } from "@/lib/dividePawns"
+import { P5Image, P5Sketch } from "vue-p5-component"
 import { Luck } from "./luck"
 import { Player } from "./player"
 import { Tile } from "./tile"
@@ -25,12 +26,15 @@ export class Board implements Board {
 
     ycircus: number
 
+    static boardImg: P5Image | undefined
+    static boardBackground: P5Image | undefined
+
     constructor(payload: Partial<Board>) {
         this.id = payload.id || 0
         this.hasStarted = payload.hasStarted || false
         this.players = new Array<Player>() as [Player]
-        for (const p of payload.players || Array<Player>() as [Player]) {
-            this.players.push(new Player(p))
+        for (const [i, p] of (payload.players || Array<Player>() as [Player]).entries()) {
+            this.players.push(new Player(p, i))
         }
         this.tiles = payload.tiles || new Array<Tile>() as [Tile]
         this.lucks = payload.lucks || new Array<Luck>() as [Luck]
@@ -38,7 +42,22 @@ export class Board implements Board {
     }
 
     draw(sketch: P5Sketch) {
-        console.log(this.id, sketch)
+        sketch.push()
+        sketch.translate(0, 2.5, 0)
+        
+        Board.boardBackground && sketch.texture(Board.boardBackground!)
+        sketch.box(300, 5, 300)
+        sketch.pop()
+        
+        sketch.push()
+        sketch.rotateX(sketch.PI/2)
+        sketch.translate(0, 0, 0.01)
+        Board.boardImg && sketch.texture(Board.boardImg!)
+        sketch.rect(-150, -150, 300, 300)
+        sketch.pop()
+
+        dividePawns(this.players)
+
 
         this.players.forEach(p => {
             p.draw(sketch)
