@@ -32,9 +32,4 @@ export class playerController {
     await this.playerService.addToGame(payload, id);
     return await this.playerService.create(payload);
   }
-
-  @Delete('delete/:id')
-  async deletePlayers(@Param('id') id: Number) {
-    return this.playerService.removeFromGame(id);
-  }
 }

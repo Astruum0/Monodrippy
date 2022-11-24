@@ -20,18 +20,8 @@ export class playerService {
 
   async addToGame(payload: any, game_id: Number) {
     let board = await this.boardModel.findOne({ id: game_id }).exec();
-    console.log(payload)
     board.players.push(payload);
     return board.save();
-  }
-
-  async removeFromGame(gameId: Number) {
-    let board = await this.boardModel.findOne({ id: gameId }).exec();
-    for (let index = board.players.length; index >= 0; index--) {
-      board.players.pop();
-    }
-    board.save();
-    return this.playerModel.remove().deleteMany();
   }
 
   async findAll(): Promise<player[]> {

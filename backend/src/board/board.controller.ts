@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { board } from './board.schema';
 import { boardService } from './board.service';
 
@@ -16,5 +16,10 @@ export class boardController {
     @Param('id') id: Number,
   ): Promise<board> {
     return this.boardService.findById(id);
+  }
+
+  @Delete('reset/:id')
+  async resetGame(@Param('id') id: Number) {
+    return this.boardService.resetGame(id);
   }
 }
