@@ -12,8 +12,11 @@
   "dependencies": {
     "bootstrap-vue": "^2.23.1",
     "core-js": "^3.8.3",
-    "vue": "^2.6.14",
+    "p5": "^1.5.0",
+    "vue": "^2.7.13",
     "vue-class-component": "^7.2.3",
+    "vue-p5": "^0.8.4",
+    "vue-p5-component": "^1.0.4",
     "vue-property-decorator": "^9.1.2",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2"
