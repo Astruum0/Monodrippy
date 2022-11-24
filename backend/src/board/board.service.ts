@@ -18,6 +18,12 @@ export class boardService {
     return this.boardModel.findOne({"id": boardId}).exec();
   }
 
+  async startGame(gameId: Number) {
+    let board = await this.boardModel.findOne({ id: gameId }).exec();
+    board.hasStarted = true
+    board.save();
+  }
+
   async resetGame(gameId: Number) {
     let board = await this.boardModel.findOne({ id: gameId }).exec();
     for (let index = board.players.length; index >= 0; index--) {
