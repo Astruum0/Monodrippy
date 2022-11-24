@@ -1,4 +1,6 @@
 import { Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { timeStamp } from 'console';
+import { gameOutput } from 'src/models/gameOutput';
 import { board } from './board.schema';
 import { boardService } from './board.service';
 
@@ -14,8 +16,8 @@ export class boardController {
   @Get(':id')
   async findById(
     @Param('id') id: Number,
-  ): Promise<board> {
-    return this.boardService.findById(id);
+  ): Promise<gameOutput> {
+    return this.boardService.gameOutput(id);
   }
 
 
