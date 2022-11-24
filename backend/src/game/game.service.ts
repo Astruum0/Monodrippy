@@ -7,7 +7,7 @@ export class gameService {
   constructor(
     private readonly boardService: boardService) {}
 
-  async play(): Promise<gameOutput> {
+  async play(payload: IDicePlay): Promise<gameOutput> {
     return this.boardService.gameOutput(1);
   }
 }

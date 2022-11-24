@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { gameService } from './game.service';
 import { boardService } from '../board/board.service'
 import { gameOutput } from 'src/models/gameOutput';
@@ -8,8 +8,8 @@ export class gameController {
   constructor(
     private readonly gameService: gameService) {}
 
-  @Get()
-  async play(): Promise<gameOutput> {
-    return this.gameService.play()
+  @Post('play')
+  async play(@Body() payload:IDicePlay): Promise<gameOutput> {
+    return this.gameService.play(payload)
   }
 }

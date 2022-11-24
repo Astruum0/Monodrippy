@@ -33,6 +33,7 @@ export class boardService {
     for (let index = board.players.length; index >= 0; index--) {
       board.players.pop();
     }
+    this.actions = []
     board.hasStarted = false
     board.save();
   }
