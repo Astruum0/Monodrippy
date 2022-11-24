@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { tiles } from './tiles.schema';
 import { tilesService } from './tiles.service';
 
@@ -16,5 +16,13 @@ export class tilesController {
     @Param('id') id: Number,
   ): Promise<tiles> {
     return this.tilesService.findById(id);
+  }
+
+  @Post(':id/buy')
+  async create(@Body() json: String, @Param('id') id: number) {
+    let game_id = json["game_id"]
+    let tile_id = id
+    let player_id = json["player_id"]
+    return await this.tilesService.buy(game_id, tile_id, player_id);
   }
 }

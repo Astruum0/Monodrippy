@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { player } from 'src/player/player.schema';
 import { action } from 'src/models/action';
 import { gameOutput } from 'src/models/gameOutput';
 import { board, boardDocument } from './board.schema';
+import { playerService } from 'src/player/player.service';
+import { player, playerDocument } from 'src/player/player.schema';
 
 @Injectable()
 export class boardService {
@@ -30,11 +31,24 @@ export class boardService {
 
   async resetGame(gameId: Number) {
     let board = await this.boardModel.findOne({ id: gameId }).exec();
-    for (let index = board.players.length; index >= 0; index--) {
-      board.players.pop();
+    let player_id = []
+    for (let index = board.players.length; index > 0; index--) {
+      player_id.push(board.players.pop()["id"]);
     }
     board.hasStarted = false
     board.save();
+    return player_id
+  }
+
+  async addToGame(payload: any, game_id: Number) {
+    let board = await this.boardModel.findOne({ id: game_id }).exec();
+    let player_number = board.players.length
+    if(player_number <= 3){
+        board.players.push(payload);
+      return board.save();
+    } else {
+      throw new Error("Games already full")
+    }
   }
   
   async gameOutput(id: Number): Promise<gameOutput> {
