@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { player, playerDocument } from './player.schema';
 import { boardService } from '../board/board.service';
 import { board, boardDocument } from 'src/board/board.schema';
+import { Console } from 'console';
 
 @Injectable()
 export class playerService {
@@ -20,8 +21,14 @@ export class playerService {
 
   async addToGame(payload: any, game_id: Number) {
     let board = await this.boardModel.findOne({ id: game_id }).exec();
-    board.players.push(payload);
-    return board.save();
+    let player_number = board.players.length
+    if(player_number <= 3){
+        board.players.push(payload);
+      return board.save();
+    } else {
+      throw new Error("Games already full")
+    }
+
   }
 
   async findAll(): Promise<player[]> {

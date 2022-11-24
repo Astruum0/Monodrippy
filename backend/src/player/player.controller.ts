@@ -29,7 +29,12 @@ export class playerController {
       isImprisoned: false,
       hasGOOJCard: false,
     };
-    await this.playerService.addToGame(payload, id);
-    return await this.playerService.create(payload);
+    try {
+      await this.playerService.addToGame(payload, id)
+      return await this.playerService.create(payload);
+    }
+    catch(err) {
+      return "Game already full"
+    }
   }
 }
