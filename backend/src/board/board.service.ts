@@ -1,15 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { action } from 'src/models/action';
+import { Action, nextActionByBoard, historyByBoard } from 'src/models/action';
 import { gameOutput } from 'src/models/gameOutput';
 import { board, boardDocument } from './board.schema';
-import { playerService } from 'src/player/player.service';
-import { player, playerDocument } from 'src/player/player.schema';
 
 @Injectable()
 export class boardService {
-  actions: action[] = new Array<action>()
+  historyByBoard: historyByBoard = {}
+  nextActionByBoard: nextActionByBoard = {}
 
   constructor(
     @InjectModel(board.name) private boardModel: Model<boardDocument>,
@@ -26,6 +25,12 @@ export class boardService {
   async startGame(gameId: Number) {
     let board = await this.boardModel.findOne({ id: gameId }).exec();
     board.hasStarted = true
+    
+    board.currentTurn = board.players[Math.floor(Math.random() * board.players.length)].id
+
+    this.nextActionByBoard[board.id] = new Action("TURN", board.currentTurn)
+    this.historyByBoard[board.id] = [new Action("Game has started")]
+
     board.save();
   }
 
@@ -35,6 +40,7 @@ export class boardService {
     for (let index = board.players.length; index > 0; index--) {
       player_id.push(board.players.pop()["id"]);
     }
+    this.historyByBoard = []
     board.hasStarted = false
     board.save();
     return player_id
@@ -53,7 +59,8 @@ export class boardService {
   
   async gameOutput(id: Number): Promise<gameOutput> {
     return {
-      history: this.actions.filter(e => {e.boardId === id}),
+      nextAction: this.nextActionByBoard[id as number] || undefined,
+      history: this.historyByBoard[id as number] || [],
       board: await this.findById(id)
     }
   }
