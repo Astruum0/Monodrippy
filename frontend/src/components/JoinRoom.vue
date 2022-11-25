@@ -9,13 +9,8 @@
       <div @click="onClick" :id="room.id" class="card card-primary mt-5 container room" style="cursor: pointer;">
         <div class="row">
           <div class="col-12 col-md-6 my-3">
-<<<<<<< HEAD
-            <h1 class="room-name">{{ room.name }}</h1>
-            <div v-if="room.locked == true" class="d-flex justify-content-center">
-=======
             <h1 class="room-name">Serveur {{room.id}}</h1>
             <div v-if="room.hasStarted == true" class="d-flex justify-content-center">
->>>>>>> fdba1a3723947f83489af15da3ba8fd5a1a43682
               <p class="mb-0">Partie en cours</p>
             </div>
             <div class="d-flex justify-content-center" v-else>
@@ -24,14 +19,7 @@
             </div>
           </div>
           <div class="col-12 col-md-6 d-none d-md-flex justify-content-end">
-<<<<<<< HEAD
-            <span class="room-people my-auto me-3">{{ room.people }}/4</span>
-=======
             <span class="room-people my-auto me-3">{{room.players.length}}/4</span>
->>>>>>> fdba1a3723947f83489af15da3ba8fd5a1a43682
-          </div>
-          <div class="col-12 col-md-6 d-flex d-md-none justify-content-center">
-            <span class="room-people my-auto ">{{ room.people }}/4</span>
           </div>
         </div>
       </div>
@@ -48,44 +36,25 @@ let JoinRoom = {
 
   data: function () {
     return {
-<<<<<<< HEAD
-      visible: false,
-      rooms: [
-        {
-          id: 0,
-          name: 'Serveur 1',
-          people: 4,
-          locked: true,
-        },
-        {
-          id: 1,
-          name: 'Serveur 2',
-          people: 2,
-          locked: false,
-        },
-      ],
+      rooms: [],
       pseudo: "",
       selected: -1,
-=======
-      rooms: []
->>>>>>> fdba1a3723947f83489af15da3ba8fd5a1a43682
     }
   },
 
   methods: {
-<<<<<<< HEAD
     onClick(e) {
       console.log(e);
       var select  = $(e.target).closest(".card").attr("id");
-      console.log(select);
       this.selected = select;
+      console.log(this.selected)
     },
     getValue() {
       // Sélectionner l'élément input et récupérer sa valeur
       var input = document.getElementById("pseudo").value;
       this.pseudo = input;
-    }
-=======
+      console.log(this.pseudo)
+    },
     getBoards() {
       return fetch(`http://localhost:3001/boards/`)
         .then(res => res.json())
@@ -95,7 +64,6 @@ let JoinRoom = {
 
   mounted: function() {
     this.getBoards()
->>>>>>> fdba1a3723947f83489af15da3ba8fd5a1a43682
   }
 }
 
