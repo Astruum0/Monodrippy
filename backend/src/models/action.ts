@@ -2,8 +2,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 export interface action {
   id: string
-  userConcerned: string | undefined
   description: string
+  userConcerned: string | undefined
+  tilesConcerned: number | undefined
 }
 
 export interface nextActionByBoard {
@@ -15,15 +16,18 @@ export interface historyByBoard {
 
 export class Action implements action{
   id: string
-  userConcerned: string | undefined
   description: string
+  userConcerned: string | undefined
+  tilesConcerned: number | undefined
 
   constructor(
     description: string,
-    userConcerned: string | undefined = undefined
+    userConcerned: string | undefined = undefined,
+    tilesConcerned: number | undefined = undefined
     ) {
     this.id = uuidv4()
     this.description = description
     this.userConcerned = userConcerned
+    this.tilesConcerned = tilesConcerned
   }
 }

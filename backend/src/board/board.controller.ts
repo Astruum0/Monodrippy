@@ -20,22 +20,8 @@ export class boardController {
   @Get(':id')
   async findById(
     @Param('id') id: Number,
-  ): Promise<gameOutput> {
-    return this.boardService.gameOutput(id);
-  }
-
-  @Patch('start/:id')
-  async startGame(@Param('id') id: Number) {
-    return this.boardService.startGame(id);
-  }
-
-  @Delete('reset/:id')
-  async resetGame(@Param('id') id: Number) {
-    let players_id = await this.boardService.resetGame(id);
-    console.log(players_id)
-    for(let id in players_id){
-      this.playerService.deleteById(players_id[id])
-    }
+  ): Promise<board> {
+    return this.boardService.findById(id);
   }
 
   @Post('join/:id')
@@ -47,14 +33,14 @@ export class boardController {
       properties: [],
       isImprisoned: false,
       hasGOOJCard: false,
+      position: 0
     };
-    console.log(payload)
     try {
       await this.boardService.addToGame(payload, id)
       return await this.playerService.create(payload);
     }
-    catch(err) {
-      return {"error": "Game already full"}
+    catch(e: unknown) {
+      return {"error": typeof e === "string" ? e.toUpperCase() : e instanceof Error ? e.message : "Error"}
     }
   }
 }

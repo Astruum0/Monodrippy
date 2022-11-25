@@ -23,7 +23,6 @@ export class playerService {
   }
 
   async deleteById(playerId: string) {
-    console.log(playerId)
     return this.playerModel.remove({ id: playerId }).exec();
   }
 }
