@@ -1,8 +1,12 @@
 import { Board } from "@/models/board";
+import { Game } from "@/models/game";
 
-export function getBoard(id: number): Promise<Board>{
-    return fetch(`http://localhost:3001/boards/${id}`)
+export function getBoard(id: number): Promise<Game>{
+    return fetch(`http://localhost:3001/game/${id}`)
         .then(res => res.json())
-        .then(res => res as Board)
-        .then(res => new Board(res))
+        .then(res => res as Game)
+        .then(res => {
+            res.board = new Board(res.board)
+            return res
+        })
 }

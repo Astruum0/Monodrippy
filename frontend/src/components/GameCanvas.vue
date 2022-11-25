@@ -23,6 +23,7 @@ import { Vector } from "p5";
 import { Board } from "@/models/board";
 import { getBoard } from "../lib/getGame"
 import { Player } from "@/models/player";
+import { Action } from "@/models/game";
 
 function randint(min: number, max: number) : number{
 	min = Math.ceil(min);
@@ -33,6 +34,9 @@ function randint(min: number, max: number) : number{
 
 
 var currentBoard: Board
+var history: Action[]
+var nextAction: Action | undefined
+
 export default Vue.extend({
 components: { P5 },
 methods: {
@@ -46,7 +50,12 @@ methods: {
         Player.model = sketch.loadModel("PawnLowPoly.obj")
         
 
-        getBoard(1).then(res => {currentBoard = res})
+        getBoard(1).then(res => {
+            currentBoard = res.board
+            history = res.history
+            nextAction = res.nextAction
+            console.log(currentBoard, history, nextAction);
+        })
 
         sketch.normalMaterial()
 
