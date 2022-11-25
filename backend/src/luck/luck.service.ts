@@ -11,7 +11,7 @@ export class luckService {
     return this.luckModel.find().exec();
   }
 
-  async findById(luckId: string): Promise<luck> {
+  async findById(luckId: Number): Promise<luck> {
     return this.luckModel.findOne({"id": luckId}).exec();
   }
 }

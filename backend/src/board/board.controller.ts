@@ -1,4 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { timeStamp } from 'console';
+import { gameOutput } from 'src/models/gameOutput';
 import { board } from './board.schema';
 import { boardService } from './board.service';
 
@@ -13,8 +15,19 @@ export class boardController {
 
   @Get(':id')
   async findById(
-    @Param('id') id: string,
-  ): Promise<board> {
-    return this.boardService.findById(id);
+    @Param('id') id: Number,
+  ): Promise<gameOutput> {
+    return this.boardService.gameOutput(id);
+  }
+
+
+  @Patch('start/:id')
+  async startGame(@Param('id') id: Number) {
+    return this.boardService.startGame(id);
+  }
+
+  @Delete('reset/:id')
+  async resetGame(@Param('id') id: Number) {
+    return this.boardService.resetGame(id);
   }
 }

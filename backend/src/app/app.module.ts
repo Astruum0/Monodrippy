@@ -6,6 +6,7 @@ import { tilesModule } from 'src/tiles/tiles.module';
 import { playerModule } from 'src/player/player.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { gameModule } from 'src/game/game.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AppService } from './app.service';
     playerModule,
     luckModule,
     tilesModule,
+    gameModule
   ],
   controllers: [AppController],
   providers: [AppService],
