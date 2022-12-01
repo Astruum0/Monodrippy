@@ -23,6 +23,7 @@ export class tilesController {
     let board_id = json["board_id"]
     let tile_id = id
     let player_id = json["player_id"]
-    return await this.tilesService.buyOrUpgrade(board_id, tile_id, player_id);
+    let action = json["action"]
+    return await this.tilesService.tileAction(board_id, tile_id, player_id, action);
   }
 }
