@@ -1,9 +1,8 @@
 export interface IUserAction {
     userId: string
     boardId: number
-    type: "TURN" | "PAY"
+    type: "TURN" | "BUY"
 }
-
 
 export interface IStreetAction extends IUserAction {
     answer: number
