@@ -18,11 +18,11 @@ export class tilesController {
     return this.tilesService.findById(id);
   }
 
-  @Post(':id/buy')
-  async create(@Body() json: String, @Param('id') id: number) {
-    let game_id = json["game_id"]
+  @Post(':id/buy_or_upgrade')
+  async buyOrUpgrade(@Body() json: String, @Param('id') id: number) {
+    let board_id = json["board_id"]
     let tile_id = id
     let player_id = json["player_id"]
-    return await this.tilesService.buy(game_id, tile_id, player_id);
+    return await this.tilesService.buyOrUpgrade(board_id, tile_id, player_id);
   }
 }

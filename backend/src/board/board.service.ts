@@ -24,7 +24,7 @@ export class boardService {
     let player_number = board.players.length
     if(player_number <= 3){
         board.players.push(payload);
-      return board.save();
+        return board.save();
     } else {
       throw new Error("Games already full")
     }
