@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { board, boardDocument } from "src/board/board.schema";
@@ -6,11 +6,13 @@ import { movePlayer } from "src/engine/engine";
 import { Action, historyByBoard, nextActionByBoard } from "src/models/action";
 import { gameOutput } from "src/models/gameOutput";
 import { IDicePlay } from "src/models/IUserAction";
+import { tilesService } from "src/tiles/tiles.service";
 
 @Injectable()
 export class gameService {
   historyByBoard: historyByBoard = {}
   nextActionByBoard: nextActionByBoard = {}
+  private readonly tilesService: tilesService
 
   constructor(
     @InjectModel(board.name) private boardModel: Model<boardDocument>
@@ -24,7 +26,7 @@ export class gameService {
     
     board.currentTurn = board.players[Math.floor(Math.random() * board.players.length)].id
 
-    this.nextActionByBoard[board.id] = new Action("TURN", board.currentTurn)
+    this.nextActionByBoard[board.id] = new Action("BUY", board.currentTurn)
     this.historyByBoard[board.id] = [new Action("Game has started")]
 
     board.save();
@@ -73,11 +75,14 @@ export class gameService {
     }
 
     if (nextAction.description === "BUY") {
-      
+      let currentPosition = board.players.filter(p => p.id === payload.userId)[0].position
+      const [newAction, actionsDone] = await Promise.resolve(this.tilesService.tileAction(payload.boardId, currentPosition, payload.userId, type))
+
+      this.nextActionByBoard[payload.boardId] = newAction
+      this.historyByBoard[payload.boardId] = this.historyByBoard[payload.boardId].concat(actionsDone)
     }
 
     board.save()
     return this.gameOutput(payload.boardId)
   }
-
 }

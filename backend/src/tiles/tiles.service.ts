@@ -7,7 +7,6 @@ import { player, playerDocument } from 'src/player/player.schema';
 import { tiles, tilesDocument } from './tiles.schema';
 import { nextPlayer } from '../engine/engine';
 
-
 @Injectable()
 export class tilesService {
   constructor(
@@ -24,14 +23,14 @@ export class tilesService {
     return this.tilesModel.findOne({ "id": tileId }).exec();
   }
 
-  async tileAction(board_id: number, tile_id: number, player_id: string, action: string) {
+  async tileAction(board_id: number, tile_id: number, player_id: string, action: string): Promise<[Action, Action[]]> {
     let game = await this.boardModel.findOne({
       id: board_id
     }).exec();
     let player = await this.playerModel.findOne({
       id: player_id
     }).exec();
-    let index = await this.findPlayerIndex(game, player.id)
+    let index = this.findPlayerIndex(game, player.id)
     let game_tile = game["tiles"][tile_id]
 
     if (action == "buy") {
@@ -43,8 +42,7 @@ export class tilesService {
     }
   }
 
-
-  async buy(tile_id: number, player_id: string, game: any, player: player, game_tile: tiles, index: number) {
+  buy(tile_id: number, player_id: string, game: any, player: player, game_tile: tiles, index: number): [Action, Action[]] {
     const history = []
     if(game_tile.owner == null){
       if (game_tile.type == "street") {
@@ -82,7 +80,7 @@ export class tilesService {
     }
   }
 
-  async upgrade(tile_id: number, player_id: string, game: any, player: player, game_tile: tiles, index: number) {
+  upgrade(tile_id: number, player_id: string, game: any, player: player, game_tile: tiles, index: number): [Action, Action[]] {
     const history = []
 
     if (game_tile.type == "street") {
@@ -106,17 +104,15 @@ export class tilesService {
     }
   }
 
-  async payRent(tile_id: number, player_id: string, game: any, player: player, game_tile: tiles, index: number) {
-    console.log("iub")
+  payRent(tile_id: number, player_id: string, game: any, player: player, game_tile: tiles, index: number): [Action, Action[]] {
+    return 
   }
 
-
-  async findPlayerIndex(game: any, player_id: Number) {
+  findPlayerIndex(game: any, player_id: Number) {
     for (let index = 0; index < game["players"].length; index++) {
       if (game["players"][index].id == player_id) {
         return index
       }
     }
   }
-
 }

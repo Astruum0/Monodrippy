@@ -18,8 +18,8 @@ export class tilesController {
     return this.tilesService.findById(id);
   }
 
-  @Post(':id/buy_or_upgrade')
-  async buyOrUpgrade(@Body() json: String, @Param('id') id: number) {
+  @Post(':id/tileaction')
+  async tileAction(@Body() json: String, @Param('id') id: number) {
     let board_id = json["board_id"]
     let tile_id = id
     let player_id = json["player_id"]
