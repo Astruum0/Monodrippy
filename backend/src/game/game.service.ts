@@ -28,7 +28,7 @@ export class gameService {
     this.nextActionByBoard[board.id] = new Action("TURN", board.currentTurn)
     this.historyByBoard[board.id] = [new Action("Game has started")]
 
-    this.historyByBoard[board.id].push(new Action("MOVED", board.players[0].id, 12), new Action("MOVED", board.players[0].id, 5))
+    // this.historyByBoard[board.id].push(new Action("MOVED", board.players[0].id, 12), new Action("MOVED", board.players[0].id, 5))
 
     board.save();
   }
