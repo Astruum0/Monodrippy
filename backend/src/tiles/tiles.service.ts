@@ -50,7 +50,6 @@ export class tilesService {
           game["tiles"][tile_id].currentLevel = 1
           game["tiles"][tile_id].owner = player_id
           game["players"][index].money -= game_tile.prices["base"]
-          game["players"][index].properties.push(game_tile)
           game.markModified("tiles")
           game.markModified("players")
           game.save()
@@ -63,7 +62,6 @@ export class tilesService {
         if (game_tile.prices["base"] <= player.money) {
           game["tiles"][tile_id].owner = player_id
           game["players"][index].money -= game_tile.prices["base"]
-          game["players"][index].properties.push(game_tile)
           game.markModified("tiles")
           game.markModified("players")
           game.save()
@@ -84,7 +82,7 @@ export class tilesService {
     const history = []
 
     if (game_tile.type == "street") {
-      if (game_tile.currentLevel != 0 && game_tile.currentLevel <= 3) {
+      if (game_tile.currentLevel != 0 && game_tile.currentLevel <= 4) {
         if (game_tile.prices["upgrade_cost"] <= player.money) {
           game["tiles"][tile_id].currentLevel += 1
           game["players"][index].money -= game_tile.prices["upgrade_cost"]
@@ -104,11 +102,48 @@ export class tilesService {
     }
   }
 
-  payRent(tile_id: number, player_id: string, game: any, player: player, game_tile: tiles, index: number): [Action, Action[]] {
-    return 
+  payRent(tile_id: number, player_id: string, game: any, player: player, game_tile: tiles, index: number): [Action, Action[]]  {
+    const history = []
+    if (game_tile.type == "street") {
+      if(game_tile.owner != player_id){
+        let owner_index = this.findPlayerIndex(game, game_tile.owner)
+        let price = game_tile.rent[game_tile.currentLevel-1]
+        game["players"][index].money -= price
+        game["players"][owner_index].money += price
+        game.markModified("players")
+        game.save()
+        history.push(new Action("PAID", player_id, tile_id))
+        return [new Action("TURN", nextPlayer(game.players.filter(p => p.id === player_id)[0], game.players).id), history]
+      } else {
+        throw new Error("Tiles belong to player")
+      }
+    } else if(game_tile.type == "gare") {
+      if(game_tile.owner != player_id){
+        let owner_index = this.findPlayerIndex(game, game_tile.owner)
+        let gare_index = [4, 14, 23, 32]
+        let gare_number = 0
+        for (let index = 0; index < gare_index.length; index++) {
+          if(game.tiles[gare_index[index]].owner == game_tile.owner) {
+            gare_number += 1
+          }
+        }
+        let price = game_tile.rent[gare_number - 1]
+        game["players"][index].money -= price
+        game["players"][owner_index].money += price
+        game.markModified("players")
+        game.save()
+        history.push(new Action("PAID", player_id, tile_id))
+        return [new Action("TURN", nextPlayer(game.players.filter(p => p.id === player_id)[0], game.players).id), history]
+      } else {
+        throw new Error("Tiles belong to player")
+      }
+    } else {
+      throw new Error("Can't pay rent on non gare or street tile")
+    }
   }
 
-  findPlayerIndex(game: any, player_id: Number) {
+// 4 14 23 32
+  findPlayerIndex(game: any, player_id: string) {
     for (let index = 0; index < game["players"].length; index++) {
       if (game["players"][index].id == player_id) {
         return index
