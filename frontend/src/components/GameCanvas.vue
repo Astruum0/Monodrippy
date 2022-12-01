@@ -24,6 +24,7 @@ import { Board } from "@/models/board";
 import { getBoard } from "../lib/getGame"
 import { Player } from "@/models/player";
 import { Action } from "@/models/game";
+import { updateBoard } from "@/lib/updateBoard";
 
 function randint(min: number, max: number) : number{
 	min = Math.ceil(min);
@@ -34,8 +35,10 @@ function randint(min: number, max: number) : number{
 
 
 var currentBoard: Board
-var history: Action[]
+var history: Action[] = []
 var nextAction: Action | undefined
+
+var updateBoardTimeout: number
 
 export default Vue.extend({
 components: { P5 },
@@ -49,13 +52,25 @@ methods: {
         Board.boardBackground = sketch.loadImage("bg.jpg")
         Player.model = sketch.loadModel("PawnLowPoly.obj")
         
-
-        getBoard(1).then(res => {
-            currentBoard = res.board
-            history = res.history
-            nextAction = res.nextAction
-            console.log(currentBoard, history, nextAction);
+        updateBoardTimeout = setInterval(() => {
+            getBoard(1).then(res => {
+                
+                if (currentBoard) {                    
+                    updateBoard(currentBoard, res.board, history, res.history)
+                    nextAction = res.nextAction
+                    history = res.history
+                } else {
+                    currentBoard = res.board
+                    nextAction = res.nextAction
+                }
+                
+                
         })
+
+        }, 2000);
+        
+
+        
 
         sketch.normalMaterial()
 
@@ -77,7 +92,7 @@ methods: {
 
         sketch.orbitControl(2, 2, 0.02);
 
-        currentBoard.draw(sketch)
+        currentBoard && currentBoard.draw(sketch)
     }
 },
 });

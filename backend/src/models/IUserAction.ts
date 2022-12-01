@@ -1,7 +1,7 @@
 export interface IUserAction {
     userId: string
     boardId: number
-    type: "TURN" | "PAY"
+    type: "TURN" | "BUY"
 }
 
 

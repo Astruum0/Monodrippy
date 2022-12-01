@@ -11,7 +11,7 @@ const pawnColors = [
 ]
 
 export interface Player {
-    id: number
+    id: string
     name: string
     money: number
     position: number
@@ -21,7 +21,7 @@ export interface Player {
 }
 
 export class Player implements Player {
-    id: number
+    id: string
     name: string
     money: number
     position: number
@@ -35,7 +35,7 @@ export class Player implements Player {
     static model: P5Geometry | undefined = undefined
 
     constructor(payload: Partial<Player>, colorIndex = 0) {
-        this.id = payload.id || 0
+        this.id = payload.id || ""
         this.name = payload.name || ""
         this.money = payload.money || 0
         this.position = payload.position || 0
