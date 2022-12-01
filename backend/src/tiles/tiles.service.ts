@@ -35,53 +35,50 @@ export class tilesService {
     let game_tile = game["tiles"][tile_id]
 
     if (action == "buy") {
-      this.buy(tile_id, player_id, game, player, game_tile, index)
+      return this.buy(tile_id, player_id, game, player, game_tile, index)
     } else if (action == "upgrade") {
-      this.upgrade(tile_id, player_id, game, player, game_tile, index)
+      return this.upgrade(tile_id, player_id, game, player, game_tile, index)
     } else if (action == "pay_rent") {
-      this.payRent(tile_id, player_id, game, player, game_tile, index)
+      return this.payRent(tile_id, player_id, game, player, game_tile, index)
     }
   }
 
 
   async buy(tile_id: number, player_id: string, game: any, player: player, game_tile: tiles, index: number) {
     const history = []
-
-    if (game_tile.type == "street") {
-      if (game_tile.prices["base"] <= player.money) {
-        game["tiles"][tile_id].currentLevel = 1
-        game["tiles"][tile_id].owner = player_id
-        game["players"][index].money -= game_tile.prices["base"]
-        game["players"][index].properties.push(game_tile)
-        game.markModified("tiles")
-        game.markModified("players")
-        game.save()
-        history.push(new Action("BOUGHT", player.id, tile_id))
-        return [new Action("TURN", nextPlayer(game.players.filter(p => p.id === player_id)[0], game.players).id), history]
+    if(game_tile.owner == null){
+      if (game_tile.type == "street") {
+        if (game_tile.prices["base"] <= player.money) {
+          game["tiles"][tile_id].currentLevel = 1
+          game["tiles"][tile_id].owner = player_id
+          game["players"][index].money -= game_tile.prices["base"]
+          game["players"][index].properties.push(game_tile)
+          game.markModified("tiles")
+          game.markModified("players")
+          game.save()
+          history.push(new Action("BOUGHT", player.id, tile_id))
+          return [new Action("TURN", nextPlayer(game.players.filter(p => p.id === player_id)[0], game.players).id), history]
+        } else {
+          throw new Error("Not enough money")
+        }
+      } else if (game_tile.type == "gare") {
+        if (game_tile.prices["base"] <= player.money) {
+          game["tiles"][tile_id].owner = player_id
+          game["players"][index].money -= game_tile.prices["base"]
+          game["players"][index].properties.push(game_tile)
+          game.markModified("tiles")
+          game.markModified("players")
+          game.save()
+          history.push(new Action("BOUGHT", player.id, tile_id))
+          return [new Action("TURN", nextPlayer(game.players.filter(p => p.id === player_id)[0], game.players).id), history]
+        } else {
+          throw new Error("Not enough money")
+        }
       } else {
-        return ({
-          "error": "Not enough money"
-        })
-      }
-    } else if (game_tile.type == "gare") {
-      if (game_tile.prices["base"] <= player.money) {
-        game["tiles"][tile_id].owner = player_id
-        game["players"][index].money -= game_tile.prices["base"]
-        game["players"][index].properties.push(game_tile)
-        game.markModified("tiles")
-        game.markModified("players")
-        game.save()
-        history.push(new Action("BOUGHT", player.id, tile_id))
-        return [new Action("TURN", nextPlayer(game.players.filter(p => p.id === player_id)[0], game.players).id), history]
-      } else {
-        return ({
-          "error": "Not enough money"
-        })
+        throw new Error("Not buyable, not a street or gare")
       }
     } else {
-      return ({
-        "error": "Not buyable"
-      })
+      throw new Error("Not buyable, already bought")
     }
   }
 
@@ -89,15 +86,23 @@ export class tilesService {
     const history = []
 
     if (game_tile.type == "street") {
-      if (game_tile.prices["upgrade_cost"] <= player.money) {
-        game["tiles"][tile_id].currentLevel += 1
-        game["players"][index].money -= game_tile.prices["upgrade_cost"]
-        game.markModified("tiles")
-        game.markModified("players")
-        game.save()
-        history.push(new Action("UPGRADED", player.id, tile_id))
-        return [new Action("TURN", nextPlayer(game.players.filter(p => p.id === player_id)[0], game.players).id), history]
+      if (game_tile.currentLevel != 0 && game_tile.currentLevel <= 3) {
+        if (game_tile.prices["upgrade_cost"] <= player.money) {
+          game["tiles"][tile_id].currentLevel += 1
+          game["players"][index].money -= game_tile.prices["upgrade_cost"]
+          game.markModified("tiles")
+          game.markModified("players")
+          game.save()
+          history.push(new Action("UPGRADED", player.id, tile_id))
+          return [new Action("TURN", nextPlayer(game.players.filter(p => p.id === player_id)[0], game.players).id), history]
+        } else {
+          throw new Error("Not enough money")
+        }
+      } else {
+        throw new Error("Can't upgrade, wrong level")
       }
+    } else {
+      throw new Error("Can't upgrade, not a street")
     }
   }
 

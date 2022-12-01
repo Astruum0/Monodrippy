@@ -64,7 +64,8 @@
                   100,
                   200
                ],
-               "type": "gare"
+               "type": "gare",
+               "owner": null
             },
             {
                "id": 5,
@@ -208,7 +209,8 @@
                   100,
                   200
                ],
-               "type": "gare"
+               "type": "gare",
+               "owner": null
             },
             {
                "id": 15,
@@ -347,7 +349,8 @@
                   100,
                   200
                ],
-               "type": "gare"
+               "type": "gare",
+               "owner": null
             },
             {
                "id": 24,
@@ -486,7 +489,8 @@
                   100,
                   200
                ],
-               "type": "gare"
+               "type": "gare",
+               "owner": null
             },
             {
                "id": 33,
@@ -737,7 +741,8 @@
                   100,
                   200
                ],
-               "type": "gare"
+               "type": "gare",
+               "owner": null
             },
             {
                "id": 5,
@@ -881,7 +886,8 @@
                   100,
                   200
                ],
-               "type": "gare"
+               "type": "gare",
+               "owner": null
             },
             {
                "id": 15,
@@ -1020,7 +1026,8 @@
                   100,
                   200
                ],
-               "type": "gare"
+               "type": "gare",
+               "owner": null
             },
             {
                "id": 24,
@@ -1159,7 +1166,8 @@
                   100,
                   200
                ],
-               "type": "gare"
+               "type": "gare",
+               "owner": null
             },
             {
                "id": 33,
