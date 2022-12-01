@@ -13,8 +13,6 @@ export function movePlayer(userId: string, distance: number, board: board): [Act
     history.push(new Action("MOVED", newPlayer.id, currentPlayer.position))
 
     return [new Action("TURN", newPlayer.id), history]
-
-
 }
 
 function nextPlayer(player: player, allPlayers: player[]): player {
@@ -22,6 +20,4 @@ function nextPlayer(player: player, allPlayers: player[]): player {
     const index = allPlayers.indexOf(player)
 
     return allPlayers[index + 1 % allPlayers.length]
-
-
 }
