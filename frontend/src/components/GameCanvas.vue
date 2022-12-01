@@ -67,6 +67,7 @@ function convertCaseToCoords(caseNumber: number): P5Vector {
     return coords
 }
 
+
 export default Vue.extend({
 components: { P5 },
 methods: {
