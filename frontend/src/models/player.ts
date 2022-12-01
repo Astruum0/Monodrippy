@@ -67,7 +67,7 @@ export class Player implements Player {
         const travellingStep = travellingDistance / 50
         const movingInterval = setInterval(() => {
             this.position = (this.position + travellingStep) % 36
-            if (this.position >= destinationCase) { 
+            if (this.position >= destinationCase - 0.3 && this.position <= destinationCase + 0.3) { 
                 this.position = Math.trunc(destinationCase)
                 clearInterval(movingInterval) 
                 callback && callback()
