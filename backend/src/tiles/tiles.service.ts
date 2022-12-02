@@ -142,7 +142,6 @@ export class tilesService {
     }
   }
 
-// 4 14 23 32
   findPlayerIndex(game: any, player_id: string) {
     for (let index = 0; index < game["players"].length; index++) {
       if (game["players"][index].id == player_id) {
