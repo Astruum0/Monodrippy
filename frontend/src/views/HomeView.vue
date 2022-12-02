@@ -28,7 +28,7 @@ import JoinRoom from '@/components/JoinRoom.vue'; // @ is an alias to /src
 @Component({
   components: {
     JoinRoom,
-  },
+  }
 })
 
 export default class HomeView extends Vue {}

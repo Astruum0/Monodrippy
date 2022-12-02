@@ -72,6 +72,16 @@ components: { P5 },
 methods: {
     setup(sketch: P5Sketch) {
 
+        var id = this.getCookie("id_cookie")
+        var pseudo = this.getCookie("pseudo_cookie")
+        // document.cookie = "pseudo_cookie" + "=" + "" ;
+        // document.cookie = "id_cookie" + "=" + "";        
+        console.log(id)
+        console.log(pseudo)
+
+        var player = this.getPlayer(id, pseudo)
+        console.log(player)
+
         sketch.createCanvas(sketch.windowWidth, sketch.windowHeight, sketch.WEBGL);
         sketch.background(20);
 
@@ -89,10 +99,32 @@ methods: {
         sketch.keyPressed = function() {
             if (sketch.key === " ") {pawnCase = (pawnCase + 1) % 36}
         }
-
-
         
-        
+    },
+    getCookie(name: string) {
+        var cookie_name = name + "=";
+        var data = document.cookie.split(';');
+        for (var i = 0; i < data.length; i++) {
+            var c = data[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(cookie_name) == 0) {
+                return c.substring(cookie_name.length, c.length);
+            }
+        }
+    },
+    getPlayer(id: any, pseudo: any) {
+        const url = "http://localhost:3001/boards/join/" + id;
+
+        const data = {
+            pseudo
+        }
+
+        return fetch(url, {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
     },
     draw(sketch: P5Sketch) {
         

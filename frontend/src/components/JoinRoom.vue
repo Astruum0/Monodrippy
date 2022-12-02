@@ -32,7 +32,13 @@
 
 <script lang="js">
 import $ from 'jquery';
+import GameCanvas from '@/components/GameCanvas.vue';
+
 let JoinRoom = {
+
+  components  : {
+    GameCanvas  
+  },
 
   data: function () {
     return {
@@ -40,6 +46,10 @@ let JoinRoom = {
       pseudo: "",
       selected: -1,
     }
+  },
+  props: {
+    id_room: Number,
+    id_player: String,
   },
 
   methods: {
@@ -50,9 +60,13 @@ let JoinRoom = {
         console.log(e);
         var select  = $(e.target).closest(".card").attr("id");
         this.selected = select;
-        console.log(this.selected)
-        window.location.href='/game'
+        this.setCookie(this.selected, this.pseudo)
       }
+    },
+    setCookie(id,pseudo) {
+      document.cookie = "id_cookie" + "=" + id 
+      document.cookie = "pseudo_cookie" + "=" + pseudo 
+
     },
     getValue() {
       // Sélectionner l'élément input et récupérer sa valeur
