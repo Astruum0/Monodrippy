@@ -61,6 +61,7 @@ let JoinRoom = {
         var select  = $(e.target).closest(".card").attr("id");
         this.selected = select;
         this.setCookie(this.selected, this.pseudo)
+        window.location.href='/game'
       }
     },
     setCookie(id,pseudo) {
