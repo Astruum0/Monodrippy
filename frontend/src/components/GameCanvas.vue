@@ -2,7 +2,11 @@
     <div>
         <div class="turn-div">
             <p class="turn-info"></p>
-            <button class="throw invisible">Throw Dices</button>
+            <button class="throw invisible" @click="throwDices">Throw Dices</button>
+            <div class="dices-div invisible">
+                <span class="dice-1">1</span>
+                <span class="dice-2">1</span>
+            </div>
         </div>
         <P5 v-on="{setup, draw}" />
     </div>
@@ -40,6 +44,11 @@
     font-size: large;
     padding: 5px;
 }
+
+.dices-div span {
+    margin: 3px;
+    font-size: x-large;
+}
 canvas {
     margin: 0;
     display: block;
@@ -60,12 +69,8 @@ import { getBoard } from "../lib/getGame"
 import { Player } from "@/models/player";
 import { Action } from "@/models/game";
 import { updateBoard } from "@/lib/updateBoard";
-
-function randint(min: number, max: number) : number{
-	min = Math.ceil(min);
-	max = Math.floor(max);
-	return Math.floor(Math.random() * (max - min + 1)) + min; 
-}
+import { requestThrowDice } from "@/lib/requestThrowDice"
+import { randint } from "@/lib/randomInt";
 
 var loggedUser = {
     id: "edea9e9b-7b93-43dd-8517-5bb442d08bbe",
@@ -80,16 +85,35 @@ var updateBoardTimeout: number
 
 var turnInfoP: Element | null
 var throwDicesButton: Element | null
+var dicesDiv: Element | null
+var dicesNumberDiv: (Element | null)[]
+
+var rollingDices = true
 
 export default Vue.extend({
 components: { P5 },
 methods: {
+    throwDices() {
+        const dices = [randint(1, 6), randint(1, 6)]
+        rollingDices = false
+        dicesNumberDiv[0]?.html(dices[0].toString())
+        dicesNumberDiv[1]?.html(dices[1].toString())
+        
+
+        requestThrowDice(1, loggedUser.id, dices).then(res => {
+            console.log(res);
+        })
+    },
     setup(sketch: P5Sketch) {
 
         sketch.createCanvas(sketch.windowWidth, sketch.windowHeight, sketch.WEBGL);
         sketch.background(20);
         turnInfoP = sketch.select(".turn-info")
         throwDicesButton = sketch.select(".throw")
+        dicesDiv = sketch.select(".dices-div")
+        dicesNumberDiv = [sketch.select(".dice-1"), sketch.select(".dice-2")]
+        console.log(dicesNumberDiv);
+        
         
         Board.boardImg = sketch.loadImage("Board3D.png")
         Board.boardBackground = sketch.loadImage("bg.jpg")
@@ -106,8 +130,11 @@ methods: {
 
                         if (yourTurn) {
                             throwDicesButton?.removeClass("invisible")
+                            dicesDiv?.removeClass("invisible")
+                            rollingDices = true
                         } else {
                             throwDicesButton?.addClass("invisible")
+                            dicesDiv?.addClass("invisible")
                         }
                         
                     })
@@ -147,6 +174,11 @@ methods: {
         sketch.orbitControl(2, 2, 0.02);
 
         currentBoard && currentBoard.draw(sketch)
+
+        if (rollingDices && dicesNumberDiv.length > 0) {
+            dicesNumberDiv[0]?.html(randint(1, 6).toString())
+            dicesNumberDiv[1]?.html(randint(1, 6).toString())
+        }
     }
 },
 });
