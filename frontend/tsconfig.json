@@ -38,7 +38,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/lib/instanceHelper.js", "src/lib/instanceHelper.js"  ],
   "exclude": [
     "node_modules"
   ]

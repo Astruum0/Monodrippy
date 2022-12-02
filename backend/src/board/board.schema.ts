@@ -3,6 +3,7 @@ import * as mongoose from 'mongoose';
 import { luck } from 'src/luck/luck.schema';
 import { tiles } from 'src/tiles/tiles.schema';
 import { player } from 'src/player/player.schema';
+import { Any } from 'typeorm';
 
 export type boardDocument = board & mongoose.Document;
 
@@ -16,6 +17,9 @@ export class board {
 
   @Prop()
   players: [player];
+
+  @Prop({ type: Any })
+  currentTurn: player['id'] 
 
   @Prop()
   lucks: [luck];
