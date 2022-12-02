@@ -37,7 +37,6 @@ export class gameController {
   @Delete('reset/:id')
   async resetGame(@Param('id') id: Number) {
     let players_id = await this.gameService.resetGame(id);
-    console.log(players_id)
     for(let id in players_id){
       this.playerService.deleteById(players_id[id])
     }

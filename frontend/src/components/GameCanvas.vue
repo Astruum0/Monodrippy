@@ -14,7 +14,6 @@
 }
 .turn-div {
     font-weight: bold;
-    font-size: xx-large;
     position: absolute;
     top: 90%;  
     left: 50%; 
@@ -26,6 +25,7 @@
 }
 .turn-info {    
     margin: 5px;
+    font-size: xx-large;
 
     /* vvvvv Unable to select text vvvvv */
     -webkit-user-select: none; /* Safari */        
@@ -37,7 +37,8 @@
 .throw {
     font-weight: bold;
     background-color: papayawhip;
-    padding: 10px;
+    font-size: large;
+    padding: 5px;
 }
 canvas {
     margin: 0;
@@ -67,8 +68,8 @@ function randint(min: number, max: number) : number{
 }
 
 var loggedUser = {
-    id: "a5dad10f-e016-447d-bca7-18ab4eb0d31a",
-    name: "Mattecum"
+    id: "edea9e9b-7b93-43dd-8517-5bb442d08bbe",
+    name: "Astruum"
 }
 
 var currentBoard: Board
@@ -78,6 +79,7 @@ var nextAction: Action | undefined
 var updateBoardTimeout: number
 
 var turnInfoP: Element | null
+var throwDicesButton: Element | null
 
 export default Vue.extend({
 components: { P5 },
@@ -87,6 +89,7 @@ methods: {
         sketch.createCanvas(sketch.windowWidth, sketch.windowHeight, sketch.WEBGL);
         sketch.background(20);
         turnInfoP = sketch.select(".turn-info")
+        throwDicesButton = sketch.select(".throw")
         
         Board.boardImg = sketch.loadImage("Board3D.png")
         Board.boardBackground = sketch.loadImage("bg.jpg")
@@ -96,9 +99,16 @@ methods: {
             getBoard(1).then(res => {
                 if (currentBoard) {                    
                     updateBoard(currentBoard, res.board, history, res.history, () => {
-                        turnInfoP?.html(`It's ${currentBoard.currentTurn === loggedUser.id ? 'your' : currentBoard.getNextPlayer()?.name} turn`)
                         currentBoard = res.board
-                        console.log(res.board);
+                        
+                        const yourTurn = currentBoard.currentTurn === loggedUser.id
+                        turnInfoP?.html(`It's ${yourTurn ? 'your' : currentBoard.getNextPlayer()?.name} turn`)
+
+                        if (yourTurn) {
+                            throwDicesButton?.removeClass("invisible")
+                        } else {
+                            throwDicesButton?.addClass("invisible")
+                        }
                         
                     })
                     history = res.history
