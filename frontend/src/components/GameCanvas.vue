@@ -60,6 +60,7 @@ methods: {
                     updateBoard(currentBoard, res.board, history, res.history)
                     nextAction = res.nextAction
                     history = res.history
+                    console.log(history);
                 } else {
                     currentBoard = res.board
                     nextAction = res.nextAction
