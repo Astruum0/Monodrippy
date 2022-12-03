@@ -17,11 +17,15 @@ export function movePlayer(userId: string, distance: number, board: board): [Act
 
     let nextAction: Action
 
-    if(isBuyable(board.tiles[currentPlayer.position])) {
-        nextAction = new Action("BUY", currentPlayer.id, currentPlayer.position)
-    } else {
-        nextAction = new Action("TURN", nextPlayer(currentPlayer, board.players).id)
-    }
+    // if(isBuyable(board.tiles[currentPlayer.position])) {
+    //     nextAction = new Action("BUY", currentPlayer.id, currentPlayer.position)
+    // } else {
+    //     nextAction = new Action("TURN", nextPlayer(currentPlayer, board.players).id)
+    // }
+
+    const newPlayer = nextPlayer(currentPlayer, board.players)
+    
+    nextAction = new Action("TURN", newPlayer.id)
     
     return [nextAction, history]
 
