@@ -1,18 +1,29 @@
 import { board } from "src/board/board.schema";
 import { Action } from "src/models/action";
 import { player } from "src/player/player.schema";
+import { isBuyable } from "./streetHandler";
 
 export function movePlayer(userId: string, distance: number, board: board): [Action, Action[]] {
 
     const currentPlayer = board.players.filter(p => p.id === userId)[0]
+    if(currentPlayer.position + distance == 36){
+        currentPlayer.money += 300
+    } else if(currentPlayer.position + distance > 36){
+        currentPlayer.money += 150
+    }
     currentPlayer.position = (currentPlayer.position + distance) % 36
-
-    const newPlayer = nextPlayer(currentPlayer, board.players)
-    
     const history = []
     history.push(new Action("MOVED", currentPlayer.id, currentPlayer.position))
 
-    return [new Action("TURN", newPlayer.id), history]
+    let nextAction: Action
+
+    if(isBuyable(board.tiles[currentPlayer.position])) {
+        nextAction = new Action("BUY", currentPlayer.id, currentPlayer.position)
+    } else {
+        nextAction = new Action("TURN", nextPlayer(currentPlayer, board.players).id)
+    }
+    
+    return [nextAction, history]
 
 
 }

@@ -4,7 +4,6 @@ export interface IUserAction {
     type: "TURN" | "BUY"
 }
 
-
 export interface IStreetAction extends IUserAction {
     answer: number
 }
