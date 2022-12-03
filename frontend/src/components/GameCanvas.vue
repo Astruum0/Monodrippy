@@ -119,6 +119,8 @@ methods: {
         
         updateBoardTimeout = setInterval(() => {
             getBoard(boardId).then(res => {
+                console.log(res);
+                
                 if (currentBoard) {                    
                     updateBoard(currentBoard, res.board, history, res.history, () => {
                         currentBoard = res.board
@@ -126,7 +128,9 @@ methods: {
                         const yourTurn = currentBoard.currentTurn === loggedUser.id
                         turnInfoP?.html(`It's ${yourTurn ? 'your' : currentBoard.getNextPlayer()?.name} turn`)
                         
-                        if (yourTurn && nextAction?.description === "TURN") {
+                        if (yourTurn
+                        //  && nextAction?.description === "TURN"
+                         ) {
                             throwDicesButton?.removeClass("invisible")
                             dicesDiv?.removeClass("invisible")
                             rollingDices = true
