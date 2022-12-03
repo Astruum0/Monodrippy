@@ -20,7 +20,13 @@ export class gameController {
 
   @Post('play')
   async play(@Body() payload:IDicePlay) {
-    return this.gameService.play(payload)
+    try {
+      let output = await this.gameService.play(payload)
+      return output
+    }
+    catch(e: unknown) {
+      return {"error": typeof e === "string" ? e.toUpperCase() : e instanceof Error ? e.message : "Error"}
+    }
   }
 
   @Patch('start/:id')
@@ -31,7 +37,6 @@ export class gameController {
   @Delete('reset/:id')
   async resetGame(@Param('id') id: Number) {
     let players_id = await this.gameService.resetGame(id);
-    console.log(players_id)
     for(let id in players_id){
       this.playerService.deleteById(players_id[id])
     }

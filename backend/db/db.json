@@ -1,0 +1,42 @@
+[
+    {
+        "board":[
+            {
+                "module":[
+                    {
+                        "id": "",
+                        "name":"",
+                        "price":"",
+                        "owner":"",
+                        "upgrade":"",
+                        "worth":"",
+                        "rent":""
+                    }
+                ],
+
+                "player":[
+                    {
+                        "id":"",
+                        "name":"",
+                        "money":"",
+                        "property":"",
+                        "isImprisoned":"",
+                        "hasGOOJcard":""
+                    }
+                ],
+                "luck":
+                [
+                    {
+                        "id":"",
+                        "name":"",
+                        "content":"",
+                        "keep":""
+                    }
+                ],
+                "Ycircus":""
+
+                
+            }
+        ]
+    }
+]

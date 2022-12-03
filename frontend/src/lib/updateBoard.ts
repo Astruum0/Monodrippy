@@ -1,29 +1,31 @@
 import { Board } from "@/models/board";
 import { Action } from "@/models/game";
+import { CallbackFunction } from "./callbackHelper";
 
-export function updateBoard(board: Board, newBoard: Board, history: Action[], newHistory: Action[]) {
+export function updateBoard(board: Board, newBoard: Board, history: Action[], newHistory: Action[], callback: CallbackFunction | undefined = undefined) {
     const missedActions = newHistory.filter(a => !history.map(a => a.id).includes(a.id))
 
     if (missedActions.length > 0) {
-        applyAction(board, missedActions, 0, newBoard)
+        applyAction(board, missedActions, 0, callback)
+        
     } else {
         board = newBoard
     }
 }
 
-function applyAction(board: Board, actions: Action[], index: number, lastBoardState: Board) {
+function applyAction(board: Board, actions: Action[], index: number , callback: CallbackFunction | undefined = undefined) {
     const currAction = actions[index]
     if (currAction) {
         if (currAction.description === "MOVED") {
             const p = board.players.find(p => p.id === currAction.userConcerned)
             p && currAction.tilesConcerned && p.moveTo(currAction.tilesConcerned, () => {
-                applyAction(board, actions, index + 1, lastBoardState)
+                applyAction(board, actions, index + 1, callback)
             })
         } else {
-            applyAction(board, actions, index + 1, lastBoardState)
+            applyAction(board, actions, index + 1, callback)
         }
     } else if (!currAction){
         console.log("all done")
-        board = lastBoardState
+        callback && callback()
     }
 }

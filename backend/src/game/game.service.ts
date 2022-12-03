@@ -16,8 +16,7 @@ export class gameService {
   constructor(
     @InjectModel(board.name) private boardModel: Model<boardDocument>
     ) {
-      this.startGame(1)
-  
+      this.startGame(1) // debug purposes
     }
 
   async startGame(gameId: Number) {
@@ -29,7 +28,6 @@ export class gameService {
     this.nextActionByBoard[board.id] = new Action("TURN", board.currentTurn)
     this.historyByBoard[board.id] = [new Action("Game has started")]
 
-    this.historyByBoard[board.id].push(new Action("MOVED", board.players[0].id, 12), new Action("MOVED", board.players[0].id, 5))
 
     board.save();
   }
@@ -42,6 +40,7 @@ export class gameService {
     }
     this.historyByBoard = {}
     board.hasStarted = false
+
     board.save();
     return player_id
   }
@@ -71,11 +70,13 @@ export class gameService {
     if (nextAction.description === "TURN") {
       const {dices} = payload
       const [newAction, actionsDone] = movePlayer(userId, dices.reduce((a, b) => a + b, 0), board)
+      board.currentTurn = newAction.userConcerned
 
       this.nextActionByBoard[payload.boardId] = newAction
       this.historyByBoard[payload.boardId] = this.historyByBoard[payload.boardId].concat(actionsDone)
     }
-
+    
+    board.markModified("players")
     board.save()
     return this.gameOutput(payload.boardId)
   }

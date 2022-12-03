@@ -8,7 +8,7 @@ const cornersCoords = [
     {x: 117, y: -117},
 ]
 
-export function convertCaseToCoords(caseNumber: number, shifted: number | undefined = undefined): P5Vector {
+export function convertCaseToCoords(caseNumber: number): P5Vector {
     const side = Math.floor(caseNumber / 9)
     const positionRelativeToSide = caseNumber % 9
     const coords = new Vector(cornersCoords[side].x, cornersCoords[side].y); 

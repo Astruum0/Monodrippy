@@ -13,19 +13,12 @@ export interface Board {
     lucks: [Luck]
     tiles: [Tile]
 
+    currentTurn: string | undefined
+
     ycircus: number
 }
 
 export class Board implements Board {
-    id: number
-    hasStarted: boolean
-
-    players: [Player]
-    lucks: [Luck]
-    tiles: [Tile]
-
-    ycircus: number
-
     static boardImg: P5Image | undefined
     static boardBackground: P5Image | undefined
 
@@ -36,9 +29,17 @@ export class Board implements Board {
         for (const [i, p] of (payload.players || Array<Player>() as [Player]).entries()) {
             this.players.push(new Player(p, i))
         }
+        this.currentTurn = payload.currentTurn
         this.tiles = payload.tiles || new Array<Tile>() as [Tile]
         this.lucks = payload.lucks || new Array<Luck>() as [Luck]
         this.ycircus = payload.ycircus || 0
+    }
+
+    getPlayerById(id: string): Player | undefined {
+        return this.players.find(p => p.id === id) as Player
+    }
+    getNextPlayer(): Player | undefined {
+        return this.currentTurn ? this.getPlayerById(this.currentTurn) : undefined
     }
 
     draw(sketch: P5Sketch) {
