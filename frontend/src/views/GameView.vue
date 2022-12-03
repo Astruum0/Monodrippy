@@ -28,7 +28,9 @@ export default class GameView extends Vue {}
         background-color: #FBFBEA;
     }    
     .logsDiv{
-        float: right;
+        position: absolute;
+        right: 0;
+        left: auto;
         margin: 5% 10% 0 0;
         z-index: 2 !important;
     }

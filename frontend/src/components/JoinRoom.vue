@@ -2,8 +2,7 @@
   <div>
     <div class="input-group">
       <span class="input-group-text">Ton pseudo</span>
-      <input type="text" id="pseudo" aria-label="Pseudo" class="form-control">
-      <button type="button" @click="getValue">Valider le pseudo</button>
+      <input type="text" id="pseudo" aria-label="Pseudo" class="form-control" @keyup="getValue">
     </div>
     <div v-for="room in rooms" :key="room">
       <div @click="onClick" :id="room.id" class="card card-primary mt-5 container room" style="cursor: pointer;">

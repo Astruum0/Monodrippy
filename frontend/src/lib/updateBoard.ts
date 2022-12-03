@@ -2,19 +2,21 @@ import { Board } from "@/models/board";
 import { Action } from "@/models/game";
 import { CallbackFunction } from "./callbackHelper";
 
-export function updateBoard(board: Board, newBoard: Board, history: Action[], newHistory: Action[], callback: CallbackFunction | undefined = undefined) {
+export function updateBoard(board: Board, newBoard: Board, history: Action[], newHistory: Action[], callback: (()=>void) | undefined = undefined) {
     const missedActions = newHistory.filter(a => !history.map(a => a.id).includes(a.id))
 
     if (missedActions.length > 0) {
         applyAction(board, missedActions, 0, callback)
         
     } else {
-        board = newBoard
+        callback && callback()
     }
 }
 
-function applyAction(board: Board, actions: Action[], index: number , callback: CallbackFunction | undefined = undefined) {
+function applyAction(board: Board, actions: Action[], index: number , callback: (()=>void) | undefined = undefined) {
     const currAction = actions[index]
+    console.log(currAction);
+    
     if (currAction) {
         if (currAction.description === "MOVED") {
             const p = board.players.find(p => p.id === currAction.userConcerned)

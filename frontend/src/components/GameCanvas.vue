@@ -1,5 +1,16 @@
 <template>
     <div>
+        <div class="buy-tile-div invisible">
+            <p class="tile-name"></p>
+            <div style="justify-content: space-around; flex-flow: row; display: flex">
+                <button class="tile price-0"></button>
+                <button class="tile price-1"></button>
+                <button class="tile price-2"></button>
+                <button class="tile price-3"></button>
+                <button class="tile price-4"></button>
+            </div>
+            <button class="tile mt-3">Don't buy</button>
+        </div>
         <div class="turn-div">
             <p class="turn-info"></p>
             <button class="throw invisible" @click="throwDices">Throw Dices</button>
@@ -15,6 +26,28 @@
 <style>
 .invisible {
     display: none;
+}
+.buy-tile-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    top: 50%;  
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: 70%;
+}
+.tile-name {
+    font-size: xx-large;
+    margin: 5px;
+    color: white;
+    text-shadow: black 1px 1px 10px;
+}
+.tile {
+    border: 1px solid white;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    box-shadow: black 1px 1px 10px;
 }
 .turn-div {
     font-weight: bold;
@@ -71,12 +104,10 @@ import { Action } from "@/models/game";
 import { updateBoard } from "@/lib/updateBoard";
 import { requestThrowDice } from "@/lib/requestThrowDice"
 import { randint } from "@/lib/randomInt";
+import { Tile } from "@/models/tile";
 
-var loggedUser = {
-    id: "edea9e9b-7b93-43dd-8517-5bb442d08bbe",
-    name: "Astruum"
-}
-const boardId = 1
+var loggedUser: Player | undefined
+var boardId: number
 
 var currentBoard: Board
 var history: Action[] = []
@@ -91,6 +122,10 @@ var dicesNumberDiv: (Element | null)[]
 
 var rollingDices = true
 
+var buyTileDiv: Element | null
+var tileName: Element | null
+var tilePrices: (Element | null)[] = []
+
 export default Vue.extend({
 components: { P5 },
 methods: {
@@ -100,21 +135,13 @@ methods: {
         dicesNumberDiv[0]?.html(dices[0].toString())
         dicesNumberDiv[1]?.html(dices[1].toString())
 
-        requestThrowDice(boardId, loggedUser.id, dices).then(res => {
+        requestThrowDice(boardId, loggedUser!.id, dices).then(res => {
             console.log(res);
         })
     },
     setup(sketch: P5Sketch) {
-
-        var id = this.getCookie("id_cookie")
-        var pseudo = this.getCookie("pseudo_cookie")
-        document.cookie = "pseudo_cookie" + "=" + "" ;
-        document.cookie = "id_cookie" + "=" + "";        
-        console.log(id)
-        console.log(pseudo)
-
-        var player = this.getPlayer(id, pseudo)
-        console.log(player)
+        boardId = parseInt(this.getCookie("id_cookie") || "0") | 1
+        var pseudo = this.getCookie("pseudo_cookie")   
 
         sketch.createCanvas(sketch.windowWidth, sketch.windowHeight, sketch.WEBGL);
         sketch.background(20);
@@ -122,6 +149,12 @@ methods: {
         throwDicesButton = sketch.select(".throw")
         dicesDiv = sketch.select(".dices-div")
         dicesNumberDiv = [sketch.select(".dice-1"), sketch.select(".dice-2")]
+
+        buyTileDiv = sketch.select(".buy-tile-div")
+        tileName = sketch.select(".tile-name")
+        for (const i in [0, 1, 2, 3, 4]) {
+            tilePrices.push(sketch.select(`.price-${i}`))
+        }
         
         Board.boardImg = sketch.loadImage("Board3D.png")
         Board.boardBackground = sketch.loadImage("bg.jpg")
@@ -129,38 +162,36 @@ methods: {
         
         updateBoardTimeout = setInterval(() => {
             getBoard(boardId).then(res => {
-                console.log(res);
-                
-                if (currentBoard) {                    
+                if (currentBoard) {                 
                     updateBoard(currentBoard, res.board, history, res.history, () => {
                         currentBoard = res.board
                         nextAction = res.nextAction
-                        const yourTurn = currentBoard.currentTurn === loggedUser.id
-                        turnInfoP?.html(`It's ${yourTurn ? 'your' : currentBoard.getNextPlayer()?.name} turn`)
+                        const yourTurn = currentBoard.currentTurn === loggedUser?.id
                         
-                        if (yourTurn
-                        //  && nextAction?.description === "TURN"
+                        currentBoard.currentTurn && turnInfoP?.html(`It's ${yourTurn ? 'your' : currentBoard.getNextPlayer()?.name} turn`)
+                        
+                        if (yourTurn && nextAction?.description === "TURN"
                          ) {
                             throwDicesButton?.removeClass("invisible")
                             dicesDiv?.removeClass("invisible")
                             rollingDices = true
+                        } else if (yourTurn && nextAction?.description === "BUY") {
+                            const tile = currentBoard.tiles.find(t => t.id === nextAction?.tilesConcerned)
+                            tile && this.applyTilesPrices(tile)      
                         } else {
                             throwDicesButton?.addClass("invisible")
                             dicesDiv?.addClass("invisible")
                         }
-                        
                     })
                     history = res.history
-
-                    
-
                 } else {
                     currentBoard = res.board
-                }
-                
-                
-        })
-
+                    loggedUser = currentBoard.players.find(p => p.name === pseudo)
+                    !loggedUser && pseudo && this.joinGame(boardId, pseudo).then(player => {
+                        loggedUser = player
+                    })
+                }    
+            })
         }, 2000);
         
         sketch.normalMaterial()
@@ -169,14 +200,31 @@ methods: {
             sketch.resizeCanvas(sketch.windowWidth, sketch.windowHeight)
         }
         sketch.keyPressed = function() {
-            if (["0", "1", "2", "3"].includes(sketch.key.toString())) {
-                currentBoard.players[parseInt(sketch.key)].moveTo((currentBoard.players[parseInt(sketch.key)].position + 1) % 36) 
-            }
             if (sketch.key === " ") {
-                currentBoard.players[0].moveTo(currentBoard.players[0].position + 35 % 36) 
+                console.log(loggedUser);
+                console.log(currentBoard);
+                console.log(history);
+                console.log(nextAction);
             } 
         }
         
+    },
+    applyTilesPrices(tile: Tile) {
+        const tileBasePrice = tile.prices.base
+        const tileUpgradeCost = tile.prices.upgrade_cost
+        const prices = [
+            tileBasePrice,
+            tileBasePrice + tileUpgradeCost,
+            tileBasePrice + tileUpgradeCost * 2,
+            tileBasePrice + tileUpgradeCost * 3,
+            tileBasePrice + tileUpgradeCost * 4,
+        ]    
+
+        buyTileDiv?.removeClass("invisible")
+        tileName?.html(`Buy ${tile.name} ?`)
+        for (const [index, priceBtn] of tilePrices.entries()) {
+            priceBtn?.html(`${index === 0 ? 'Base' : 'Level ' + index.toString()} : ${prices[index]}K`)
+        }
     },
     getCookie(name: string) {
         var cookie_name = name + "=";
@@ -189,11 +237,13 @@ methods: {
             }
         }
     },
-    getPlayer(id: any, pseudo: any) {
+    joinGame(id: number, pseudo: string): Promise<Player> {
+        console.log("PLAYER JOINED : ", pseudo, id);
+        
         const url = "http://localhost:3001/boards/join/" + id;
 
         const data = {
-            pseudo
+            name: pseudo
         }
 
         return fetch(url, {
@@ -202,6 +252,9 @@ methods: {
             body: JSON.stringify(data)
         })
         .then(res => res.json())
+        .then(res => {
+            if (res.error) console.error(res.error);
+            return res as Player})
     },
     draw(sketch: P5Sketch) {
         
@@ -214,7 +267,7 @@ methods: {
         if (rollingDices && dicesNumberDiv.length > 0) {
             dicesNumberDiv[0]?.html(randint(1, 6).toString())
             dicesNumberDiv[1]?.html(randint(1, 6).toString())
-        }
+        }        
     }
 },
 });

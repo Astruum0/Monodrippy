@@ -12,5 +12,5 @@ export interface Tile {
 
 interface TilePrice {
     base: number
-    upgradeCost: number
+    upgrade_cost: number
 }

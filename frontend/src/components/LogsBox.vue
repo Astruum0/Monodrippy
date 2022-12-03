@@ -13,6 +13,6 @@ export default {
 <style scoped lang="scss">
 
 .logsWindow{
-    border: 2px red solid;
+  border: 2px red solid;
 }
 </style>

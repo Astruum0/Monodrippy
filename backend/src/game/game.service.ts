@@ -15,7 +15,7 @@ export class gameService {
   constructor(
     @InjectModel(board.name) private boardModel: Model<boardDocument>
     ) {
-      this.startGame(1) // debug purposes
+      // this.startGame(1) // debug purposes
     }
 
   async startGame(gameId: Number) {
@@ -37,8 +37,10 @@ export class gameService {
     for (let index = board.players.length; index > 0; index--) {
       player_id.push(board.players.pop()["id"]);
     }
-    this.historyByBoard = {}
+    this.historyByBoard[gameId as number] = []
+    this.nextActionByBoard[gameId as number] = undefined
     board.hasStarted = false
+    board.currentTurn = undefined
 
     board.save();
     return player_id
