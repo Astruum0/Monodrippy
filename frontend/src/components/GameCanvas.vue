@@ -76,6 +76,7 @@ var loggedUser = {
     id: "edea9e9b-7b93-43dd-8517-5bb442d08bbe",
     name: "Astruum"
 }
+const boardId = 1
 
 var currentBoard: Board
 var history: Action[] = []
@@ -98,9 +99,8 @@ methods: {
         rollingDices = false
         dicesNumberDiv[0]?.html(dices[0].toString())
         dicesNumberDiv[1]?.html(dices[1].toString())
-        
 
-        requestThrowDice(1, loggedUser.id, dices).then(res => {
+        requestThrowDice(boardId, loggedUser.id, dices).then(res => {
             console.log(res);
         })
     },
@@ -112,23 +112,21 @@ methods: {
         throwDicesButton = sketch.select(".throw")
         dicesDiv = sketch.select(".dices-div")
         dicesNumberDiv = [sketch.select(".dice-1"), sketch.select(".dice-2")]
-        console.log(dicesNumberDiv);
-        
         
         Board.boardImg = sketch.loadImage("Board3D.png")
         Board.boardBackground = sketch.loadImage("bg.jpg")
         Player.model = sketch.loadModel("PawnLowPoly.obj")
         
         updateBoardTimeout = setInterval(() => {
-            getBoard(1).then(res => {
+            getBoard(boardId).then(res => {
                 if (currentBoard) {                    
                     updateBoard(currentBoard, res.board, history, res.history, () => {
                         currentBoard = res.board
-                        
+                        nextAction = res.nextAction
                         const yourTurn = currentBoard.currentTurn === loggedUser.id
                         turnInfoP?.html(`It's ${yourTurn ? 'your' : currentBoard.getNextPlayer()?.name} turn`)
-
-                        if (yourTurn) {
+                        
+                        if (yourTurn && nextAction?.description === "TURN") {
                             throwDicesButton?.removeClass("invisible")
                             dicesDiv?.removeClass("invisible")
                             rollingDices = true

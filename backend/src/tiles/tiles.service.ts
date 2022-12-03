@@ -5,7 +5,7 @@ import { board, boardDocument } from 'src/board/board.schema';
 import { Action } from "src/models/action";
 import { player, playerDocument } from 'src/player/player.schema';
 import { tiles, tilesDocument } from './tiles.schema';
-import { nextPlayer } from '../engine/engine';
+import { nextPlayer } from '../engine/playerMovement';
 
 @Injectable()
 export class tilesService {
