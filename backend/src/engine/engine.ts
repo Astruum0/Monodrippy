@@ -17,7 +17,7 @@ export function movePlayer(userId: string, distance: number, board: board): [Act
 
 }
 
-function nextPlayer(player: player, allPlayers: player[]): player {
+export function nextPlayer(player: player, allPlayers: player[]): player {
 
     const index = allPlayers.indexOf(player)
 
