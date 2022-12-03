@@ -149,7 +149,7 @@
         "content": "C'est l'heure du pire cours de l'année. Avancez jusqu'au module Windows Server.",
         "cardEffect": {
             "effect": "moveTo",
-            "value": 35
+            "value": 1
         }
     }
 ]

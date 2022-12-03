@@ -15,7 +15,7 @@ export class gameService {
   constructor(
     @InjectModel(board.name) private boardModel: Model<boardDocument>
     ) {
-      this.startGame(1) // debug purposes
+      //this.startGame(1) // debug purposes
     }
 
   async startGame(gameId: Number) {
