@@ -16,9 +16,6 @@ export class player {
   @Prop()
   money: number;
 
-  @Prop([tiles])
-  properties: tiles[];
-
   @Prop()
   isImprisoned: number;
 

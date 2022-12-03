@@ -2,7 +2,6 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { board, boardDocument } from "src/board/board.schema";
-import { boardService } from "src/board/board.service";
 import { movePlayer } from "src/engine/engine";
 import { Action, historyByBoard, nextActionByBoard } from "src/models/action";
 import { gameOutput } from "src/models/gameOutput";

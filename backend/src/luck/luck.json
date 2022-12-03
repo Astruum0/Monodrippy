@@ -2,34 +2,34 @@
     {
         "id": 1,
         "name": "Scammed",
-        "content": "Adrien vous à proposé un “bon plan no risque no cap”. Vous perdez 10K",
+        "content": "Adrien vous à proposé un “bon plan no risque no cap”. Vous perdez 50K.",
         "cardEffect": {
-            "effect": "giveMoneyTo",
-            "value": 10
+            "effect": "loseMoney",
+            "value": 50
         }
     },
     {
         "id": 2,
         "name": "Boursorama",
-        "content": "Contre toute attente Adrien vous propose un nouveau plan argent et il fonctionne recevez 10K, mais restez vigilant",
+        "content": "Contre toute attente Adrien vous propose un nouveau plan qui fonctionne. Vous gagnez 100K, mais restez vigilant.",
         "cardEffect": {
-            "effect": "giveMoney",
-            "value": 10
+            "effect": "gainMoney",
+            "value": 100
         }
     },
     {
         "id": 3,
         "name": "Norvitas",
-        "content": "Le plan de l'année tombe, Adrien vous contacte pour parler de Norvitas, ce ponzy a l'air safe (perdez 15K)",
+        "content": "La pyramide s'écroule, et tout votre investissement par la même occasion. Vous perdez 200K.",
         "cardEffect": {
-            "effect": "giveMoney",
-            "value": 15
+            "effect": "loseMoney",
+            "value": 200
         }
     },
     {
         "id": 4,
         "name": "Oh Snap",
-        "content": "vous n'avez pas GO Fmt (il y a un retour à la ligne à la fin du fichier) attendez 15 h (il est 9h). passez 2 tours",
+        "content": "Vous avez oublié de formatter votre fichier Go avant de push. Vous sautez 2 tours",
         "cardEffect": {
             "effect": "wait",
             "value": 2
@@ -47,16 +47,16 @@
     {
         "id": 6,
         "name": "Snack time with PA",
-        "content": "Snack Time with PA",
+        "content": "Pause gouter avec PA avant le cours de SQL. Avancez jusqu'au module SQL.",
         "cardEffect": {
-            "effect": "giveMoneyTo",
-            "value": 5
+            "effect": "moveTo",
+            "value": 35
         }
     },
     {
         "id": 7,
-        "name": "Poppy break",
-        "content": "Benjam doit allez aux toilettes. Attendez le pendant 2 tours.",
+        "name": "Poopy break",
+        "content": "Benjam doit allez aux toilettes. Attendez le et sautez 2 tours.",
         "cardEffect": {
             "effect": "wait",
             "value": 2
@@ -65,7 +65,7 @@
     {
         "id": 8,
         "name": "Tacos 3 viandes",
-        "content": "Vous vous sentez lourd, votre prochain jet de dé est divisé par deux.",
+        "content": "Après un bon Cozy vous vous sentez repu. Votre prochain jet de dés est divisé par 2.",
         "cardEffect": {
             "effect": "NextThrow",
             "value": 0.5
@@ -74,7 +74,7 @@
     {
         "id": 9,
         "name": "MANGO LOCO",
-        "content": "vous êtes boost, votre prochain lancé est doublé",
+        "content": "La Mango Loco coule dans vos veines et vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
         "cardEffect": {
             "effect": "NextThrow",
             "value": 2
@@ -83,7 +83,7 @@
     {
         "id": 10,
         "name": "Patrick Piquart",
-        "content": "MR Piquart vous raconte 1% de sa vie attedendez 3 tours",
+        "content": "M. Piquart vous raconte 1% de sa vie. Ecoutez le et sautez 3 tours.",
         "cardEffect": {
             "effect": "wait",
             "value": 3
@@ -92,25 +92,25 @@
     {
         "id": 11,
         "name": "Ravezie",
-        "content": "Ynov vous demande une cotisation pour payer les nouveaux locaux : tout les joueurs payent 5k",
+        "content": "Ynov vous demande une cotisation pour payer les nouveaux locaux. Vous perdez 60K.",
         "cardEffect": {
-            "effect": "giveMoneyAll",
-            "value": 5
+            "effect": "loseMoney",
+            "value": 60
         }
     },
     {
         "id": 12,
         "name": "Nouvelle année",
-        "content": "C’est la nouvelle année et vous n’avez pas d’alternance : Rendez-vous à la case départ, ne recevez pas l’argent, payez 8k",
+        "content": "C’est la nouvelle année et vous n’avez pas d’alternance. Rendez-vous à la case départ, ne recevez pas l’argent",
         "cardEffect": {
             "effect": "moveToStraight",
-            "value": 2
+            "value": 0
         }
     },
     {
         "id": 13,
         "name": "grève TBM",
-        "content": "malgré un réveil à l'heure votre tram ne passe pas, voud n'aviez pas vus la grève annoncé. prochain jet diviser par 2",
+        "content": "La grêve des tramways vous met en retard. Votre prochain jet de dés est divisé par 2.",
         "cardEffect": {
             "effect": "NextThrow",
             "value": 0.5
@@ -119,7 +119,7 @@
     {
         "id": 14,
         "name": "BUBLIZ",
-        "content": "Après un perdu pari vous vous enfilez un sandwich poulet crudité fourré au bubliz, éttonament bien qu'immonde cette recette vous fait retentir puissant, prochain jet doublé",
+        "content": "Après un pari perdu, vous dégustez un sandwich poulet-crudité-bubliz. Bien qu'immonde ce repas vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
         "cardEffect": {
             "effect": "NextThrow",
             "value": 2
@@ -127,11 +127,29 @@
     },
     {
         "id": 15,
-        "name": "casque VRED",
-        "content": "Mattéo vous embarque dans sa hype de casque VR, vous vous rendez chez la fnac et ressortez pauvre. payer 50k",
+        "name": "casque VR",
+        "content": "Mattéo vous embarque dans sa hype de casque VR et vous fait acheter un Oculus Quest 2. Vous perdez 35K.",
         "cardEffect": {
             "effect": "giveMoney",
-            "value": 50
+            "value": 35
+        }
+    },
+    {
+        "id": 16,
+        "name": "Salaire",
+        "content": "Votre dure mois de labeur est enfin terminé. Vous gagnez 100K.",
+        "cardEffect": {
+            "effect": "gainMoney",
+            "value": 100
+        }
+    },
+    {
+        "id": 17,
+        "name": "Module de la fraude",
+        "content": "C'est l'heure du pire cours de l'année. Avancez jusqu'au module Windows Server.",
+        "cardEffect": {
+            "effect": "moveTo",
+            "value": 35
         }
     }
 ]

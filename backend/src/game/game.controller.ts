@@ -17,7 +17,6 @@ export class gameController {
     return this.gameService.gameOutput(id)
   }
 
-
   @Post('play')
   async play(@Body() payload:IDicePlay) {
     try {
