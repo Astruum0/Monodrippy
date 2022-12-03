@@ -20,3 +20,12 @@ $grey       : #232323;
   }
 
 }
+
+.card {
+  background-color: $red !important;
+  border-color: $grey !important;
+  border-radius: 2px !important;
+  box-shadow: 1px 1px 5px $grey !important;
+  box-shadow: inset 1px 1px 5px #232323, inset -1px -1px 5px !important;
+
+}
