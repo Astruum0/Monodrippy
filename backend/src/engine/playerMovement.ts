@@ -7,9 +7,9 @@ export function movePlayer(userId: string, distance: number, board: board): [Act
 
     const currentPlayer = board.players.filter(p => p.id === userId)[0]
     if(currentPlayer.position + distance == 36){
-        currentPlayer.money += 400
+        currentPlayer.money += 300
     } else if(currentPlayer.position + distance > 36){
-        currentPlayer.money += 200
+        currentPlayer.money += 150
     }
     currentPlayer.position = (currentPlayer.position + distance) % 36
     const history = []

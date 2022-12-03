@@ -24,6 +24,9 @@ export class player {
 
   @Prop({ type: Any })
   position: tiles['id'];
+
+  @Prop()
+  nextThrowModifier: number;
 }
 
 export const playerSchema = SchemaFactory.createForClass(player);

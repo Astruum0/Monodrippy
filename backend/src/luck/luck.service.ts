@@ -12,17 +12,17 @@ export class luckService {
     @InjectModel(luck.name) private luckModel: Model<luckDocument>,
     @InjectModel(board.name) private boardModel: Model<boardDocument>,
     @InjectModel(player.name) private playerModel: Model<playerDocument>,
-  ) {}
+  ) { }
 
   async findAll(): Promise<luck[]> {
     return this.luckModel.find().exec();
   }
 
   async findById(luckId: Number): Promise<luck> {
-    return this.luckModel.findOne({"id": luckId}).exec();
+    return this.luckModel.findOne({ "id": luckId }).exec();
   }
 
-  async luckAction(board_id: number, luck_id: number, player_id: string){
+  async luckAction(board_id: number, luck_id: number, player_id: string) {
     let game = await this.boardModel.findOne({
       id: board_id
     }).exec();
@@ -30,10 +30,37 @@ export class luckService {
       id: player_id
     }).exec();
     let index = this.findPlayerIndex(game, player.id)
+
     let luck = game["lucks"][luck_id]
     let effect = luck.cardEffect["effect"]
     let value = luck.cardEffect["value"]
-    console.log(effect, value)
+    switch (effect) {
+      case "loseMoney":
+        game["players"][index].money -= value
+        break;
+      case "gainMoney":
+        game["players"][index].money += value
+        break;
+      case "moveTo":
+        if (game["players"][index].position > value) {
+          game["players"][index].money += 150
+        }
+        game["players"][index].position = value
+        break;
+      case "moveToStraight":
+        game["players"][index].position = value
+        break;
+      case "nextThrow":
+        game["players"][index].nextThrowModifier = value
+        break;
+      case "wait":
+        // TODO
+        break;
+      default:
+        return new Error("No such effect")
+    }
+    game.markModified("players")
+    game.save()
   }
 
 

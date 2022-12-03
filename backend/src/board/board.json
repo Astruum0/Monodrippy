@@ -3,572 +3,572 @@
       "id": 0,
       "hasStarted": false,
       "tiles": [
-            {
-               "id": 0,
-               "name": "Départ",
-               "type": "start"
+         {
+            "id": 0,
+            "name": "Départ",
+            "type": "start"
+         },
+         {
+            "id": 1,
+            "name": "Windows Server",
+            "color": "#8ad4ff",
+            "prices": {
+               "base": 60,
+               "upgrade_cost": 50
             },
-            {
-               "id": 1,
-               "name": "Windows Server",
-               "color": "#8ad4ff",
-               "prices": {
-                  "base": 60,
-                  "upgrade_cost": 50
-               },
-               "rent": [
-                  2,
-                  10,
-                  30,
-                  90,
-                  160
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               2,
+               10,
+               30,
+               90,
+               160
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 2,
+            "name": "CVEC",
+            "type": "special_cvec"
+         },
+         {
+            "id": 3,
+            "name": "Dev Mobile",
+            "color": "#8ad4ff",
+            "prices": {
+               "base": 60,
+               "upgrade_cost": 50
             },
-            {
-               "id": 2,
-               "name": "CVEC",
-               "type": "special_cvec"
+            "rent": [
+               4,
+               20,
+               60,
+               180,
+               320
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 4,
+            "name": "Annexes",
+            "color": "#000000",
+            "prices": {
+               "base": 200
             },
-            {
-               "id": 3,
-               "name": "Dev Mobile",
-               "color": "#8ad4ff",
-               "prices": {
-                  "base": 60,
-                  "upgrade_cost": 50
-               },
-               "rent": [
-                  4,
-                  20,
-                  60,
-                  180,
-                  320
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               25,
+               50,
+               100,
+               200
+            ],
+            "type": "gare",
+            "owner": null
+         },
+         {
+            "id": 5,
+            "name": "C embarqué",
+            "color": "#686e96",
+            "prices": {
+               "base": 100,
+               "upgrade_cost": 50
             },
-            {
-               "id": 4,
-               "name": "Annexes",
-               "color": "#000000",
-               "prices": {
-                  "base": 200
-               },
-               "rent": [
-                  25,
-                  50,
-                  100,
-                  200
-               ],
-               "type": "gare",
-               "owner": null
+            "rent": [
+               6,
+               30,
+               90,
+               270,
+               400
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 6,
+            "name": "Chance",
+            "type": "chance"
+         },
+         {
+            "id": 7,
+            "name": "Voltaire",
+            "color": "#686e96",
+            "prices": {
+               "base": 100,
+               "upgrade_cost": 50
             },
-            {
-               "id": 5,
-               "name": "C embarqué",
-               "color": "#686e96",
-               "prices": {
-                  "base": 100,
-                  "upgrade_cost": 50
-               },
-               "rent": [
-                  6,
-                  30,
-                  90,
-                  270,
-                  400
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               6,
+               30,
+               90,
+               270,
+               400
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 8,
+            "name": "Golang",
+            "color": "#686e96",
+            "prices": {
+               "base": 120,
+               "upgrade_cost": 50
             },
-            {
-               "id": 6,
-               "name": "Chance",
-               "type": "chance"
+            "rent": [
+               8,
+               40,
+               100,
+               300,
+               450
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 9,
+            "name": "Prison",
+            "type": "chance"
+         },
+         {
+            "id": 10,
+            "name": "Java",
+            "color": "#ff496a",
+            "prices": {
+               "base": 140,
+               "upgrade_cost": 100
             },
-            {
-               "id": 7,
-               "name": "Voltaire",
-               "color": "#686e96",
-               "prices": {
-                  "base": 100,
-                  "upgrade_cost": 50
-               },
-               "rent": [
-                  6,
-                  30,
-                  90,
-                  270,
-                  400
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               10,
+               50,
+               150,
+               450,
+               625
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 11,
+            "name": "Math",
+            "color": "#ff496a",
+            "prices": {
+               "base": 140,
+               "upgrade_cost": 100
             },
-            {
-               "id": 8,
-               "name": "Golang",
-               "color": "#686e96",
-               "prices": {
-                  "base": 120,
-                  "upgrade_cost": 50
-               },
-               "rent": [
-                  8,
-                  40,
-                  100,
-                  300,
-                  450
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               10,
+               50,
+               150,
+               450,
+               625
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 12,
+            "name": "Chance",
+            "type": "chance"
+         },
+         {
+            "id": 13,
+            "name": "Dev API",
+            "color": "#ff496a",
+            "prices": {
+               "base": 160,
+               "upgrade_cost": 100
             },
-            {
-               "id": 9,
-               "name": "Prison",
-               "type": "chance"
+            "rent": [
+               12,
+               60,
+               180,
+               500,
+               700
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 14,
+            "name": "Conrad",
+            "color": "#000000",
+            "prices": {
+               "base": 200
             },
-            {
-               "id": 10,
-               "name": "Java",
-               "color": "#ff496a",
-               "prices": {
-                  "base": 140,
-                  "upgrade_cost": 100
-               },
-               "rent": [
-                  10,
-                  50,
-                  150,
-                  450,
-                  625
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               25,
+               50,
+               100,
+               200
+            ],
+            "type": "gare",
+            "owner": null
+         },
+         {
+            "id": 15,
+            "name": "NoSQL",
+            "color": "#fe8c5b",
+            "prices": {
+               "base": 180,
+               "upgrade_cost": 100
             },
-            {
-               "id": 11,
-               "name": "Math",
-               "color": "#ff496a",
-               "prices": {
-                  "base": 140,
-                  "upgrade_cost": 100
-               },
-               "rent": [
-                  10,
-                  50,
-                  150,
-                  450,
-                  625
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               14,
+               70,
+               200,
+               550,
+               750
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 16,
+            "name": "Electron",
+            "color": "#fe8c5b",
+            "prices": {
+               "base": 180,
+               "upgrade_cost": 100
             },
-            {
-               "id": 12,
-               "name": "Chance",
-               "type": "chance"
+            "rent": [
+               14,
+               70,
+               200,
+               550,
+               750
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 17,
+            "name": "DevOps",
+            "color": "#fe8c5b",
+            "prices": {
+               "base": 200,
+               "upgrade_cost": 100
             },
-            {
-               "id": 13,
-               "name": "Dev API",
-               "color": "#ff496a",
-               "prices": {
-                  "base": 160,
-                  "upgrade_cost": 100
-               },
-               "rent": [
-                  12,
-                  60,
-                  180,
-                  500,
-                  700
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               16,
+               80,
+               220,
+               600,
+               800
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 18,
+            "name": "Ynov Circus",
+            "type": "chance"
+         },
+         {
+            "id": 19,
+            "name": "Projet Pro",
+            "color": "#eb2a00",
+            "prices": {
+               "base": 220,
+               "upgrade_cost": 150
             },
-            {
-               "id": 14,
-               "name": "Conrad",
-               "color": "#000000",
-               "prices": {
-                  "base": 200
-               },
-               "rent": [
-                  25,
-                  50,
-                  100,
-                  200
-               ],
-               "type": "gare",
-               "owner": null
+            "rent": [
+               18,
+               90,
+               250,
+               700,
+               875
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 20,
+            "name": "PHP",
+            "color": "#eb2a00",
+            "prices": {
+               "base": 220,
+               "upgrade_cost": 150
             },
-            {
-               "id": 15,
-               "name": "NoSQL",
-               "color": "#fe8c5b",
-               "prices": {
-                  "base": 180,
-                  "upgrade_cost": 100
-               },
-               "rent": [
-                  14,
-                  70,
-                  200,
-                  550,
-                  750
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               18,
+               90,
+               250,
+               700,
+               875
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 21,
+            "name": "Chance",
+            "type": "chance"
+         },
+         {
+            "id": 22,
+            "name": "Linux",
+            "color": "#eb2a00",
+            "prices": {
+               "base": 240,
+               "upgrade_cost": 150
             },
-            {
-               "id": 16,
-               "name": "Electron",
-               "color": "#fe8c5b",
-               "prices": {
-                  "base": 180,
-                  "upgrade_cost": 100
-               },
-               "rent": [
-                  14,
-                  70,
-                  200,
-                  550,
-                  750
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               20,
+               100,
+               300,
+               750,
+               925
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 23,
+            "name": "Condé",
+            "color": "#000000",
+            "prices": {
+               "base": 200
             },
-            {
-               "id": 17,
-               "name": "DevOps",
-               "color": "#fe8c5b",
-               "prices": {
-                  "base": 200,
-                  "upgrade_cost": 100
-               },
-               "rent": [
-                  16,
-                  80,
-                  220,
-                  600,
-                  800
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               25,
+               50,
+               100,
+               200
+            ],
+            "type": "gare",
+            "owner": null
+         },
+         {
+            "id": 24,
+            "name": "Cybersec",
+            "color": "#ffe401",
+            "prices": {
+               "base": 260,
+               "upgrade_cost": 150
             },
-            {
-               "id": 18,
-               "name": "Ynov Circus",
-               "type": "chance"
+            "rent": [
+               22,
+               110,
+               330,
+               800,
+               975
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 25,
+            "name": "Csharp",
+            "color": "#ffe401",
+            "prices": {
+               "base": 0,
+               "upgrade_cost": 150
             },
-            {
-               "id": 19,
-               "name": "Projet Pro",
-               "color": "#eb2a00",
-               "prices": {
-                  "base": 220,
-                  "upgrade_cost": 150
-               },
-               "rent": [
-                  18,
-                  90,
-                  250,
-                  700,
-                  875
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               22,
+               110,
+               330,
+               800,
+               975
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 26,
+            "name": "Javascript",
+            "color": "#ffe401",
+            "prices": {
+               "base": 0,
+               "upgrade_cost": 150
             },
-            {
-               "id": 20,
-               "name": "PHP",
-               "color": "#eb2a00",
-               "prices": {
-                  "base": 220,
-                  "upgrade_cost": 150
-               },
-               "rent": [
-                  18,
-                  90,
-                  250,
-                  700,
-                  875
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               22,
+               120,
+               360,
+               850,
+               1025
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 27,
+            "name": "GoToPrison",
+            "type": "chance"
+         },
+         {
+            "id": 28,
+            "name": "Python",
+            "color": "#00a61b",
+            "prices": {
+               "base": 300,
+               "upgrade_cost": 200
             },
-            {
-               "id": 21,
-               "name": "Chance",
-               "type": "chance"
+            "rent": [
+               26,
+               130,
+               390,
+               900,
+               1100
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 29,
+            "name": "OSINT",
+            "color": "#00a61b",
+            "prices": {
+               "base": 300,
+               "upgrade_cost": 200
             },
-            {
-               "id": 22,
-               "name": "Linux",
-               "color": "#eb2a00",
-               "prices": {
-                  "base": 240,
-                  "upgrade_cost": 150
-               },
-               "rent": [
-                  20,
-                  100,
-                  300,
-                  750,
-                  925
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               26,
+               130,
+               390,
+               900,
+               1100
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 30,
+            "name": "Chance",
+            "type": "chance"
+         },
+         {
+            "id": 31,
+            "name": "Réseau",
+            "color": "#00a61b",
+            "prices": {
+               "base": 320,
+               "upgrade_cost": 200
             },
-            {
-               "id": 23,
-               "name": "Condé",
-               "color": "#000000",
-               "prices": {
-                  "base": 200
-               },
-               "rent": [
-                  25,
-                  50,
-                  100,
-                  200
-               ],
-               "type": "gare",
-               "owner": null
+            "rent": [
+               28,
+               150,
+               450,
+               1000,
+               1200
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 32,
+            "name": "Chartrons",
+            "color": "#000000",
+            "prices": {
+               "base": 200
             },
-            {
-               "id": 24,
-               "name": "Cybersec",
-               "color": "#ffe401",
-               "prices": {
-                  "base": 260,
-                  "upgrade_cost": 150
-               },
-               "rent": [
-                  22,
-                  110,
-                  330,
-                  800,
-                  975
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               25,
+               50,
+               100,
+               200
+            ],
+            "type": "gare",
+            "owner": null
+         },
+         {
+            "id": 33,
+            "name": "React",
+            "color": "#001d85",
+            "prices": {
+               "base": 350,
+               "upgrade_cost": 200
             },
-            {
-               "id": 25,
-               "name": "Csharp",
-               "color": "#ffe401",
-               "prices": {
-                  "base": 0,
-                  "upgrade_cost": 150
-               },
-               "rent": [
-                  22,
-                  110,
-                  330,
-                  800,
-                  975
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               35,
+               175,
+               500,
+               1100,
+               1300
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 34,
+            "name": "Prêt étudiant",
+            "type": "special_pret"
+         },
+         {
+            "id": 35,
+            "name": "SQL",
+            "color": "#001d85",
+            "prices": {
+               "base": 400,
+               "upgrade_cost": 200
             },
-            {
-               "id": 26,
-               "name": "Javascript",
-               "color": "#ffe401",
-               "prices": {
-                  "base": 0,
-                  "upgrade_cost": 150
-               },
-               "rent": [
-                  22,
-                  120,
-                  360,
-                  850,
-                  1025
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
-            },
-            {
-               "id": 27,
-               "name": "GoToPrison",
-               "type": "chance"
-            },
-            {
-               "id": 28,
-               "name": "Python",
-               "color": "#00a61b",
-               "prices": {
-                  "base": 300,
-                  "upgrade_cost": 200
-               },
-               "rent": [
-                  26,
-                  130,
-                  390,
-                  900,
-                  1100
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
-            },
-            {
-               "id": 29,
-               "name": "OSINT",
-               "color": "#00a61b",
-               "prices": {
-                  "base": 300,
-                  "upgrade_cost": 200
-               },
-               "rent": [
-                  26,
-                  130,
-                  390,
-                  900,
-                  1100
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
-            },
-            {
-               "id": 30,
-               "name": "Chance",
-               "type": "chance"
-            },
-            {
-               "id": 31,
-               "name": "Réseau",
-               "color": "#00a61b",
-               "prices": {
-                  "base": 320,
-                  "upgrade_cost": 200
-               },
-               "rent": [
-                  28,
-                  150,
-                  450,
-                  1000,
-                  1200
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
-            },
-            {
-               "id": 32,
-               "name": "Chartrons",
-               "color": "#000000",
-               "prices": {
-                  "base": 200
-               },
-               "rent": [
-                  25,
-                  50,
-                  100,
-                  200
-               ],
-               "type": "gare",
-               "owner": null
-            },
-            {
-               "id": 33,
-               "name": "React",
-               "color": "#001d85",
-               "prices": {
-                  "base": 350,
-                  "upgrade_cost": 200
-               },
-               "rent": [
-                  35,
-                  175,
-                  500,
-                  1100,
-                  1300
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
-            },
-            {
-               "id": 34,
-               "name": "Prêt étudiant",
-               "type": "special_pret"
-            },
-            {
-               "id": 35,
-               "name": "SQL",
-               "color": "#001d85",
-               "prices": {
-                  "base": 400,
-                  "upgrade_cost": 200
-               },
-               "rent": [
-                  50,
-                  200,
-                  600,
-                  1400,
-                  1700
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
-            }
+            "rent": [
+               50,
+               200,
+               600,
+               1400,
+               1700
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         }
       ],
       "players": [],
       "lucks": [
          {
             "id": 1,
             "name": "Scammed",
-            "content": "Adrien vous à proposé un “bon plan no risque no cap”. Vous perdez 10K",
+            "content": "Adrien vous à proposé un “bon plan no risque no cap”. Vous perdez 50K.",
             "cardEffect": {
-               "effect": "giveMoneyTo",
-               "value": 10
+               "effect": "loseMoney",
+               "value": 50
             }
          },
          {
             "id": 2,
             "name": "Boursorama",
-            "content": "Contre toute attente Adrien vous propose un nouveau plan argent et il fonctionne recevez 10K, mais restez vigilant",
+            "content": "Contre toute attente Adrien vous propose un nouveau plan qui fonctionne. Vous gagnez 100K, mais restez vigilant.",
             "cardEffect": {
-               "effect": "giveMoney",
-               "value": 10
+               "effect": "gainMoney",
+               "value": 100
             }
          },
          {
             "id": 3,
             "name": "Norvitas",
-            "content": "Le plan de l'année tombe, Adrien vous contacte pour parler de Norvitas, ce ponzy a l'air safe (perdez 15K)",
+            "content": "La pyramide s'écroule, et tout votre investissement par la même occasion. Vous perdez 200K.",
             "cardEffect": {
-               "effect": "giveMoney",
-               "value": 15
+               "effect": "loseMoney",
+               "value": 200
             }
          },
          {
             "id": 4,
             "name": "Oh Snap",
-            "content": "vous n'avez pas GO Fmt (il y a un retour à la ligne à la fin du fichier) attendez 15 h (il est 9h). passez 2 tours",
+            "content": "Vous avez oublié de formatter votre fichier Go avant de push. Vous sautez 2 tours",
             "cardEffect": {
                "effect": "wait",
                "value": 2
@@ -586,16 +586,16 @@
          {
             "id": 6,
             "name": "Snack time with PA",
-            "content": "Snack Time with PA",
+            "content": "Pause gouter avec PA avant le cours de SQL. Avancez jusqu'au module SQL.",
             "cardEffect": {
-               "effect": "giveMoneyTo",
-               "value": 5
+               "effect": "moveTo",
+               "value": 35
             }
          },
          {
             "id": 7,
-            "name": "Poppy break",
-            "content": "Benjam doit allez aux toilettes. Attendez le pendant 2 tours.",
+            "name": "Poopy break",
+            "content": "Benjam doit allez aux toilettes. Attendez le et sautez 2 tours.",
             "cardEffect": {
                "effect": "wait",
                "value": 2
@@ -604,7 +604,7 @@
          {
             "id": 8,
             "name": "Tacos 3 viandes",
-            "content": "Vous vous sentez lourd, votre prochain jet de dé est divisé par deux.",
+            "content": "Après un bon Cozy vous vous sentez repu. Votre prochain jet de dés est divisé par 2.",
             "cardEffect": {
                "effect": "NextThrow",
                "value": 0.5
@@ -613,7 +613,7 @@
          {
             "id": 9,
             "name": "MANGO LOCO",
-            "content": "vous êtes boost, votre prochain lancé est doublé",
+            "content": "La Mango Loco coule dans vos veines et vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
             "cardEffect": {
                "effect": "NextThrow",
                "value": 2
@@ -622,7 +622,7 @@
          {
             "id": 10,
             "name": "Patrick Piquart",
-            "content": "MR Piquart vous raconte 1% de sa vie attedendez 3 tours",
+            "content": "M. Piquart vous raconte 1% de sa vie. Ecoutez le et sautez 3 tours.",
             "cardEffect": {
                "effect": "wait",
                "value": 3
@@ -631,25 +631,25 @@
          {
             "id": 11,
             "name": "Ravezie",
-            "content": "Ynov vous demande une cotisation pour payer les nouveaux locaux : tout les joueurs payent 5k",
+            "content": "Ynov vous demande une cotisation pour payer les nouveaux locaux. Vous perdez 60K.",
             "cardEffect": {
-               "effect": "giveMoneyAll",
-               "value": 5
+               "effect": "loseMoney",
+               "value": 60
             }
          },
          {
             "id": 12,
             "name": "Nouvelle année",
-            "content": "C’est la nouvelle année et vous n’avez pas d’alternance : Rendez-vous à la case départ, ne recevez pas l’argent, payez 8k",
+            "content": "C’est la nouvelle année et vous n’avez pas d’alternance. Rendez-vous à la case départ, ne recevez pas l’argent",
             "cardEffect": {
                "effect": "moveToStraight",
-               "value": 2
+               "value": 0
             }
          },
          {
             "id": 13,
             "name": "grève TBM",
-            "content": "malgré un réveil à l'heure votre tram ne passe pas, voud n'aviez pas vus la grève annoncé. prochain jet diviser par 2",
+            "content": "La grêve des tramways vous met en retard. Votre prochain jet de dés est divisé par 2.",
             "cardEffect": {
                "effect": "NextThrow",
                "value": 0.5
@@ -658,7 +658,7 @@
          {
             "id": 14,
             "name": "BUBLIZ",
-            "content": "Après un perdu pari vous vous enfilez un sandwich poulet crudité fourré au bubliz, éttonament bien qu'immonde cette recette vous fait retentir puissant, prochain jet doublé",
+            "content": "Après un pari perdu, vous dégustez un sandwich poulet-crudité-bubliz. Bien qu'immonde ce repas vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
             "cardEffect": {
                "effect": "NextThrow",
                "value": 2
@@ -666,11 +666,29 @@
          },
          {
             "id": 15,
-            "name": "casque VRED",
-            "content": "Mattéo vous embarque dans sa hype de casque VR, vous vous rendez chez la fnac et ressortez pauvre. payer 50k",
+            "name": "casque VR",
+            "content": "Mattéo vous embarque dans sa hype de casque VR et vous fait acheter un Oculus Quest 2. Vous perdez 35K.",
             "cardEffect": {
                "effect": "giveMoney",
-               "value": 50
+               "value": 35
+            }
+         },
+         {
+            "id": 16,
+            "name": "Salaire",
+            "content": "Votre dure mois de labeur est enfin terminé. Vous gagnez 100K.",
+            "cardEffect": {
+               "effect": "gainMoney",
+               "value": 100
+            }
+         },
+         {
+            "id": 17,
+            "name": "Module de la fraude",
+            "content": "C'est l'heure du pire cours de l'année. Avancez jusqu'au module Windows Server.",
+            "cardEffect": {
+               "effect": "moveTo",
+               "value": 35
             }
          }
       ],
@@ -680,572 +698,572 @@
       "id": 1,
       "hasStarted": false,
       "tiles": [
-            {
-               "id": 0,
-               "name": "Départ",
-               "type": "start"
+         {
+            "id": 0,
+            "name": "Départ",
+            "type": "start"
+         },
+         {
+            "id": 1,
+            "name": "Windows Server",
+            "color": "#8ad4ff",
+            "prices": {
+               "base": 60,
+               "upgrade_cost": 50
             },
-            {
-               "id": 1,
-               "name": "Windows Server",
-               "color": "#8ad4ff",
-               "prices": {
-                  "base": 60,
-                  "upgrade_cost": 50
-               },
-               "rent": [
-                  2,
-                  10,
-                  30,
-                  90,
-                  160
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               2,
+               10,
+               30,
+               90,
+               160
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 2,
+            "name": "CVEC",
+            "type": "special_cvec"
+         },
+         {
+            "id": 3,
+            "name": "Dev Mobile",
+            "color": "#8ad4ff",
+            "prices": {
+               "base": 60,
+               "upgrade_cost": 50
             },
-            {
-               "id": 2,
-               "name": "CVEC",
-               "type": "special_cvec"
+            "rent": [
+               4,
+               20,
+               60,
+               180,
+               320
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 4,
+            "name": "Annexes",
+            "color": "#000000",
+            "prices": {
+               "base": 200
             },
-            {
-               "id": 3,
-               "name": "Dev Mobile",
-               "color": "#8ad4ff",
-               "prices": {
-                  "base": 60,
-                  "upgrade_cost": 50
-               },
-               "rent": [
-                  4,
-                  20,
-                  60,
-                  180,
-                  320
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               25,
+               50,
+               100,
+               200
+            ],
+            "type": "gare",
+            "owner": null
+         },
+         {
+            "id": 5,
+            "name": "C embarqué",
+            "color": "#686e96",
+            "prices": {
+               "base": 100,
+               "upgrade_cost": 50
             },
-            {
-               "id": 4,
-               "name": "Annexes",
-               "color": "#000000",
-               "prices": {
-                  "base": 200
-               },
-               "rent": [
-                  25,
-                  50,
-                  100,
-                  200
-               ],
-               "type": "gare",
-               "owner": null
+            "rent": [
+               6,
+               30,
+               90,
+               270,
+               400
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 6,
+            "name": "Chance",
+            "type": "chance"
+         },
+         {
+            "id": 7,
+            "name": "Voltaire",
+            "color": "#686e96",
+            "prices": {
+               "base": 100,
+               "upgrade_cost": 50
             },
-            {
-               "id": 5,
-               "name": "C embarqué",
-               "color": "#686e96",
-               "prices": {
-                  "base": 100,
-                  "upgrade_cost": 50
-               },
-               "rent": [
-                  6,
-                  30,
-                  90,
-                  270,
-                  400
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               6,
+               30,
+               90,
+               270,
+               400
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 8,
+            "name": "Golang",
+            "color": "#686e96",
+            "prices": {
+               "base": 120,
+               "upgrade_cost": 50
             },
-            {
-               "id": 6,
-               "name": "Chance",
-               "type": "chance"
+            "rent": [
+               8,
+               40,
+               100,
+               300,
+               450
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 9,
+            "name": "Prison",
+            "type": "chance"
+         },
+         {
+            "id": 10,
+            "name": "Java",
+            "color": "#ff496a",
+            "prices": {
+               "base": 140,
+               "upgrade_cost": 100
             },
-            {
-               "id": 7,
-               "name": "Voltaire",
-               "color": "#686e96",
-               "prices": {
-                  "base": 100,
-                  "upgrade_cost": 50
-               },
-               "rent": [
-                  6,
-                  30,
-                  90,
-                  270,
-                  400
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               10,
+               50,
+               150,
+               450,
+               625
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 11,
+            "name": "Math",
+            "color": "#ff496a",
+            "prices": {
+               "base": 140,
+               "upgrade_cost": 100
             },
-            {
-               "id": 8,
-               "name": "Golang",
-               "color": "#686e96",
-               "prices": {
-                  "base": 120,
-                  "upgrade_cost": 50
-               },
-               "rent": [
-                  8,
-                  40,
-                  100,
-                  300,
-                  450
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               10,
+               50,
+               150,
+               450,
+               625
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 12,
+            "name": "Chance",
+            "type": "chance"
+         },
+         {
+            "id": 13,
+            "name": "Dev API",
+            "color": "#ff496a",
+            "prices": {
+               "base": 160,
+               "upgrade_cost": 100
             },
-            {
-               "id": 9,
-               "name": "Prison",
-               "type": "chance"
+            "rent": [
+               12,
+               60,
+               180,
+               500,
+               700
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 14,
+            "name": "Conrad",
+            "color": "#000000",
+            "prices": {
+               "base": 200
             },
-            {
-               "id": 10,
-               "name": "Java",
-               "color": "#ff496a",
-               "prices": {
-                  "base": 140,
-                  "upgrade_cost": 100
-               },
-               "rent": [
-                  10,
-                  50,
-                  150,
-                  450,
-                  625
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               25,
+               50,
+               100,
+               200
+            ],
+            "type": "gare",
+            "owner": null
+         },
+         {
+            "id": 15,
+            "name": "NoSQL",
+            "color": "#fe8c5b",
+            "prices": {
+               "base": 180,
+               "upgrade_cost": 100
             },
-            {
-               "id": 11,
-               "name": "Math",
-               "color": "#ff496a",
-               "prices": {
-                  "base": 140,
-                  "upgrade_cost": 100
-               },
-               "rent": [
-                  10,
-                  50,
-                  150,
-                  450,
-                  625
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               14,
+               70,
+               200,
+               550,
+               750
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 16,
+            "name": "Electron",
+            "color": "#fe8c5b",
+            "prices": {
+               "base": 180,
+               "upgrade_cost": 100
             },
-            {
-               "id": 12,
-               "name": "Chance",
-               "type": "chance"
+            "rent": [
+               14,
+               70,
+               200,
+               550,
+               750
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 17,
+            "name": "DevOps",
+            "color": "#fe8c5b",
+            "prices": {
+               "base": 200,
+               "upgrade_cost": 100
             },
-            {
-               "id": 13,
-               "name": "Dev API",
-               "color": "#ff496a",
-               "prices": {
-                  "base": 160,
-                  "upgrade_cost": 100
-               },
-               "rent": [
-                  12,
-                  60,
-                  180,
-                  500,
-                  700
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               16,
+               80,
+               220,
+               600,
+               800
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 18,
+            "name": "Ynov Circus",
+            "type": "chance"
+         },
+         {
+            "id": 19,
+            "name": "Projet Pro",
+            "color": "#eb2a00",
+            "prices": {
+               "base": 220,
+               "upgrade_cost": 150
             },
-            {
-               "id": 14,
-               "name": "Conrad",
-               "color": "#000000",
-               "prices": {
-                  "base": 200
-               },
-               "rent": [
-                  25,
-                  50,
-                  100,
-                  200
-               ],
-               "type": "gare",
-               "owner": null
+            "rent": [
+               18,
+               90,
+               250,
+               700,
+               875
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 20,
+            "name": "PHP",
+            "color": "#eb2a00",
+            "prices": {
+               "base": 220,
+               "upgrade_cost": 150
             },
-            {
-               "id": 15,
-               "name": "NoSQL",
-               "color": "#fe8c5b",
-               "prices": {
-                  "base": 180,
-                  "upgrade_cost": 100
-               },
-               "rent": [
-                  14,
-                  70,
-                  200,
-                  550,
-                  750
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               18,
+               90,
+               250,
+               700,
+               875
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 21,
+            "name": "Chance",
+            "type": "chance"
+         },
+         {
+            "id": 22,
+            "name": "Linux",
+            "color": "#eb2a00",
+            "prices": {
+               "base": 240,
+               "upgrade_cost": 150
             },
-            {
-               "id": 16,
-               "name": "Electron",
-               "color": "#fe8c5b",
-               "prices": {
-                  "base": 180,
-                  "upgrade_cost": 100
-               },
-               "rent": [
-                  14,
-                  70,
-                  200,
-                  550,
-                  750
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               20,
+               100,
+               300,
+               750,
+               925
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 23,
+            "name": "Condé",
+            "color": "#000000",
+            "prices": {
+               "base": 200
             },
-            {
-               "id": 17,
-               "name": "DevOps",
-               "color": "#fe8c5b",
-               "prices": {
-                  "base": 200,
-                  "upgrade_cost": 100
-               },
-               "rent": [
-                  16,
-                  80,
-                  220,
-                  600,
-                  800
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               25,
+               50,
+               100,
+               200
+            ],
+            "type": "gare",
+            "owner": null
+         },
+         {
+            "id": 24,
+            "name": "Cybersec",
+            "color": "#ffe401",
+            "prices": {
+               "base": 260,
+               "upgrade_cost": 150
             },
-            {
-               "id": 18,
-               "name": "Ynov Circus",
-               "type": "chance"
+            "rent": [
+               22,
+               110,
+               330,
+               800,
+               975
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 25,
+            "name": "Csharp",
+            "color": "#ffe401",
+            "prices": {
+               "base": 0,
+               "upgrade_cost": 150
             },
-            {
-               "id": 19,
-               "name": "Projet Pro",
-               "color": "#eb2a00",
-               "prices": {
-                  "base": 220,
-                  "upgrade_cost": 150
-               },
-               "rent": [
-                  18,
-                  90,
-                  250,
-                  700,
-                  875
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               22,
+               110,
+               330,
+               800,
+               975
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 26,
+            "name": "Javascript",
+            "color": "#ffe401",
+            "prices": {
+               "base": 0,
+               "upgrade_cost": 150
             },
-            {
-               "id": 20,
-               "name": "PHP",
-               "color": "#eb2a00",
-               "prices": {
-                  "base": 220,
-                  "upgrade_cost": 150
-               },
-               "rent": [
-                  18,
-                  90,
-                  250,
-                  700,
-                  875
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               22,
+               120,
+               360,
+               850,
+               1025
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 27,
+            "name": "GoToPrison",
+            "type": "chance"
+         },
+         {
+            "id": 28,
+            "name": "Python",
+            "color": "#00a61b",
+            "prices": {
+               "base": 300,
+               "upgrade_cost": 200
             },
-            {
-               "id": 21,
-               "name": "Chance",
-               "type": "chance"
+            "rent": [
+               26,
+               130,
+               390,
+               900,
+               1100
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 29,
+            "name": "OSINT",
+            "color": "#00a61b",
+            "prices": {
+               "base": 300,
+               "upgrade_cost": 200
             },
-            {
-               "id": 22,
-               "name": "Linux",
-               "color": "#eb2a00",
-               "prices": {
-                  "base": 240,
-                  "upgrade_cost": 150
-               },
-               "rent": [
-                  20,
-                  100,
-                  300,
-                  750,
-                  925
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               26,
+               130,
+               390,
+               900,
+               1100
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 30,
+            "name": "Chance",
+            "type": "chance"
+         },
+         {
+            "id": 31,
+            "name": "Réseau",
+            "color": "#00a61b",
+            "prices": {
+               "base": 320,
+               "upgrade_cost": 200
             },
-            {
-               "id": 23,
-               "name": "Condé",
-               "color": "#000000",
-               "prices": {
-                  "base": 200
-               },
-               "rent": [
-                  25,
-                  50,
-                  100,
-                  200
-               ],
-               "type": "gare",
-               "owner": null
+            "rent": [
+               28,
+               150,
+               450,
+               1000,
+               1200
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 32,
+            "name": "Chartrons",
+            "color": "#000000",
+            "prices": {
+               "base": 200
             },
-            {
-               "id": 24,
-               "name": "Cybersec",
-               "color": "#ffe401",
-               "prices": {
-                  "base": 260,
-                  "upgrade_cost": 150
-               },
-               "rent": [
-                  22,
-                  110,
-                  330,
-                  800,
-                  975
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               25,
+               50,
+               100,
+               200
+            ],
+            "type": "gare",
+            "owner": null
+         },
+         {
+            "id": 33,
+            "name": "React",
+            "color": "#001d85",
+            "prices": {
+               "base": 350,
+               "upgrade_cost": 200
             },
-            {
-               "id": 25,
-               "name": "Csharp",
-               "color": "#ffe401",
-               "prices": {
-                  "base": 0,
-                  "upgrade_cost": 150
-               },
-               "rent": [
-                  22,
-                  110,
-                  330,
-                  800,
-                  975
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
+            "rent": [
+               35,
+               175,
+               500,
+               1100,
+               1300
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         },
+         {
+            "id": 34,
+            "name": "Prêt étudiant",
+            "type": "special_pret"
+         },
+         {
+            "id": 35,
+            "name": "SQL",
+            "color": "#001d85",
+            "prices": {
+               "base": 400,
+               "upgrade_cost": 200
             },
-            {
-               "id": 26,
-               "name": "Javascript",
-               "color": "#ffe401",
-               "prices": {
-                  "base": 0,
-                  "upgrade_cost": 150
-               },
-               "rent": [
-                  22,
-                  120,
-                  360,
-                  850,
-                  1025
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
-            },
-            {
-               "id": 27,
-               "name": "GoToPrison",
-               "type": "chance"
-            },
-            {
-               "id": 28,
-               "name": "Python",
-               "color": "#00a61b",
-               "prices": {
-                  "base": 300,
-                  "upgrade_cost": 200
-               },
-               "rent": [
-                  26,
-                  130,
-                  390,
-                  900,
-                  1100
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
-            },
-            {
-               "id": 29,
-               "name": "OSINT",
-               "color": "#00a61b",
-               "prices": {
-                  "base": 300,
-                  "upgrade_cost": 200
-               },
-               "rent": [
-                  26,
-                  130,
-                  390,
-                  900,
-                  1100
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
-            },
-            {
-               "id": 30,
-               "name": "Chance",
-               "type": "chance"
-            },
-            {
-               "id": 31,
-               "name": "Réseau",
-               "color": "#00a61b",
-               "prices": {
-                  "base": 320,
-                  "upgrade_cost": 200
-               },
-               "rent": [
-                  28,
-                  150,
-                  450,
-                  1000,
-                  1200
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
-            },
-            {
-               "id": 32,
-               "name": "Chartrons",
-               "color": "#000000",
-               "prices": {
-                  "base": 200
-               },
-               "rent": [
-                  25,
-                  50,
-                  100,
-                  200
-               ],
-               "type": "gare",
-               "owner": null
-            },
-            {
-               "id": 33,
-               "name": "React",
-               "color": "#001d85",
-               "prices": {
-                  "base": 350,
-                  "upgrade_cost": 200
-               },
-               "rent": [
-                  35,
-                  175,
-                  500,
-                  1100,
-                  1300
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
-            },
-            {
-               "id": 34,
-               "name": "Prêt étudiant",
-               "type": "special_pret"
-            },
-            {
-               "id": 35,
-               "name": "SQL",
-               "color": "#001d85",
-               "prices": {
-                  "base": 400,
-                  "upgrade_cost": 200
-               },
-               "rent": [
-                  50,
-                  200,
-                  600,
-                  1400,
-                  1700
-               ],
-               "type": "street",
-               "owner": null,
-               "currentLevel": 0
-            }
+            "rent": [
+               50,
+               200,
+               600,
+               1400,
+               1700
+            ],
+            "type": "street",
+            "owner": null,
+            "currentLevel": 0
+         }
       ],
       "players": [],
       "lucks": [
          {
             "id": 1,
             "name": "Scammed",
-            "content": "Adrien vous à proposé un “bon plan no risque no cap”. Vous perdez 10K",
+            "content": "Adrien vous à proposé un “bon plan no risque no cap”. Vous perdez 50K.",
             "cardEffect": {
-               "effect": "giveMoneyTo",
-               "value": 10
+               "effect": "loseMoney",
+               "value": 50
             }
          },
          {
             "id": 2,
             "name": "Boursorama",
-            "content": "Contre toute attente Adrien vous propose un nouveau plan argent et il fonctionne recevez 10K, mais restez vigilant",
+            "content": "Contre toute attente Adrien vous propose un nouveau plan qui fonctionne. Vous gagnez 100K, mais restez vigilant.",
             "cardEffect": {
-               "effect": "giveMoney",
-               "value": 10
+               "effect": "gainMoney",
+               "value": 100
             }
          },
          {
             "id": 3,
             "name": "Norvitas",
-            "content": "Le plan de l'année tombe, Adrien vous contacte pour parler de Norvitas, ce ponzy a l'air safe (perdez 15K)",
+            "content": "La pyramide s'écroule, et tout votre investissement par la même occasion. Vous perdez 200K.",
             "cardEffect": {
-               "effect": "giveMoney",
-               "value": 15
+               "effect": "loseMoney",
+               "value": 200
             }
          },
          {
             "id": 4,
             "name": "Oh Snap",
-            "content": "vous n'avez pas GO Fmt (il y a un retour à la ligne à la fin du fichier) attendez 15 h (il est 9h). passez 2 tours",
+            "content": "Vous avez oublié de formatter votre fichier Go avant de push. Vous sautez 2 tours",
             "cardEffect": {
                "effect": "wait",
                "value": 2
@@ -1263,16 +1281,16 @@
          {
             "id": 6,
             "name": "Snack time with PA",
-            "content": "Snack Time with PA",
+            "content": "Pause gouter avec PA avant le cours de SQL. Avancez jusqu'au module SQL.",
             "cardEffect": {
-               "effect": "giveMoneyTo",
-               "value": 5
+               "effect": "moveTo",
+               "value": 35
             }
          },
          {
             "id": 7,
-            "name": "Poppy break",
-            "content": "Benjam doit allez aux toilettes. Attendez le pendant 2 tours.",
+            "name": "Poopy break",
+            "content": "Benjam doit allez aux toilettes. Attendez le et sautez 2 tours.",
             "cardEffect": {
                "effect": "wait",
                "value": 2
@@ -1281,7 +1299,7 @@
          {
             "id": 8,
             "name": "Tacos 3 viandes",
-            "content": "Vous vous sentez lourd, votre prochain jet de dé est divisé par deux.",
+            "content": "Après un bon Cozy vous vous sentez repu. Votre prochain jet de dés est divisé par 2.",
             "cardEffect": {
                "effect": "NextThrow",
                "value": 0.5
@@ -1290,7 +1308,7 @@
          {
             "id": 9,
             "name": "MANGO LOCO",
-            "content": "vous êtes boost, votre prochain lancé est doublé",
+            "content": "La Mango Loco coule dans vos veines et vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
             "cardEffect": {
                "effect": "NextThrow",
                "value": 2
@@ -1299,7 +1317,7 @@
          {
             "id": 10,
             "name": "Patrick Piquart",
-            "content": "MR Piquart vous raconte 1% de sa vie attedendez 3 tours",
+            "content": "M. Piquart vous raconte 1% de sa vie. Ecoutez le et sautez 3 tours.",
             "cardEffect": {
                "effect": "wait",
                "value": 3
@@ -1308,25 +1326,25 @@
          {
             "id": 11,
             "name": "Ravezie",
-            "content": "Ynov vous demande une cotisation pour payer les nouveaux locaux : tout les joueurs payent 5k",
+            "content": "Ynov vous demande une cotisation pour payer les nouveaux locaux. Vous perdez 60K.",
             "cardEffect": {
-               "effect": "giveMoneyAll",
-               "value": 5
+               "effect": "loseMoney",
+               "value": 60
             }
          },
          {
             "id": 12,
             "name": "Nouvelle année",
-            "content": "C’est la nouvelle année et vous n’avez pas d’alternance : Rendez-vous à la case départ, ne recevez pas l’argent, payez 8k",
+            "content": "C’est la nouvelle année et vous n’avez pas d’alternance. Rendez-vous à la case départ, ne recevez pas l’argent",
             "cardEffect": {
                "effect": "moveToStraight",
-               "value": 2
+               "value": 0
             }
          },
          {
             "id": 13,
             "name": "grève TBM",
-            "content": "malgré un réveil à l'heure votre tram ne passe pas, voud n'aviez pas vus la grève annoncé. prochain jet diviser par 2",
+            "content": "La grêve des tramways vous met en retard. Votre prochain jet de dés est divisé par 2.",
             "cardEffect": {
                "effect": "NextThrow",
                "value": 0.5
@@ -1335,7 +1353,7 @@
          {
             "id": 14,
             "name": "BUBLIZ",
-            "content": "Après un perdu pari vous vous enfilez un sandwich poulet crudité fourré au bubliz, éttonament bien qu'immonde cette recette vous fait retentir puissant, prochain jet doublé",
+            "content": "Après un pari perdu, vous dégustez un sandwich poulet-crudité-bubliz. Bien qu'immonde ce repas vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
             "cardEffect": {
                "effect": "NextThrow",
                "value": 2
@@ -1343,11 +1361,29 @@
          },
          {
             "id": 15,
-            "name": "casque VRED",
-            "content": "Mattéo vous embarque dans sa hype de casque VR, vous vous rendez chez la fnac et ressortez pauvre. payer 50k",
+            "name": "casque VR",
+            "content": "Mattéo vous embarque dans sa hype de casque VR et vous fait acheter un Oculus Quest 2. Vous perdez 35K.",
             "cardEffect": {
                "effect": "giveMoney",
-               "value": 50
+               "value": 35
+            }
+         },
+         {
+            "id": 16,
+            "name": "Salaire",
+            "content": "Votre dure mois de labeur est enfin terminé. Vous gagnez 100K.",
+            "cardEffect": {
+               "effect": "gainMoney",
+               "value": 100
+            }
+         },
+         {
+            "id": 17,
+            "name": "Module de la fraude",
+            "content": "C'est l'heure du pire cours de l'année. Avancez jusqu'au module Windows Server.",
+            "cardEffect": {
+               "effect": "moveTo",
+               "value": 35
             }
          }
       ],

@@ -33,7 +33,8 @@ export class boardController {
       properties: [],
       isImprisoned: false,
       hasGOOJCard: false,
-      position: 0
+      position: 0,
+      nextThrowModifier: 1,
     };
     try {
       await this.boardService.addToGame(payload, id)
