@@ -1,3 +1,4 @@
+import { tilesStartCoords } from "@/lib/convertTileToCoords"
 import { dividePawns } from "@/lib/dividePawns"
 import { P5Image, P5Sketch } from "vue-p5-component"
 import { Luck } from "./luck"
@@ -30,7 +31,10 @@ export class Board implements Board {
             this.players.push(new Player(p, i))
         }
         this.currentTurn = payload.currentTurn
-        this.tiles = payload.tiles || new Array<Tile>() as [Tile]
+        this.tiles = new Array<Tile>() as [Tile]
+        for (const t of (payload.tiles || Array<Tile>() as [Tile])) {
+            this.tiles.push(new Tile(t))
+        }
         this.lucks = payload.lucks || new Array<Luck>() as [Luck]
         this.ycircus = payload.ycircus || 0
     }
@@ -62,6 +66,11 @@ export class Board implements Board {
 
         this.players.forEach(p => {
             p.draw(sketch)
+        })
+
+        this.tiles.forEach(t => {
+            const owner = this.players.find(p => p.id === t.owner)
+            owner && t.draw(sketch, owner)
         })
     } 
 }
