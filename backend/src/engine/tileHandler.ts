@@ -1,17 +1,17 @@
-import { tiles } from "src/tiles/tiles.schema";
+import { tiles } from 'src/tiles/tiles.schema';
 import { Action } from 'src/models/action';
 import { player } from 'src/player/player.schema';
 import { nextPlayer } from './playerMovement';
-import { board } from "src/board/board.schema";
+import { board } from 'src/board/board.schema';
 
 export function isBuyable(tile: tiles): boolean {
-    return tile.owner === null && typeof tile.owner !== 'undefined'
+  return tile.owner === null && typeof tile.owner !== 'undefined';
 }
 
 export function findPlayerIndex(game: any, player_id: string) {
-  for (let index = 0; index < game["players"].length; index++) {
-    if (game["players"][index].id == player_id) {
-      return index
+  for (let index = 0; index < game['players'].length; index++) {
+    if (game['players'][index].id == player_id) {
+      return index;
     }
   }
 }
@@ -25,7 +25,7 @@ export function buyTile(
   const history = [];
   if (tile.owner == null) {
     if (tile.type == 'street') {
-      const streetPrice = getTilePrice(tile, amount)
+      const streetPrice = getTilePrice(tile, amount);
       if (streetPrice <= player.money) {
         tile.currentLevel = amount;
         tile.owner = player.id;
@@ -117,7 +117,7 @@ export function payRent(
       player.money -= price;
       owner.money += price;
       history.push(new Action('PAID', player.id, tile.id));
-      history.push(new Action(`GAINED ${price}`), owner.id)
+      history.push(new Action(`GAINED ${price}`), owner.id);
       return [
         new Action(
           'TURN',
@@ -164,5 +164,5 @@ export function payRent(
 }
 
 function getTilePrice(tile: tiles, amount: number): number {
-  return tile.prices.base + (tile.prices.upgrade_cost * amount)
+  return tile.prices.base + tile.prices.upgrade_cost * amount;
 }

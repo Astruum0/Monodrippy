@@ -7,26 +7,26 @@ export type playerDocument = player & mongoose.Document;
 
 @Schema()
 export class player {
-  @Prop()
-  id: string;
+	@Prop()
+	id: string;
 
-  @Prop()
-  name: string;
+	@Prop()
+	name: string;
 
-  @Prop()
-  money: number;
+	@Prop()
+	money: number;
 
-  @Prop()
-  isImprisoned: number;
+	@Prop()
+	turnsInPrison: number;
 
-  @Prop()
-  hasGOOJCard: boolean;
+	@Prop()
+	hasGOOJCard: boolean;
 
-  @Prop({ type: Any })
-  position: tiles['id'];
+	@Prop({ type: Any })
+	position: tiles['id'];
 
-  @Prop()
-  nextThrowModifier: number;
+	@Prop()
+	nextThrowModifier: number;
 }
 
 export const playerSchema = SchemaFactory.createForClass(player);
