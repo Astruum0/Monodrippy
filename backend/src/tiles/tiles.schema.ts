@@ -19,7 +19,7 @@ export class tiles {
   @Prop({ type: Any })
   prices: {
     base: number;
-    upgradeCost: number;
+    upgrade_cost: number;
   };
 
   @Prop({ type: Any })

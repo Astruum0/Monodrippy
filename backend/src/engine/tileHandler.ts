@@ -2,6 +2,7 @@ import { tiles } from "src/tiles/tiles.schema";
 import { Action } from 'src/models/action';
 import { player } from 'src/player/player.schema';
 import { nextPlayer } from './playerMovement';
+import { board } from "src/board/board.schema";
 
 export function isBuyable(tile: tiles): boolean {
     return tile.owner === null && typeof tile.owner !== 'undefined'
@@ -16,31 +17,25 @@ export function findPlayerIndex(game: any, player_id: string) {
 }
 
 export function buyTile(
-  tile_id: number,
-  player_id: string,
-  game: any,
+  game: board,
   player: player,
-  game_tile: tiles,
-  index: number,
+  tile: tiles,
   amount: number = undefined,
 ): [Action, Action[]] {
   const history = [];
-  if (game_tile.owner == null) {
-    if (game_tile.type == 'street') {
-      const streetPrice = getTilePrice(game_tile, amount)
+  if (tile.owner == null) {
+    if (tile.type == 'street') {
+      const streetPrice = getTilePrice(tile, amount)
       if (streetPrice <= player.money) {
-        game['tiles'][tile_id].currentLevel = 0;
-        game['tiles'][tile_id].owner = player_id;
-        game['players'][index].money -= streetPrice;
-        game.markModified('tiles');
-        game.markModified('players');
-        game.save();
-        history.push(new Action('BOUGHT', player.id, tile_id));
+        tile.currentLevel = amount;
+        tile.owner = player.id;
+        player.money -= streetPrice;
+        history.push(new Action('BOUGHT', player.id, tile.id));
         return [
           new Action(
             'TURN',
             nextPlayer(
-              game.players.find((p) => p.id === player_id),
+              game.players.find((p) => p.id === player.id),
               game.players,
             ).id,
           ),
@@ -49,19 +44,16 @@ export function buyTile(
       } else {
         throw new Error('Not enough money');
       }
-    } else if (game_tile.type == 'gare') {
-      if (game_tile.prices['base'] <= player.money) {
-        game['tiles'][tile_id].owner = player_id;
-        game['players'][index].money -= game_tile.prices['base'];
-        game.markModified('tiles');
-        game.markModified('players');
-        game.save();
-        history.push(new Action('BOUGHT', player.id, tile_id));
+    } else if (tile.type == 'gare') {
+      if (tile.prices['base'] <= player.money) {
+        tile.owner = player.id;
+        player.money -= tile.prices['base'];
+        history.push(new Action('BOUGHT', player.id, tile.id));
         return [
           new Action(
             'TURN',
             nextPlayer(
-              game.players.find((p) => p.id === player_id),
+              game.players.find((p) => p.id === player.id),
               game.players,
             ).id,
           ),
@@ -71,7 +63,7 @@ export function buyTile(
         throw new Error('Not enough money');
       }
     } else {
-      throw new Error('Not buyable, not a street or gare');
+      throw new Error('Not buyable, not a street nor a gare');
     }
   } else {
     throw new Error('Not buyable, already bought');
@@ -79,29 +71,23 @@ export function buyTile(
 }
 
 export function upgradeTile(
-  tile_id: number,
-  player_id: string,
-  game: any,
+  game: board,
   player: player,
-  game_tile: tiles,
-  index: number,
+  tile: tiles,
 ): [Action, Action[]] {
   const history = [];
 
-  if (game_tile.type == 'street') {
-    if (game_tile.currentLevel < 4) {
-      if (game_tile.prices['upgrade_cost'] <= player.money) {
-        game['tiles'][tile_id].currentLevel += 1;
-        game['players'][index].money -= game_tile.prices['upgrade_cost'];
-        game.markModified('tiles');
-        game.markModified('players');
-        game.save();
-        history.push(new Action('UPGRADED', player.id, tile_id));
+  if (tile.type == 'street') {
+    if (tile.currentLevel < 4) {
+      if (tile.prices['upgrade_cost'] <= player.money) {
+        tile.currentLevel += 1;
+        player.money -= tile.prices['upgrade_cost'];
+        history.push(new Action('UPGRADED', player.id, tile.id));
         return [
           new Action(
             'TURN',
             nextPlayer(
-              game.players.find((p) => p.id === player_id),
+              game.players.find((p) => p.id === player.id),
               game.players,
             ).id,
           ),
@@ -119,28 +105,24 @@ export function upgradeTile(
 }
 
 export function payRent(
-  tile_id: number,
-  player_id: string,
-  game: any,
+  game: board,
   player: player,
-  game_tile: tiles,
-  index: number,
+  tile: tiles,
 ): [Action, Action[]] {
   const history = [];
-  if (game_tile.type == 'street') {
-    if (game_tile.owner != player_id) {
-      let owner_index = findPlayerIndex(game, game_tile.owner);
-      let price = game_tile.rent[game_tile.currentLevel];
-      game['players'][index].money -= price;
-      game['players'][owner_index].money += price;
-      game.markModified('players');
-      game.save();
-      history.push(new Action('PAID', player_id, tile_id));
+  if (tile.type == 'street') {
+    if (tile.owner != player.id) {
+      let owner = game.players[findPlayerIndex(game, tile.owner)];
+      let price = tile.rent[tile.currentLevel];
+      player.money -= price;
+      owner.money += price;
+      history.push(new Action('PAID', player.id, tile.id));
+      history.push(new Action(`GAINED ${price}`), owner.id)
       return [
         new Action(
           'TURN',
           nextPlayer(
-            game.players.find((p) => p.id === player_id),
+            game.players.find((p) => p.id === player.id),
             game.players,
           ).id,
         ),
@@ -149,27 +131,25 @@ export function payRent(
     } else {
       throw new Error('Tiles belong to player');
     }
-  } else if (game_tile.type == 'gare') {
-    if (game_tile.owner != player_id) {
-      let owner_index = findPlayerIndex(game, game_tile.owner);
+  } else if (tile.type == 'gare') {
+    if (tile.owner != player.id) {
+      let owner_index = findPlayerIndex(game, tile.owner);
       let gare_index = [4, 14, 23, 32];
       let gare_number = 0;
       for (let index = 0; index < gare_index.length; index++) {
-        if (game.tiles[gare_index[index]].owner == game_tile.owner) {
+        if (game.tiles[gare_index[index]].owner == tile.owner) {
           gare_number += 1;
         }
       }
-      let price = game_tile.rent[gare_number - 1];
-      game['players'][index].money -= price;
+      let price = tile.rent[gare_number - 1];
+      player.money -= price;
       game['players'][owner_index].money += price;
-      game.markModified('players');
-      game.save();
-      history.push(new Action('PAID', player_id, tile_id));
+      history.push(new Action('PAID', player.id, tile.id));
       return [
         new Action(
           'TURN',
           nextPlayer(
-            game.players.find((p) => p.id === player_id),
+            game.players.find((p) => p.id === player.id),
             game.players,
           ).id,
         ),
@@ -184,5 +164,5 @@ export function payRent(
 }
 
 function getTilePrice(tile: tiles, amount: number): number {
-    return tile.prices.base + (tile.prices.upgradeCost * amount)
+  return tile.prices.base + (tile.prices.upgrade_cost * amount)
 }

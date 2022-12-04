@@ -2,22 +2,24 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { board, boardDocument } from "src/board/board.schema";
-import { movePlayer } from "src/engine/playerMovement";
+import { movePlayer, nextPlayer } from "src/engine/playerMovement";
+import { buyTile, findPlayerIndex, payRent, upgradeTile } from "src/engine/tileHandler";
 import { Action, historyByBoard, nextActionByBoard } from "src/models/action";
 import { gameOutput } from "src/models/gameOutput";
 import { IDicePlay, ITileAction, IUserAction } from "src/models/IUserAction";
-import { tilesService } from "src/tiles/tiles.service";
+import { player, playerDocument } from "src/player/player.schema";
+import { tiles } from "src/tiles/tiles.schema";
 
 @Injectable()
 export class gameService {
   historyByBoard: historyByBoard = {}
   nextActionByBoard: nextActionByBoard = {}
-  private readonly tilesService: tilesService
 
   constructor(
-    @InjectModel(board.name) private boardModel: Model<boardDocument>
+    @InjectModel(board.name) private boardModel: Model<boardDocument>,
+    @InjectModel(player.name) private playerModel: Model<playerDocument>,
     ) {
-      // this.startGame(1) // debug purposes
+      this.startGame(1) // debug purposes
     }
 
   async startGame(gameId: Number) {
@@ -73,24 +75,41 @@ export class gameService {
     if (nextAction.description === "TURN" && type === "TURN") {
       const {dices} = payload
       const [newAction, actionsDone] = movePlayer(userId, dices.reduce((a, b) => a + b, 0), board)
-      board.currentTurn = newAction.userConcerned
+      
 
       this.nextActionByBoard[payload.boardId] = newAction
       this.historyByBoard[payload.boardId] = this.historyByBoard[payload.boardId].concat(actionsDone)
     }
 
-    if (nextAction.description === "BUY" && (type === "BUY" || type === "NOT BUY")) {
+    if (nextAction.description === "BUY" && type === "BUY") {
       const { amount } = payload
-      let currentPosition = board.players.find(p => p.id === payload.userId).position
-      const [newAction, actionsDone] = await Promise.resolve(this.tilesService.tileAction(payload.boardId, currentPosition, payload.userId, type))
+      let currentPlayer = board.players.find(p => p.id === payload.userId)
+      let currentPosition = currentPlayer.position
+      let currentTile = board.tiles[currentPosition]
+
+      const [newAction, actionsDone] = await Promise.resolve(this.tileAction(board, currentTile, currentPlayer, type, amount))
 
       this.nextActionByBoard[payload.boardId] = newAction
       this.historyByBoard[payload.boardId] = this.historyByBoard[payload.boardId].concat(actionsDone)
     }
-    
+    board.currentTurn = this.nextActionByBoard[payload.boardId].userConcerned
     board.markModified("players")
+    board.markModified("tiles")
     board.save()
     return this.gameOutput(payload.boardId)
   }
 
+  async tileAction(board: board, tile: tiles, player: player, action: "BUY" | "UPGRADE" | "PAY", amount: number = undefined): Promise<[Action, Action[]]> {
+    if (action === "BUY" && amount >= 0) {
+      return buyTile(board, player, tile, amount)
+    } else if (action === "UPGRADE") {
+      return upgradeTile(board, player, tile)
+    } else if (action === "PAY") {
+      return payRent(board, player, tile)
+    } else if (action === "BUY") {
+      const nextAction = new Action("TURN", nextPlayer(board.players.find(p => p.id === player.id), board.players).id)
+      const history = [new Action("NOT BOUGHT", player.id, tile.id)]
+      return [nextAction, history]
+    }
+  }
 }

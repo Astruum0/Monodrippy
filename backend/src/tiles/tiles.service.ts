@@ -23,27 +23,4 @@ export class tilesService {
   async findById(tileId: Number): Promise<tiles> {
     return this.tilesModel.findOne({ "id": tileId }).exec();
   }
-
-  async tileAction(board_id: number, tile_id: number, player_id: string, action: "BUY" | "UPGRADE" | "PAY" | "NOT BUY", amount: number = undefined): Promise<[Action, Action[]]> {
-    let game = await this.boardModel.findOne({
-      id: board_id
-    }).exec();
-    let player = await this.playerModel.findOne({
-      id: player_id
-    }).exec();
-    let index = findPlayerIndex(game, player.id)
-    let game_tile = game["tiles"][tile_id]
-
-    if (action == "BUY") {
-      return buyTile(tile_id, player_id, game, player, game_tile, index, amount)
-    } else if (action === "UPGRADE") {
-      return upgradeTile(tile_id, player_id, game, player, game_tile, index)
-    } else if (action === "PAY") {
-      return payRent(tile_id, player_id, game, player, game_tile, index)
-    } else if (action === "NOT BUY") {
-      const nextAction = new Action("TURN", nextPlayer(game.players.find(p => p.id === player_id), game.players).id)
-      const history = [new Action("NOT BOUGHT", player.id, tile_id)]
-      return [nextAction, history]
-    }
-  }
 }

@@ -3,13 +3,13 @@
         <div class="buy-tile-div invisible">
             <p class="tile-name"></p>
             <div style="justify-content: space-around; flex-flow: row; display: flex">
-                <button class="tile price-0"></button>
-                <button class="tile price-1"></button>
-                <button class="tile price-2"></button>
-                <button class="tile price-3"></button>
-                <button class="tile price-4"></button>
+                <button @click="buy(0)" class="tile price-0"></button>
+                <button @click="buy(1)" class="tile price-1"></button>
+                <button @click="buy(2)" class="tile price-2"></button>
+                <button @click="buy(3)" class="tile price-3"></button>
+                <button @click="buy(4)" class="tile price-4"></button>
             </div>
-            <button class="tile mt-3">Don't buy</button>
+            <button @click="buy(-1)" class="tile mt-3">Don't buy</button>
         </div>
         <div class="turn-div">
             <p class="turn-info"></p>
@@ -26,6 +26,10 @@
 <style>
 .invisible {
     display: none;
+}
+.unavailable {
+    pointer-events: none;
+    opacity: 0.5;
 }
 .buy-tile-div {
     position: absolute;
@@ -105,6 +109,7 @@ import { updateBoard } from "@/lib/updateBoard";
 import { requestThrowDice } from "@/lib/requestThrowDice"
 import { randint } from "@/lib/randomInt";
 import { Tile } from "@/models/tile";
+import { buyTile } from "@/lib/buyTile"
 
 var loggedUser: Player | undefined
 var boardId: number
@@ -166,7 +171,9 @@ methods: {
                     updateBoard(currentBoard, res.board, history, res.history, () => {
                         currentBoard = res.board
                         nextAction = res.nextAction
-                        const yourTurn = currentBoard.currentTurn === loggedUser?.id
+                        const userTurn = currentBoard.players.find(p => p.id === currentBoard.currentTurn)
+                        const yourTurn = userTurn?.id === loggedUser?.id
+                        if (yourTurn) loggedUser = userTurn
                         
                         currentBoard.currentTurn && turnInfoP?.html(`It's ${yourTurn ? 'your' : currentBoard.getNextPlayer()?.name} turn`)
                         
@@ -174,13 +181,17 @@ methods: {
                          ) {
                             throwDicesButton?.removeClass("invisible")
                             dicesDiv?.removeClass("invisible")
-                            rollingDices = true
-                        } else if (yourTurn && nextAction?.description === "BUY") {
-                            const tile = currentBoard.tiles.find(t => t.id === nextAction?.tilesConcerned)
-                            tile && this.applyTilesPrices(tile)      
+                            rollingDices = true      
                         } else {
                             throwDicesButton?.addClass("invisible")
                             dicesDiv?.addClass("invisible")
+                        }
+
+                        if (yourTurn && nextAction?.description === "BUY") {
+                            const tile = currentBoard.tiles.find(t => t.id === nextAction?.tilesConcerned)
+                            tile && this.applyTilesPrices(tile, userTurn as Player)
+                        } else {
+                            buyTileDiv?.addClass("invisible")
                         }
                     })
                     history = res.history
@@ -209,7 +220,7 @@ methods: {
         }
         
     },
-    applyTilesPrices(tile: Tile) {
+    applyTilesPrices(tile: Tile, player: Player) {
         const tileBasePrice = tile.prices.base
         const tileUpgradeCost = tile.prices.upgrade_cost
         const prices = [
@@ -221,10 +232,16 @@ methods: {
         ]    
 
         buyTileDiv?.removeClass("invisible")
-        tileName?.html(`Buy ${tile.name} ?`)
+        tileName?.html(`Acheter ${tile.name} ?`)
         for (const [index, priceBtn] of tilePrices.entries()) {
             priceBtn?.html(`${index === 0 ? 'Base' : 'Level ' + index.toString()} : ${prices[index]}K`)
+            if (player.money < prices[index]) priceBtn?.addClass("unavailable") 
+            else priceBtn?.removeClass("unavailable")
         }
+    },
+    buy(amount: number) {
+        buyTile(boardId, loggedUser!.id, amount).then(res => console.log(res))
+        buyTileDiv?.addClass("invisible")
     },
     getCookie(name: string) {
         var cookie_name = name + "=";

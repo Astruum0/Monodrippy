@@ -5,7 +5,7 @@ export interface IUserAction {
 
 export interface ITileAction extends IUserAction {
     amount: number
-    type: "BUY" | "NOT BUY"
+    type: "BUY"
 }
 
 export interface IDicePlay extends IUserAction {
