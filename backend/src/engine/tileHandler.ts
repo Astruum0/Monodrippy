@@ -7,6 +7,14 @@ export function isBuyable(tile: tiles): boolean {
     return tile.owner === null && typeof tile.owner !== 'undefined'
 }
 
+export function findPlayerIndex(game: any, player_id: string) {
+  for (let index = 0; index < game["players"].length; index++) {
+    if (game["players"][index].id == player_id) {
+      return index
+    }
+  }
+}
+
 export function buyTile(
   tile_id: number,
   player_id: string,
@@ -121,7 +129,7 @@ export function payRent(
   const history = [];
   if (game_tile.type == 'street') {
     if (game_tile.owner != player_id) {
-      let owner_index = this.findPlayerIndex(game, game_tile.owner);
+      let owner_index = findPlayerIndex(game, game_tile.owner);
       let price = game_tile.rent[game_tile.currentLevel];
       game['players'][index].money -= price;
       game['players'][owner_index].money += price;
@@ -143,7 +151,7 @@ export function payRent(
     }
   } else if (game_tile.type == 'gare') {
     if (game_tile.owner != player_id) {
-      let owner_index = this.findPlayerIndex(game, game_tile.owner);
+      let owner_index = findPlayerIndex(game, game_tile.owner);
       let gare_index = [4, 14, 23, 32];
       let gare_number = 0;
       for (let index = 0; index < gare_index.length; index++) {
