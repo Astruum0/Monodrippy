@@ -6,7 +6,7 @@ import { Action } from "src/models/action";
 import { player, playerDocument } from 'src/player/player.schema';
 import { tiles, tilesDocument } from './tiles.schema';
 import { nextPlayer } from '../engine/playerMovement';
-import { buyTile, payRent, upgradeTile } from 'src/engine/tileAction';
+import { buyTile, payRent, upgradeTile } from 'src/engine/tileHandler';
 
 @Injectable()
 export class tilesService {

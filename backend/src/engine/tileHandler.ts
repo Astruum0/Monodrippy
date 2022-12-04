@@ -1,7 +1,11 @@
+import { tiles } from "src/tiles/tiles.schema";
 import { Action } from 'src/models/action';
 import { player } from 'src/player/player.schema';
-import { tiles } from 'src/tiles/tiles.schema';
-import { nextPlayer } from './engine';
+import { nextPlayer } from './playerMovement';
+
+export function isBuyable(tile: tiles): boolean {
+    return tile.owner === null && typeof tile.owner !== 'undefined'
+}
 
 export function buyTile(
   tile_id: number,

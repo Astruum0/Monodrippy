@@ -1,7 +1,7 @@
 import { board } from "src/board/board.schema";
 import { Action } from "src/models/action";
 import { player } from "src/player/player.schema";
-import { isBuyable } from "./streetHandler";
+import { isBuyable } from "./tileHandler";
 
 export function movePlayer(userId: string, distance: number, board: board): [Action, Action[]] {
 
