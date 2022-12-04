@@ -4,7 +4,7 @@ import { player } from "src/player/player.schema";
 
 export function movePlayer(userId: string, distance: number, board: board): [Action, Action[]] {
 
-    const currentPlayer = board.players.filter(p => p.id === userId)[0]
+    const currentPlayer = board.players.find(p => p.id === userId)
     if(currentPlayer.position + distance == 36){
         currentPlayer.money += 400
     } else if(currentPlayer.position > 36){
