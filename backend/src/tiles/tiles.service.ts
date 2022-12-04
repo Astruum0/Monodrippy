@@ -6,7 +6,7 @@ import { Action } from "src/models/action";
 import { player, playerDocument } from 'src/player/player.schema';
 import { tiles, tilesDocument } from './tiles.schema';
 import { nextPlayer } from '../engine/playerMovement';
-import { buyTile, payRent, upgradeTile } from 'src/engine/tileHandler';
+import { buyTile, findPlayerIndex, payRent, upgradeTile } from 'src/engine/tileHandler';
 
 @Injectable()
 export class tilesService {
@@ -31,7 +31,7 @@ export class tilesService {
     let player = await this.playerModel.findOne({
       id: player_id
     }).exec();
-    let index = this.findPlayerIndex(game, player.id)
+    let index = findPlayerIndex(game, player.id)
     let game_tile = game["tiles"][tile_id]
 
     if (action == "BUY") {
@@ -44,14 +44,6 @@ export class tilesService {
       const nextAction = new Action("TURN", nextPlayer(game.players.find(p => p.id === player_id), game.players).id)
       const history = [new Action("NOT BOUGHT", player.id, tile_id)]
       return [nextAction, history]
-    }
-  }
-
-  findPlayerIndex(game: any, player_id: string) {
-    for (let index = 0; index < game["players"].length; index++) {
-      if (game["players"][index].id == player_id) {
-        return index
-      }
     }
   }
 }
