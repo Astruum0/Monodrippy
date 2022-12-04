@@ -15,8 +15,6 @@ export function updateBoard(board: Board, newBoard: Board, history: Action[], ne
 
 function applyAction(board: Board, actions: Action[], index: number , callback: (()=>void) | undefined = undefined) {
     const currAction = actions[index]
-    console.log(currAction);
-    
     if (currAction) {
         if (currAction.description === "MOVED") {
             const p = board.players.find(p => p.id === currAction.userConcerned)

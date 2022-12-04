@@ -41,11 +41,17 @@ export class gameService {
     for (let index = board.players.length; index > 0; index--) {
       player_id.push(board.players.pop()["id"]);
     }
+    for (const tile of board.tiles) {
+      if (tile.owner) tile.owner = null
+      if (tile.currentLevel >= 0) tile.currentLevel = undefined
+    }
+
     this.historyByBoard[gameId as number] = []
     this.nextActionByBoard[gameId as number] = undefined
     board.hasStarted = false
     board.currentTurn = undefined
 
+    board.markModified("tiles")
     board.save();
     return player_id
   }

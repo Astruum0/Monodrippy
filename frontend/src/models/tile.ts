@@ -36,6 +36,7 @@ export class Tile implements Tile {
         const positionRelativeToSide = this.id % 9
         const coords = new Vector(tilesStartCoords[side].x, tilesStartCoords[side].y)
         const extraCoords = positionRelativeToSide * 26
+        const offsetAxe = side % 2 ? "y" : "x"
         if (side === 0) { 
             coords.x -= extraCoords
         } else if (side === 1) { 
@@ -46,10 +47,19 @@ export class Tile implements Tile {
             coords.y += extraCoords
         }
         
-        sketch.push()
-        sketch.fill(owner.color)
-        sketch.translate(coords.x, 2.5, coords.y)
-        sketch.sphere((this.currentLevel + 1) * 2.5)
-        sketch.pop()
+        const offset = this.currentLevel * 2.5
+        
+        coords[offsetAxe] -= offset        
+
+        for (let i = 0; i < this.currentLevel + 1; i++) {
+            sketch.push()
+            sketch.fill(owner.color)
+            sketch.translate(coords.x, 2.5, coords.y)
+            sketch.sphere(2.5)
+            sketch.pop()
+            
+            coords[offsetAxe] += 5
+        }
+        
     }
 }
