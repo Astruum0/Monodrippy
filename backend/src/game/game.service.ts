@@ -5,12 +5,14 @@ import { board, boardDocument } from "src/board/board.schema";
 import { movePlayer } from "src/engine/playerMovement";
 import { Action, historyByBoard, nextActionByBoard } from "src/models/action";
 import { gameOutput } from "src/models/gameOutput";
-import { IDicePlay } from "src/models/IUserAction";
+import { IDicePlay, ITileAction, IUserAction } from "src/models/IUserAction";
+import { tilesService } from "src/tiles/tiles.service";
 
 @Injectable()
 export class gameService {
   historyByBoard: historyByBoard = {}
   nextActionByBoard: nextActionByBoard = {}
+  private readonly tilesService: tilesService
 
   constructor(
     @InjectModel(board.name) private boardModel: Model<boardDocument>
@@ -54,7 +56,7 @@ export class gameService {
     }
   }
 
-  async play(payload: IDicePlay): Promise<gameOutput> {
+  async play(payload: IDicePlay | ITileAction): Promise<gameOutput> {
 
     const nextAction = this.nextActionByBoard[payload.boardId]
     let board = await this.boardModel.findOne({ id: payload.boardId }).exec();
@@ -68,10 +70,19 @@ export class gameService {
       throw new Error(`Incorrect action type, expected ${nextAction.description}`)
     }
     
-    if (nextAction.description === "TURN") {
+    if (nextAction.description === "TURN" && type === "TURN") {
       const {dices} = payload
       const [newAction, actionsDone] = movePlayer(userId, dices.reduce((a, b) => a + b, 0), board)
       board.currentTurn = newAction.userConcerned
+
+      this.nextActionByBoard[payload.boardId] = newAction
+      this.historyByBoard[payload.boardId] = this.historyByBoard[payload.boardId].concat(actionsDone)
+    }
+
+    if (nextAction.description === "BUY" && (type === "BUY" || type === "NOT BUY")) {
+      const { amount } = payload
+      let currentPosition = board.players.find(p => p.id === payload.userId).position
+      const [newAction, actionsDone] = await Promise.resolve(this.tilesService.tileAction(payload.boardId, currentPosition, payload.userId, type))
 
       this.nextActionByBoard[payload.boardId] = newAction
       this.historyByBoard[payload.boardId] = this.historyByBoard[payload.boardId].concat(actionsDone)

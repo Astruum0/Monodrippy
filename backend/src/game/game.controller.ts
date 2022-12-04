@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/commo
 import { gameService } from './game.service';
 import { boardService } from '../board/board.service'
 import { gameOutput } from 'src/models/gameOutput';
-import { IDicePlay } from 'src/models/IUserAction';
+import { IDicePlay, ITileAction } from 'src/models/IUserAction';
 import { playerService } from 'src/player/player.service';
 
 @Controller('game')
@@ -18,7 +18,7 @@ export class gameController {
   }
 
   @Post('play')
-  async play(@Body() payload:IDicePlay) {
+  async play(@Body() payload:IDicePlay | ITileAction) {
     try {
       let output = await this.gameService.play(payload)
       return output
