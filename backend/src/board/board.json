@@ -539,6 +539,15 @@
       "players": [],
       "lucks": [
          {
+            "id": 0,
+            "name": "CAF",
+            "content": "Vous fraudez la prime d'activité pendant 6 mois. Vous gagnez 200K, mais attention au FISC.",
+            "cardEffect": {
+               "effect": "gainMoney",
+               "value": 200
+            }
+         },
+         {
             "id": 1,
             "name": "Scammed",
             "content": "Adrien vous à proposé un “bon plan no risque no cap”. Vous perdez 50K.",
@@ -568,10 +577,10 @@
          {
             "id": 4,
             "name": "Oh Snap",
-            "content": "Vous avez oublié de formatter votre fichier Go avant de push. Vous sautez 2 tours",
+            "content": "Vous avez oublié de formatter votre fichier Go avant de push. Avancez jusqu'au module Golang, ne passez pas par la case départ.",
             "cardEffect": {
-               "effect": "wait",
-               "value": 2
+               "effect": "moveToStraight",
+               "value": 8
             }
          },
          {
@@ -595,10 +604,10 @@
          {
             "id": 7,
             "name": "Poopy break",
-            "content": "Benjam doit allez aux toilettes. Attendez le et sautez 2 tours.",
+            "content": "Benjam à boucher toutes les toilettes de Condés, dirigez vous vers le campus Chartrons.",
             "cardEffect": {
-               "effect": "wait",
-               "value": 2
+               "effect": "moveTo",
+               "value": 32
             }
          },
          {
@@ -621,11 +630,11 @@
          },
          {
             "id": 10,
-            "name": "Patrick Piquart",
-            "content": "M. Piquart vous raconte 1% de sa vie. Ecoutez le et sautez 3 tours.",
+            "name": "Yoink",
+            "content": "Mattéo vous YOINK votre argent et le YEET. Vous perdez 50K.",
             "cardEffect": {
-               "effect": "wait",
-               "value": 3
+               "effect": "loseMoney",
+               "value": 50
             }
          },
          {
@@ -1234,6 +1243,15 @@
       "players": [],
       "lucks": [
          {
+            "id": 0,
+            "name": "CAF",
+            "content": "Vous fraudez la prime d'activité pendant 6 mois. Vous gagnez 200K, mais attention au FISC.",
+            "cardEffect": {
+               "effect": "gainMoney",
+               "value": 200
+            }
+         },
+         {
             "id": 1,
             "name": "Scammed",
             "content": "Adrien vous à proposé un “bon plan no risque no cap”. Vous perdez 50K.",
@@ -1263,10 +1281,10 @@
          {
             "id": 4,
             "name": "Oh Snap",
-            "content": "Vous avez oublié de formatter votre fichier Go avant de push. Vous sautez 2 tours",
+            "content": "Vous avez oublié de formatter votre fichier Go avant de push. Avancez jusqu'au module Golang, ne passez pas par la case départ.",
             "cardEffect": {
-               "effect": "wait",
-               "value": 2
+               "effect": "moveToStraight",
+               "value": 8
             }
          },
          {
@@ -1290,10 +1308,10 @@
          {
             "id": 7,
             "name": "Poopy break",
-            "content": "Benjam doit allez aux toilettes. Attendez le et sautez 2 tours.",
+            "content": "Benjam à boucher toutes les toilettes de Condés, dirigez vous vers le campus Chartrons.",
             "cardEffect": {
-               "effect": "wait",
-               "value": 2
+               "effect": "moveTo",
+               "value": 32
             }
          },
          {
@@ -1316,11 +1334,11 @@
          },
          {
             "id": 10,
-            "name": "Patrick Piquart",
-            "content": "M. Piquart vous raconte 1% de sa vie. Ecoutez le et sautez 3 tours.",
+            "name": "Yoink",
+            "content": "Mattéo vous YOINK votre argent et le YEET. Vous perdez 50K.",
             "cardEffect": {
-               "effect": "wait",
-               "value": 3
+               "effect": "loseMoney",
+               "value": 50
             }
          },
          {
