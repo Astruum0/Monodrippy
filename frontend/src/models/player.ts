@@ -66,7 +66,7 @@ export class Player implements Player {
 
     moveTo(destinationCase: number, callback: CallbackFunction | undefined = undefined) {
         let travellingDistance = destinationCase - this.position
-        if (travellingDistance < 0) { travellingDistance = 36 - travellingDistance  }
+        if (travellingDistance < 0) { travellingDistance = 36 + travellingDistance  }
         const travellingStep = travellingDistance / 50
         const movingInterval = setInterval(() => {
             this.position = (this.position + travellingStep) % 36
