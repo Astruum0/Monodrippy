@@ -112,7 +112,7 @@ canvas {
 import Vue from "vue";
 import
 P5 from "./P5.vue";
-import {P5Sketch, P5Image, P5Geometry, P5Vector} from "vue-p5-component";
+import {P5Sketch, P5Image, P5Geometry, P5Vector, P5Font} from "vue-p5-component";
 import { Element, Vector } from "p5";
 import { Board } from "@/models/board";
 import { getBoard } from "../lib/getGame"
@@ -134,6 +134,8 @@ var history: Action[] = []
 var nextAction: Action | undefined
 
 var updateBoardTimeout: number
+
+var MonoFont: P5Font
 
 var startGameBtn: Element | null
 
@@ -166,6 +168,9 @@ methods: {
         startGameBtn?.addClass("invisible")
     },
     setup(sketch: P5Sketch) {
+        MonoFont = sketch.loadFont("fonts/KabelBd-Normal.ttf")
+        
+
         boardId = parseInt(this.getCookie("id_cookie") || "0") | 1
         var pseudo = this.getCookie("pseudo_cookie")   
 
@@ -186,6 +191,7 @@ methods: {
         Board.boardImg = sketch.loadImage("Board3D.png")
         Board.boardBackground = sketch.loadImage("bg.jpg")
         Player.model = sketch.loadModel("PawnLowPoly.obj")
+
         
         updateBoardTimeout = setInterval(() => {
             getBoard(boardId).then(res => {
@@ -284,7 +290,8 @@ methods: {
         sketch.background(251, 251, 234)
 
         sketch.orbitControl(2, 2, 0.02);
-
+        
+        sketch.textFont(MonoFont)
         currentBoard && currentBoard.draw(sketch)
 
         if (rollingDices && dicesNumberDiv.length > 0) {

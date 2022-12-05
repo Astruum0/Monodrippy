@@ -1,4 +1,5 @@
 import { tilesStartCoords } from "@/lib/convertTileToCoords"
+import { BIconTextareaResize } from "bootstrap-vue"
 import { Vector } from "p5"
 import { P5Sketch } from "vue-p5-component"
 import { Player } from "./player"
@@ -36,20 +37,37 @@ export class Tile implements Tile {
         const positionRelativeToSide = this.id % 9
         const coords = new Vector(tilesStartCoords[side].x, tilesStartCoords[side].y)
         const extraCoords = positionRelativeToSide * 26
+        const textCoords = {x: 0, y: 0}
         const offsetAxe = side % 2 ? "y" : "x"
         if (side === 0) { 
             coords.x -= extraCoords
+            textCoords.x = coords.x - 13
+            textCoords.y = coords.y - 2
         } else if (side === 1) { 
             coords.y -= extraCoords
+            textCoords.x = coords.x + 2
+            textCoords.y = coords.y - 13
         } else if (side === 2) {
             coords.x += extraCoords
-        } else {
+            textCoords.x = coords.x + 13
+            textCoords.y = coords.y + 2
+        } else if (side === 3) {
             coords.y += extraCoords
+            textCoords.x = coords.x - 2
+            textCoords.y = coords.y + 13
         }
-        
-        const offset = this.currentLevel * 2.5
-        
-        coords[offsetAxe] -= offset        
+
+        sketch.push()
+        sketch.textSize(5)    
+        sketch.fill(0)
+        sketch.translate(textCoords.x, -0.1, textCoords.y)
+        sketch.rotateX(sketch.PI/2)
+        sketch.rotateZ(side * sketch.PI / 2)
+        sketch.textAlign(sketch.CENTER)
+        sketch.text(`${this.rent[this.currentLevel]}K`, 0, 0, 26)
+        sketch.pop()
+
+        coords[offsetAxe] -= this.currentLevel * 2.5        
 
         for (let i = 0; i < this.currentLevel + 1; i++) {
             sketch.push()
@@ -60,6 +78,5 @@ export class Tile implements Tile {
             
             coords[offsetAxe] += 5
         }
-        
     }
 }
