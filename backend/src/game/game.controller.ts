@@ -3,6 +3,7 @@ import {
 	Controller,
 	Delete,
 	Get,
+	Headers,
 	Param,
 	Patch,
 	Post,
@@ -41,8 +42,19 @@ export class gameController {
 	}
 
 	@Patch('start/:id')
-	async startGame(@Param('id') id: Number) {
-		return this.gameService.startGame(id);
+	async startGame(@Headers() headers, @Param('id') id: Number) {
+		try {
+			return await this.gameService.startGame(id, headers["authorization"]);
+		} catch (e: unknown) {
+			return {
+				error:
+					typeof e === 'string'
+						? e.toUpperCase()
+						: e instanceof Error
+						? e.message
+						: 'Error',
+			};
+		}
 	}
 
 	@Delete('reset/:id')

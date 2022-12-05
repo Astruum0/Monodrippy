@@ -20,13 +20,19 @@ export class gameService {
 		@InjectModel(board.name) private boardModel: Model<boardDocument>,
 		@InjectModel(player.name) private playerModel: Model<playerDocument>,
 	) {
-		this.startGame(1); // debug purposes
+		// this.startGame(1); // debug purposes
 	}
 
-	async startGame(gameId: Number) {
+	async startGame(gameId: Number, userId: string) {
 		let board = await this.boardModel.findOne({ id: gameId }).exec();
-		board.hasStarted = true;
+		if (board.players.length < 2) {
+			throw new Error("Not enought players in the game")
+		}
+		if (board.players[0].id !== userId) {
+			throw new Error("You don't have the permission to start the game")
+		}
 
+		board.hasStarted = true;
 		board.currentTurn =
 			board.players[Math.floor(Math.random() * board.players.length)].id;
 
@@ -37,6 +43,10 @@ export class gameService {
 		this.historyByBoard[board.id] = [new Action('Game has started')];
 
 		board.save();
+
+		return {
+			message: "Game has started"
+		}
 	}
 
   async resetGame(gameId: Number) {

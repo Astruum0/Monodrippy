@@ -1,5 +1,6 @@
 <template>
     <div>
+        <button class="start-game-btn invisible" @click="startGame">Start Game</button>
         <div class="buy-tile-div invisible">
             <p class="tile-name"></p>
             <div style="justify-content: space-around; flex-flow: row; display: flex">
@@ -30,6 +31,18 @@
 .unavailable {
     pointer-events: none;
     opacity: 0.5;
+}
+.start-game-btn {
+    position: absolute;
+    top: 90%;  
+    left: 90%; 
+    transform: translate(-50%, -50%);
+
+    border: 1px solid white;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    box-shadow: black 1px 1px 10px;
 }
 .buy-tile-div {
     position: absolute;
@@ -110,6 +123,8 @@ import { requestThrowDice } from "@/lib/requestThrowDice"
 import { randint } from "@/lib/randomInt";
 import { Tile } from "@/models/tile";
 import { buyTile } from "@/lib/buyTile"
+import { startGame } from "@/lib/startGame";
+import {joinGame} from "@/lib/joinGame"
 
 var loggedUser: Player | undefined
 var boardId: number
@@ -119,6 +134,8 @@ var history: Action[] = []
 var nextAction: Action | undefined
 
 var updateBoardTimeout: number
+
+var startGameBtn: Element | null
 
 var turnInfoP: Element | null
 var throwDicesButton: Element | null
@@ -144,12 +161,17 @@ methods: {
             console.log(res);
         })
     },
+    startGame() {
+        startGame(boardId, loggedUser!.id).then(res => res && console.log("Game started"))
+        startGameBtn?.addClass("invisible")
+    },
     setup(sketch: P5Sketch) {
         boardId = parseInt(this.getCookie("id_cookie") || "0") | 1
         var pseudo = this.getCookie("pseudo_cookie")   
 
         sketch.createCanvas(sketch.windowWidth, sketch.windowHeight, sketch.WEBGL);
         sketch.background(20);
+        startGameBtn = sketch.select(".start-game-btn")
         turnInfoP = sketch.select(".turn-info")
         throwDicesButton = sketch.select(".throw")
         dicesDiv = sketch.select(".dices-div")
@@ -167,7 +189,14 @@ methods: {
         
         updateBoardTimeout = setInterval(() => {
             getBoard(boardId).then(res => {
-                if (currentBoard) {                 
+                if (!currentBoard) {
+                    currentBoard = res.board
+                    loggedUser = currentBoard.players.find(p => p.name === pseudo)
+                    !loggedUser && pseudo && joinGame(boardId, pseudo).then(player => {
+                        loggedUser = player
+                    })
+
+                } else {
                     updateBoard(currentBoard, res.board, history, res.history, () => {
                         currentBoard = res.board
                         nextAction = res.nextAction
@@ -178,7 +207,7 @@ methods: {
                         currentBoard.currentTurn && turnInfoP?.html(`It's ${yourTurn ? 'your' : currentBoard.getNextPlayer()?.name} turn`)
                         
                         if (yourTurn && nextAction?.description === "TURN"
-                         ) {
+                            ) {
                             throwDicesButton?.removeClass("invisible")
                             dicesDiv?.removeClass("invisible")
                             rollingDices = true      
@@ -193,15 +222,11 @@ methods: {
                         } else {
                             buyTileDiv?.addClass("invisible")
                         }
-                    })
-                    history = res.history
-                } else {
-                    currentBoard = res.board
-                    loggedUser = currentBoard.players.find(p => p.name === pseudo)
-                    !loggedUser && pseudo && this.joinGame(boardId, pseudo).then(player => {
-                        loggedUser = player
-                    })
-                }    
+
+                        !currentBoard.hasStarted && currentBoard.players.length >= 2 && currentBoard.players[0].id === loggedUser!.id && startGameBtn?.removeClass("invisible")
+                    }) 
+                }           
+                history = res.history
             })
         }, 2000);
         
@@ -253,25 +278,6 @@ methods: {
                 return c.substring(cookie_name.length, c.length);
             }
         }
-    },
-    joinGame(id: number, pseudo: string): Promise<Player> {
-        console.log("PLAYER JOINED : ", pseudo, id);
-        
-        const url = "http://localhost:3001/boards/join/" + id;
-
-        const data = {
-            name: pseudo
-        }
-
-        return fetch(url, {
-            method: "POST",
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(data)
-        })
-        .then(res => res.json())
-        .then(res => {
-            if (res.error) console.error(res.error);
-            return res as Player})
     },
     draw(sketch: P5Sketch) {
         
