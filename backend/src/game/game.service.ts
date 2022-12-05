@@ -113,7 +113,8 @@ export class gameService {
 			const { dices } = payload;
 			const [newAction, actionsDone] = movePlayer(
 				userId,
-				dices.reduce((a, b) => a + b, 0),
+				// dices.reduce((a, b) => a + b, 0),
+				6,
 				board,
 			);
 

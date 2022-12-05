@@ -117,7 +117,7 @@ export function payRent(
       player.money -= price;
       owner.money += price;
       history.push(new Action('PAID', player.id, tile.id));
-      history.push(new Action(`GAINED ${price}`), owner.id);
+      history.push(new Action(`GAINED ${price}`, owner.id));
       return [
         new Action(
           'TURN',

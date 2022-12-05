@@ -1,6 +1,11 @@
 <template>
     <div>
         <button class="start-game-btn invisible" @click="startGame">Start Game</button>
+        <div class="luck-card invisible">
+            <button class="hide-card" @click="hideCard">x</button>
+            <h3 class="luck-title"></h3>
+            <p class="luck-desc"></p>
+        </div>
         <div class="buy-tile-div invisible">
             <p class="tile-name"></p>
             <div style="justify-content: space-around; flex-flow: row; display: flex">
@@ -43,6 +48,37 @@
     color: white;
     padding: 10px;
     box-shadow: black 1px 1px 10px;
+}
+.luck-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    border: 3px solid white;
+    background-color: red;
+    color: white;
+    padding: 50px;
+    box-shadow: black 1px 1px 10px;
+
+    /* vvvvv Unable to select text vvvvv */
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+    
+}
+.hide-card {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    margin: auto;
+    color: white;
+    border: 0;
+    background-color: red;
+    padding: 3px 8px;
+    font-size: large !important;
+    
 }
 .buy-tile-div {
     position: absolute;
@@ -112,19 +148,20 @@ canvas {
 import Vue from "vue";
 import
 P5 from "./P5.vue";
-import {P5Sketch, P5Image, P5Geometry, P5Vector, P5Font} from "vue-p5-component";
-import { Element, Vector } from "p5";
+import {P5Sketch, P5Font} from "vue-p5-component";
+import { Element } from "p5";
 import { Board } from "@/models/board";
 import { getBoard } from "../lib/getGame"
 import { Player } from "@/models/player";
 import { Action } from "@/models/game";
+import { Luck } from "@/models/luck";
 import { updateBoard } from "@/lib/updateBoard";
 import { requestThrowDice } from "@/lib/requestThrowDice"
 import { randint } from "@/lib/randomInt";
 import { Tile } from "@/models/tile";
 import { buyTile } from "@/lib/buyTile"
 import { startGame } from "@/lib/startGame";
-import {joinGame} from "@/lib/joinGame"
+import { joinGame } from "@/lib/joinGame"
 
 var loggedUser: Player | undefined
 var boardId: number
@@ -149,6 +186,10 @@ var rollingDices = true
 var buyTileDiv: Element | null
 var tileName: Element | null
 var tilePrices: (Element | null)[] = []
+
+var luckCardDiv: Element | null
+var luckCardTitle: Element | null
+var luckCardDesc: Element | null
 
 export default Vue.extend({
 components: { P5 },
@@ -188,9 +229,16 @@ methods: {
             tilePrices.push(sketch.select(`.price-${i}`))
         }
         
+        luckCardDiv = sketch.select(".luck-card")
+        luckCardTitle = sketch.select(".luck-title")
+        luckCardDesc = sketch.select(".luck-desc")
+
         Board.boardImg = sketch.loadImage("Board3D.png")
         Board.boardBackground = sketch.loadImage("bg.jpg")
         Player.model = sketch.loadModel("PawnLowPoly.obj")
+        Luck.div = luckCardDiv
+        Luck.title = luckCardTitle
+        Luck.desc = luckCardDesc
 
         
         updateBoardTimeout = setInterval(() => {
@@ -298,6 +346,9 @@ methods: {
             dicesNumberDiv[0]?.html(randint(1, 6).toString())
             dicesNumberDiv[1]?.html(randint(1, 6).toString())
         }        
+    },
+    hideCard() {
+        luckCardDiv?.addClass("invisible")
     }
 },
 });

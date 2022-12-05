@@ -1,4 +1,3 @@
-import { tilesStartCoords } from "@/lib/convertTileToCoords"
 import { dividePawns } from "@/lib/dividePawns"
 import { P5Image, P5Sketch } from "vue-p5-component"
 import { Luck } from "./luck"

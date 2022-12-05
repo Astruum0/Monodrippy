@@ -3,12 +3,14 @@ import { Action } from 'src/models/action';
 import { player } from 'src/player/player.schema';
 import { goToJail } from './jailService';
 import { cvec, pretEtudiant } from './specialService';
+import { luckAction } from './luckHandler';
 import { isBuyable } from './tileHandler';
 
 export function movePlayer(
 	userId: string,
 	distance: number,
 	board: board,
+	history: Action[] = []
 ): [Action, Action[]] {
 	const currentPlayer = board.players.find((p) => p.id === userId);
 	if (currentPlayer.position + distance == 2) {
@@ -24,8 +26,7 @@ export function movePlayer(
 	}
 
 	currentPlayer.position = (currentPlayer.position + distance) % 36;
-	const history = [];
-	history.push(new Action('MOVED', currentPlayer.id, currentPlayer.position));
+	history.length === 0 && history.push(new Action('MOVED', currentPlayer.id, currentPlayer.position));
 
 	if (currentPlayer.position == 27) {
 		return goToJail(board, currentPlayer);
@@ -34,7 +35,13 @@ export function movePlayer(
 	let nextAction: Action;
 
 	if (isBuyable(board.tiles[currentPlayer.position])) {
-		nextAction = new Action('BUY', currentPlayer.id, currentPlayer.position);
+		nextAction = new Action(
+			'BUY',
+			currentPlayer.id,
+			currentPlayer.position,
+		);
+	} else if(board.tiles[currentPlayer.position].type === "chance") {
+		return luckAction(board, currentPlayer, history)
 	} else {
 		const newPlayer = nextPlayer(currentPlayer, board.players);
 		nextAction = new Action('TURN', newPlayer.id);
