@@ -20,55 +20,52 @@ export class gameService {
 		@InjectModel(board.name) private boardModel: Model<boardDocument>,
 		@InjectModel(player.name) private playerModel: Model<playerDocument>,
 	) {
-		// this.startGame(1); // debug purposes
+		this.startGame(1, 'c0b56306-4e08-4f61-b066-6615c5b9badd'); // debug purposes
 	}
 
 	async startGame(gameId: Number, userId: string) {
 		let board = await this.boardModel.findOne({ id: gameId }).exec();
 		if (board.players.length < 2) {
-			throw new Error("Not enought players in the game")
+			throw new Error('Not enought players in the game');
 		}
 		if (board.players[0].id !== userId) {
-			throw new Error("You don't have the permission to start the game")
+			throw new Error("You don't have the permission to start the game");
 		}
 
 		board.hasStarted = true;
 		board.currentTurn =
 			board.players[Math.floor(Math.random() * board.players.length)].id;
 
-		this.nextActionByBoard[board.id] = new Action(
-			'TURN',
-			board.currentTurn,
-		);
+		this.nextActionByBoard[board.id] = new Action('TURN', board.currentTurn);
 		this.historyByBoard[board.id] = [new Action('Game has started')];
 
 		board.save();
 
 		return {
-			message: "Game has started"
-		}
+			message: 'Game has started',
+		};
 	}
 
-  async resetGame(gameId: Number) {
-    let board = await this.boardModel.findOne({ id: gameId }).exec();
-    let player_id = []
-    for (let index = board.players.length; index > 0; index--) {
-      player_id.push(board.players.pop()["id"]);
-    }
-    for (const tile of board.tiles) {
-      if (tile.owner) tile.owner = null
-      if (tile.currentLevel >= 0) tile.currentLevel = undefined
-    }
+	async resetGame(gameId: Number) {
+		let board = await this.boardModel.findOne({ id: gameId }).exec();
+		let player_id = [];
+		for (let index = board.players.length; index > 0; index--) {
+			player_id.push(board.players.pop()['id']);
+		}
+		for (const tile of board.tiles) {
+			if (tile.owner) tile.owner = null;
+			if (tile.currentLevel >= 0) tile.currentLevel = undefined;
+		}
 
-    this.historyByBoard[gameId as number] = []
-    this.nextActionByBoard[gameId as number] = undefined
-    board.hasStarted = false
-    board.currentTurn = undefined
+		this.historyByBoard[gameId as number] = [];
+		this.nextActionByBoard[gameId as number] = undefined;
+		board.hasStarted = false;
+		board.currentTurn = undefined;
 
-    board.markModified("tiles")
-    board.save();
-    return player_id
-  }
+		board.markModified('tiles');
+		board.save();
+		return player_id;
+	}
 
 	async gameOutput(id: Number): Promise<gameOutput> {
 		return {
@@ -80,9 +77,7 @@ export class gameService {
 
 	async play(payload: IDicePlay | ITileAction): Promise<gameOutput> {
 		const nextAction = this.nextActionByBoard[payload.boardId];
-		let board = await this.boardModel
-			.findOne({ id: payload.boardId })
-			.exec();
+		let board = await this.boardModel.findOne({ id: payload.boardId }).exec();
 		let currentPlayer = board.players.find((p) => p.id === payload.userId);
 		let currentPosition = currentPlayer.position;
 		let currentTile = board.tiles[currentPosition];
@@ -101,17 +96,12 @@ export class gameService {
 		if (currentPlayer.turnsInPrison > 1) {
 			const { dices } = payload as IDicePlay;
 
-			const [newAction, actionsDone] = turnInJail(
-				board,
-				currentPlayer,
-				dices,
-			);
+			const [newAction, actionsDone] = turnInJail(board, currentPlayer, dices);
 			this.nextActionByBoard[payload.boardId] = newAction;
 			this.historyByBoard[payload.boardId] =
 				this.historyByBoard[payload.boardId].concat(actionsDone);
 
-			board.currentTurn =
-				this.nextActionByBoard[payload.boardId].userConcerned;
+			board.currentTurn = this.nextActionByBoard[payload.boardId].userConcerned;
 			board.markModified('players');
 			board.markModified('tiles');
 			board.save();
@@ -135,13 +125,7 @@ export class gameService {
 			const { amount } = payload;
 
 			const [newAction, actionsDone] = await Promise.resolve(
-				this.tileAction(
-					board,
-					currentTile,
-					currentPlayer,
-					type,
-					amount,
-				),
+				this.tileAction(board, currentTile, currentPlayer, type, amount),
 			);
 
 			this.nextActionByBoard[payload.boardId] = newAction;
@@ -149,8 +133,7 @@ export class gameService {
 				this.historyByBoard[payload.boardId].concat(actionsDone);
 		}
 
-		board.currentTurn =
-			this.nextActionByBoard[payload.boardId].userConcerned;
+		board.currentTurn = this.nextActionByBoard[payload.boardId].userConcerned;
 		board.markModified('players');
 		board.markModified('tiles');
 		board.save();

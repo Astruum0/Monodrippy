@@ -6,6 +6,8 @@ import { movePlayer, nextPlayer } from './playerMovement';
 export function goToJail(board: board, player: player): [Action, Action[]] {
 	const history = [];
 
+	history.push(new Action('MOVED', player.id, 27));
+
 	player.position = 9;
 	player.turnsInPrison = 3;
 
@@ -36,7 +38,7 @@ export function turnInJail(
 	if (currentPlayer.turnsInPrison == 0 || diceThrow[0] == diceThrow[1]) {
 		currentPlayer.turnsInPrison = 0;
 
-		movePlayer(
+		return movePlayer(
 			currentPlayer.id,
 			diceThrow.reduce((a, b) => a + b, 0),
 			board,
