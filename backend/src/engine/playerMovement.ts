@@ -2,6 +2,7 @@ import { board } from 'src/board/board.schema';
 import { Action } from 'src/models/action';
 import { player } from 'src/player/player.schema';
 import { goToJail } from './jailService';
+import { cvec, pretEtudiant } from './specialService';
 import { isBuyable } from './tileHandler';
 
 export function movePlayer(
@@ -10,12 +11,16 @@ export function movePlayer(
 	board: board,
 ): [Action, Action[]] {
 	const currentPlayer = board.players.find((p) => p.id === userId);
-	if (currentPlayer.position + distance == 36) {
+	if (currentPlayer.position + distance == 2) {
+		return cvec(board, currentPlayer);
+	} else if (currentPlayer.position + distance == 27) {
+		return goToJail(board, currentPlayer);
+	} else if (currentPlayer.position + distance == 34) {
+		return pretEtudiant(board, currentPlayer);
+	} else if (currentPlayer.position + distance == 36) {
 		currentPlayer.money += 300;
 	} else if (currentPlayer.position + distance > 36) {
 		currentPlayer.money += 150;
-	} else if (currentPlayer.position + distance == 27) {
-		return goToJail(board, currentPlayer);
 	}
 
 	currentPlayer.position = (currentPlayer.position + distance) % 36;

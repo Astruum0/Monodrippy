@@ -26,19 +26,19 @@ export class gameController {
 
 	@Post('play')
 	async play(@Body() payload: IDicePlay | ITileAction) {
-		try {
+		// try {
 			let output = await this.gameService.play(payload);
 			return output;
-		} catch (e: unknown) {
-			return {
-				error:
-					typeof e === 'string'
-						? e.toUpperCase()
-						: e instanceof Error
-						? e.message
-						: 'Error',
-			};
-		}
+		// } catch (e: unknown) {
+		// 	return {
+		// 		error:
+		// 			typeof e === 'string'
+		// 				? e.toUpperCase()
+		// 				: e instanceof Error
+		// 				? e.message
+		// 				: 'Error',
+		// 	};
+		// }
 	}
 
 	@Patch('start/:id')

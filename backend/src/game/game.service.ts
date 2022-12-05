@@ -20,13 +20,14 @@ export class gameService {
 		@InjectModel(board.name) private boardModel: Model<boardDocument>,
 		@InjectModel(player.name) private playerModel: Model<playerDocument>,
 	) {
-		// this.startGame(1); // debug purposes
+		this.startGame(1, "bb0e11fe-a48d-4f29-8f57-7eae83cb0433"); // debug purposes
 	}
 
 	async startGame(gameId: Number, userId: string) {
 		let board = await this.boardModel.findOne({ id: gameId }).exec();
+
 		if (board.players.length < 2) {
-			throw new Error("Not enought players in the game")
+			throw new Error("Not enough players in the game")
 		}
 		if (board.players[0].id !== userId) {
 			throw new Error("You don't have the permission to start the game")
