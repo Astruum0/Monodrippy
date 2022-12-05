@@ -38,7 +38,7 @@ export class boardController {
 			money: 1500,
 			properties: [],
 			turnsInPrison: 0,
-			hasGOOJCard: false,
+			hasLosed: false,
 			position: 0,
 			nextThrowModifier: 1,
 		};

@@ -114,10 +114,18 @@ export function payRent(
     if (tile.owner != player.id) {
       let owner = game.players[findPlayerIndex(game, tile.owner)];
       let price = tile.rent[tile.currentLevel];
-      player.money -= price;
-      owner.money += price;
-      history.push(new Action('PAID', player.id, tile.id));
-      history.push(new Action(`GAINED ${price}`, owner.id));
+      if (player.money >= price) {
+        player.money -= price;
+        owner.money += price;
+      } else {
+        price = player.money
+        owner.money += price
+        player.hasLosed = true
+        history.push(new Action(`LOST GAME`, player.id));
+      }
+
+      history.push(new Action(`PAID ${price}`, player.id, tile.id));
+      history.push(new Action(`GAINED ${price}`), owner.id, tile.id);
       return [
         new Action(
           'TURN',

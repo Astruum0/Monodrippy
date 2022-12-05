@@ -12,8 +12,14 @@ export function luckAction(board: board, player: player, history: Action[]): [Ac
 
     switch (effect) {
         case "loseMoney":
-            player.money -= value
-            history.push(new Action(`LOST ${value}`, player.id));
+            if (player.money >= value) {
+                player.money -= value
+                history.push(new Action(`LOST ${value}`, player.id));
+            } else {
+                player.money = 0
+                player.hasLosed = true
+                history.push(new Action(`LOST GAME`, player.id));
+            }
             break;
         case "gainMoney":
             player.money += value
