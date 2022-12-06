@@ -45,6 +45,15 @@ export class Board implements Board {
         return this.currentTurn ? this.getPlayerById(this.currentTurn) : undefined
     }
 
+    getNumberOfTrainStation(ownerId: string): number {
+        const trainStationsIndexes = [4, 14, 23, 32];
+        let res = 0;
+        for (const i of trainStationsIndexes) {
+            if (this.tiles[i].owner === ownerId) res++
+        }
+        return res
+    }
+
     draw(sketch: P5Sketch) {
         sketch.push()
         sketch.translate(0, 2.5, 0)
@@ -69,7 +78,7 @@ export class Board implements Board {
 
         this.tiles.forEach(t => {
             const owner = this.players.find(p => p.id === t.owner)
-            owner && t.draw(sketch, owner)
+            owner && t.draw(sketch, owner, this)
         })
     } 
 }

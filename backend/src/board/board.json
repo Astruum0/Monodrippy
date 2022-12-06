@@ -550,7 +550,7 @@
          {
             "id": 1,
             "name": "Scammed",
-            "content": "Adrien vous à proposé un “bon plan no risque no cap”. Vous perdez 50K.",
+            "content": "Adrien vous a proposé un “bon plan no risque no cap”. Vous perdez 50K.",
             "cardEffect": {
                "effect": "loseMoney",
                "value": 50
@@ -604,7 +604,7 @@
          {
             "id": 7,
             "name": "Poopy break",
-            "content": "Benjam à boucher toutes les toilettes de Condés, dirigez vous vers le campus Chartrons.",
+            "content": "Benjam a bouché toutes les toilettes de Condés, dirigez vous vers le campus Chartrons.",
             "cardEffect": {
                "effect": "moveTo",
                "value": 32
@@ -685,7 +685,7 @@
          {
             "id": 16,
             "name": "Salaire",
-            "content": "Votre dure mois de labeur est enfin terminé. Vous gagnez 100K.",
+            "content": "Votre dur mois de labeur est enfin terminé. Vous gagnez 100K. (C'est un salaire d'alternant faut pas abuser non plus)",
             "cardEffect": {
                "effect": "gainMoney",
                "value": 100
@@ -698,6 +698,15 @@
             "cardEffect": {
                "effect": "moveTo",
                "value": 35
+            }
+         },
+         {
+            "id": 18,
+            "name": "Retour du cirque",
+            "content": "Nouvelle masterclass du Ynov Circus Pinder, rendez vous à la case Ycircus.",
+            "cardEffect": {
+               "effect": "moveTo",
+               "value": 18
             }
          }
       ],
@@ -1254,7 +1263,7 @@
          {
             "id": 1,
             "name": "Scammed",
-            "content": "Adrien vous à proposé un “bon plan no risque no cap”. Vous perdez 50K.",
+            "content": "Adrien vous a proposé un “bon plan no risque no cap”. Vous perdez 50K.",
             "cardEffect": {
                "effect": "loseMoney",
                "value": 50
@@ -1308,7 +1317,7 @@
          {
             "id": 7,
             "name": "Poopy break",
-            "content": "Benjam à boucher toutes les toilettes de Condés, dirigez vous vers le campus Chartrons.",
+            "content": "Benjam a bouché toutes les toilettes de Condés, dirigez vous vers le campus Chartrons.",
             "cardEffect": {
                "effect": "moveTo",
                "value": 32
@@ -1389,7 +1398,7 @@
          {
             "id": 16,
             "name": "Salaire",
-            "content": "Votre dure mois de labeur est enfin terminé. Vous gagnez 100K.",
+            "content": "Votre dur mois de labeur est enfin terminé. Vous gagnez 100K. (C'est un salaire d'alternant faut pas abuser non plus)",
             "cardEffect": {
                "effect": "gainMoney",
                "value": 100
@@ -1402,6 +1411,15 @@
             "cardEffect": {
                "effect": "moveTo",
                "value": 35
+            }
+         },
+         {
+            "id": 18,
+            "name": "Retour du cirque",
+            "content": "Nouvelle masterclass du Ynov Circus Pinder, rendez vous à la case Ycircus.",
+            "cardEffect": {
+               "effect": "moveTo",
+               "value": 18
             }
          }
       ],
