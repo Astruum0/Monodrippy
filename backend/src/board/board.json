@@ -132,7 +132,7 @@
          {
             "id": 9,
             "name": "Prison",
-            "type": "chance"
+            "type": "prison"
          },
          {
             "id": 10,
@@ -272,7 +272,7 @@
          {
             "id": 18,
             "name": "Ynov Circus",
-            "type": "chance"
+            "type": "ycircus"
          },
          {
             "id": 19,
@@ -412,7 +412,7 @@
          {
             "id": 27,
             "name": "GoToPrison",
-            "type": "chance"
+            "type": "goToJail"
          },
          {
             "id": 28,
@@ -615,7 +615,7 @@
             "name": "Tacos 3 viandes",
             "content": "Après un bon Cozy vous vous sentez repu. Votre prochain jet de dés est divisé par 2.",
             "cardEffect": {
-               "effect": "NextThrow",
+               "effect": "nextThrow",
                "value": 0.5
             }
          },
@@ -624,7 +624,7 @@
             "name": "MANGO LOCO",
             "content": "La Mango Loco coule dans vos veines et vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
             "cardEffect": {
-               "effect": "NextThrow",
+               "effect": "nextThrow",
                "value": 2
             }
          },
@@ -660,7 +660,7 @@
             "name": "grève TBM",
             "content": "La grêve des tramways vous met en retard. Votre prochain jet de dés est divisé par 2.",
             "cardEffect": {
-               "effect": "NextThrow",
+               "effect": "nextThrow",
                "value": 0.5
             }
          },
@@ -669,7 +669,7 @@
             "name": "BUBLIZ",
             "content": "Après un pari perdu, vous dégustez un sandwich poulet-crudité-bubliz. Bien qu'immonde ce repas vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
             "cardEffect": {
-               "effect": "NextThrow",
+               "effect": "nextThrow",
                "value": 2
             }
          },
@@ -836,7 +836,7 @@
          {
             "id": 9,
             "name": "Prison",
-            "type": "chance"
+            "type": "prison"
          },
          {
             "id": 10,
@@ -976,7 +976,7 @@
          {
             "id": 18,
             "name": "Ynov Circus",
-            "type": "chance"
+            "type": "ycircus"
          },
          {
             "id": 19,
@@ -1116,7 +1116,7 @@
          {
             "id": 27,
             "name": "GoToPrison",
-            "type": "chance"
+            "type": "goToJail"
          },
          {
             "id": 28,
@@ -1319,7 +1319,7 @@
             "name": "Tacos 3 viandes",
             "content": "Après un bon Cozy vous vous sentez repu. Votre prochain jet de dés est divisé par 2.",
             "cardEffect": {
-               "effect": "NextThrow",
+               "effect": "nextThrow",
                "value": 0.5
             }
          },
@@ -1328,7 +1328,7 @@
             "name": "MANGO LOCO",
             "content": "La Mango Loco coule dans vos veines et vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
             "cardEffect": {
-               "effect": "NextThrow",
+               "effect": "nextThrow",
                "value": 2
             }
          },
@@ -1364,7 +1364,7 @@
             "name": "grève TBM",
             "content": "La grêve des tramways vous met en retard. Votre prochain jet de dés est divisé par 2.",
             "cardEffect": {
-               "effect": "NextThrow",
+               "effect": "nextThrow",
                "value": 0.5
             }
          },
@@ -1373,7 +1373,7 @@
             "name": "BUBLIZ",
             "content": "Après un pari perdu, vous dégustez un sandwich poulet-crudité-bubliz. Bien qu'immonde ce repas vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
             "cardEffect": {
-               "effect": "NextThrow",
+               "effect": "nextThrow",
                "value": 2
             }
          },

@@ -113,14 +113,14 @@ export class gameService {
 			const { dices } = payload;
 			const [newAction, actionsDone] = movePlayer(
 				userId,
-				// dices.reduce((a, b) => a + b, 0),
-				6,
+				dices.reduce((a, b) => a + b, 0),
 				board,
 			);
+			
 
 			this.nextActionByBoard[payload.boardId] = newAction;
 			this.historyByBoard[payload.boardId] =
-				this.historyByBoard[payload.boardId].concat(actionsDone);
+			this.historyByBoard[payload.boardId].concat(actionsDone);
 		}
 
 		if (nextAction.description === 'BUY' && type === 'BUY') {
@@ -136,6 +136,7 @@ export class gameService {
 		}
 
 		board.currentTurn = this.nextActionByBoard[payload.boardId].userConcerned;
+		
 		board.markModified('players');
 		board.markModified('tiles');
 		board.save();

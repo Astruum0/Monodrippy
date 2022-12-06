@@ -42,6 +42,7 @@ export function luckAction(board: board, player: player, history: Action[]): [Ac
             player.nextThrowModifier = value
             break;
         default:
+            console.log(luckCard);
             throw new Error("No such effect")
     }
     const newPlayer = nextPlayer(player, board.players);
@@ -50,5 +51,6 @@ export function luckAction(board: board, player: player, history: Action[]): [Ac
 }
 
 function getRandomLuckCard(board: board): luck {
+    // return board.lucks.find(l => l.id === 5);
     return board.lucks[Math.floor(Math.random() * board.lucks.length)]
 }

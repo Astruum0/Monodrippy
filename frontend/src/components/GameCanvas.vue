@@ -1,11 +1,6 @@
 <template>
     <div>
         <button class="start-game-btn invisible" @click="startGame">Start Game</button>
-        <div class="luck-card invisible">
-            <button class="hide-card" @click="hideCard">x</button>
-            <h3 class="luck-title"></h3>
-            <p class="luck-desc"></p>
-        </div>
         <div class="buy-tile-div invisible">
             <p class="tile-name"></p>
             <div style="justify-content: space-around; flex-flow: row; display: flex">
@@ -24,6 +19,11 @@
                 <span class="dice-1">1</span>
                 <span class="dice-2">1</span>
             </div>
+        </div>
+        <div class="luck-card invisible">
+            <button class="hide-card" @click="hideCard">x</button>
+            <h3 class="luck-title"></h3>
+            <p class="luck-desc"></p>
         </div>
         <P5 v-on="{setup, draw}" />
     </div>

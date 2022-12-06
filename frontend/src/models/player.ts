@@ -44,7 +44,7 @@ export class Player implements Player {
         this.properties = payload.properties || new Array<Tile>() as [Tile]
         this.isImprisoned = payload.isImprisoned || 0
         this.hasGOOJCard = payload.hasGOOJCard || false
-        this.nextThrowModifier = 1;
+        this.nextThrowModifier = payload.nextThrowModifier || 1;
 
         this.color = pawnColors[colorIndex]
         

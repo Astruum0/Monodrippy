@@ -13,10 +13,10 @@ export function movePlayer(
 	history: Action[] = []
 ): [Action, Action[]] {
 	const currentPlayer = board.players.find((p) => p.id === userId);
+	distance = Math.ceil(distance * currentPlayer.nextThrowModifier)
+	
 	if (currentPlayer.position + distance == 2) {
 		return cvec(board, currentPlayer);
-	} else if (currentPlayer.position + distance == 27) {
-		return goToJail(board, currentPlayer);
 	} else if (currentPlayer.position + distance == 34) {
 		return pretEtudiant(board, currentPlayer);
 	} else if (currentPlayer.position + distance == 36) {
@@ -27,9 +27,10 @@ export function movePlayer(
 
 	currentPlayer.position = (currentPlayer.position + distance) % 36;
 	history.length === 0 && history.push(new Action('MOVED', currentPlayer.id, currentPlayer.position));
+	currentPlayer.nextThrowModifier = 1
 
 	if (currentPlayer.position == 27) {
-		return goToJail(board, currentPlayer);
+		return goToJail(board, currentPlayer, history);
 	}
 
 	let nextAction: Action;

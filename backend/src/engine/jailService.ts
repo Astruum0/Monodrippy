@@ -3,11 +3,7 @@ import { player } from 'src/player/player.schema';
 import { Action } from 'src/models/action';
 import { movePlayer, nextPlayer } from './playerMovement';
 
-export function goToJail(board: board, player: player): [Action, Action[]] {
-	const history = [];
-
-	history.push(new Action('MOVED', player.id, 27));
-
+export function goToJail(board: board, player: player, history: Action[] = []): [Action, Action[]] {
 	player.position = 9;
 	player.turnsInPrison = 3;
 
