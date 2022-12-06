@@ -17,7 +17,7 @@ export function luckAction(board: board, player: player, history: Action[]): [Ac
                 history.push(new Action(`LOST ${value}`, player.id));
             } else {
                 player.money = 0
-                player.hasLosed = true
+                player.hasLost = true
                 history.push(new Action(`LOST GAME`, player.id));
             }
             break;

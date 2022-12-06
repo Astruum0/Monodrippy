@@ -17,20 +17,11 @@ export interface Player {
     position: number
     properties: [Tile]
     isImprisoned: number
-    hasGOOJCard: boolean
+    hasLost: boolean
     nextThrowModifier: number
 }
 
 export class Player implements Player {
-    id: string
-    name: string
-    money: number
-    position: number
-    properties: [Tile]
-    isImprisoned: number
-    hasGOOJCard: boolean
-    nextThrowModifier: number
-
     color: number[]
     currentHeight = 0
 
@@ -43,7 +34,7 @@ export class Player implements Player {
         this.position = payload.position || 0
         this.properties = payload.properties || new Array<Tile>() as [Tile]
         this.isImprisoned = payload.isImprisoned || 0
-        this.hasGOOJCard = payload.hasGOOJCard || false
+        this.hasLost = payload.hasLost || false
         this.nextThrowModifier = payload.nextThrowModifier || 1;
 
         this.color = pawnColors[colorIndex]

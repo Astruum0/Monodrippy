@@ -120,7 +120,7 @@ export function payRent(
       } else {
         price = player.money
         owner.money += price
-        player.hasLosed = true
+        player.hasLost = true
         history.push(new Action(`LOST GAME`, player.id));
       }
 

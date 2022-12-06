@@ -20,7 +20,7 @@ export class player {
 	turnsInPrison: number;
 
 	@Prop()
-	hasLosed: boolean;
+	hasLost: boolean;
 
 	@Prop({ type: Any })
 	position: tiles['id'];

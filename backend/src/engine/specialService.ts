@@ -13,7 +13,7 @@ export function cvec(board: board, player: player): [Action, Action[]] {
 		history.push(new Action(`PAID CVEC ${price}`, player.id));
 	} else {
 		player.money = 0
-		player.hasLosed = true
+		player.hasLost = true
 		history.push(new Action(`LOST GAME`, player.id));
 	}
 	
@@ -49,7 +49,7 @@ export function pretEtudiant(board: board, player: player): [Action, Action[]] {
 		history.push(new Action(`PAID PRET ETUDIANT ${price}`, player.id));
 	} else {
 		player.money = 0
-		player.hasLosed = true
+		player.hasLost = true
 		history.push(new Action(`LOST GAME`, player.id));
 	}
 

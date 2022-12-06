@@ -188,9 +188,16 @@ export default Vue.extend({
               for (const [i, p] of currentBoard.players.entries()) {
                 playersDiv[i]?.removeClass("invisible")
                 playersNames[i]?.html(p.name)
-                let price = p.money + " K"
-                console.log(price);
+                console.log(p);
                 
+                if(p.hasLost) {
+                  console.log(p);
+                  
+                  playersDiv[i]?.addClass("unavailable")
+                  playersMoney[i]?.html("")  
+                  continue
+                }
+                let price = p.money + " K"
                 if (p.isImprisoned > 0) price += ` – En prison pour ${p.isImprisoned} tours`
                 playersMoney[i]?.html(price)
               }
