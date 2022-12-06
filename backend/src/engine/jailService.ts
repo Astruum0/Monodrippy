@@ -3,9 +3,7 @@ import { player } from 'src/player/player.schema';
 import { Action } from 'src/models/action';
 import { movePlayer, nextPlayer } from './playerMovement';
 
-export function goToJail(board: board, player: player): [Action, Action[]] {
-	const history = [];
-
+export function goToJail(board: board, player: player, history: Action[] = []): [Action, Action[]] {
 	player.position = 9;
 	player.turnsInPrison = 3;
 
@@ -36,7 +34,7 @@ export function turnInJail(
 	if (currentPlayer.turnsInPrison == 0 || diceThrow[0] == diceThrow[1]) {
 		currentPlayer.turnsInPrison = 0;
 
-		movePlayer(
+		return movePlayer(
 			currentPlayer.id,
 			diceThrow.reduce((a, b) => a + b, 0),
 			board,

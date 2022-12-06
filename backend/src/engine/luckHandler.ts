@@ -1,46 +1,56 @@
-export async function luckAction(board_id: number, luck_id: number, player_id: string) {
-    let game = await this.boardModel.findOne({
-        id: board_id
-    }).exec();
-    let player = await this.playerModel.findOne({
-        id: player_id
-    }).exec();
-    let index = findPlayerIndex(game, player.id)
+import { board } from "src/board/board.schema";
+import { luck } from "src/luck/luck.schema";
+import { Action } from "src/models/action";
+import { player } from "src/player/player.schema";
+import { movePlayer, nextPlayer } from "./playerMovement";
 
-    let luck = game["lucks"][luck_id]
-    let effect = luck.cardEffect["effect"]
-    let value = luck.cardEffect["value"]
+export function luckAction(board: board, player: player, history: Action[]): [Action, Action[]] {
+    const luckCard = getRandomLuckCard(board);
+    const effect = luckCard.cardEffect.effect
+    const value = luckCard.cardEffect.value
+    history.push(new Action("LUCK", player.id, luckCard.id))    
+
     switch (effect) {
         case "loseMoney":
-            game["players"][index].money -= value
+            if (player.money >= value) {
+                player.money -= value
+                history.push(new Action(`LOST ${value}`, player.id));
+            } else {
+                player.money = 0
+                player.hasLost = true
+                history.push(new Action(`LOST GAME`, player.id));
+            }
             break;
         case "gainMoney":
-            game["players"][index].money += value
+            player.money += value
+            history.push(new Action(`GAINED ${value}`, player.id));
             break;
         case "moveTo":
-            if (game["players"][index].position > value) {
-                game["players"][index].money += 150
+            history.push(new Action('MOVED', player.id, value));
+            if (player.position > value) {
+                player.money += 150
+                history.push(new Action(`GAINED ${value}`, player.id));
             }
-            game["players"][index].position = value
-            break;
+            player.position = value
+            return movePlayer(player.id, 0, board, history)
         case "moveToStraight":
-            game["players"][index].position = value
-            break;
+            player.position = value
+            history.push(new Action('MOVED STRAIGHT', player.id, player.position));
+            return movePlayer(player.id, 0, board, history)
         case "nextThrow":
-            game["players"][index].nextThrowModifier = value
+            history.push(new Action("Next throw will be " + (value > 1 ? "doubled" : "divided by 2")))
+            player.nextThrowModifier = value
             break;
         default:
-            return new Error("No such effect")
+            console.log(luckCard);
+            throw new Error("No such effect")
     }
-    game.markModified("players")
-    game.save()
+    const newPlayer = nextPlayer(player, board.players);
+	return [new Action('TURN', newPlayer.id), history];
+    
 }
 
-
-function findPlayerIndex(game: any, player_id: string) {
-    for (let index = 0; index < game["players"].length; index++) {
-        if (game["players"][index].id == player_id) {
-            return index
-        }
-    }
+function getRandomLuckCard(board: board): luck {
+    // return board.lucks.find(l => l.id === 5);
+    return board.lucks[Math.floor(Math.random() * board.lucks.length)]
 }

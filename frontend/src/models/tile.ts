@@ -2,6 +2,7 @@ import { tilesStartCoords } from "@/lib/convertTileToCoords"
 import { BIconTextareaResize } from "bootstrap-vue"
 import { Vector } from "p5"
 import { P5Sketch } from "vue-p5-component"
+import { Board } from "./board"
 import { Player } from "./player"
 
 export interface Tile {
@@ -32,7 +33,7 @@ export class Tile implements Tile {
         this.type = payload.type as string
     }
 
-    draw(sketch: P5Sketch, owner: Player) {
+    draw(sketch: P5Sketch, owner: Player, board: Board) {
         const side = Math.floor(this.id / 9)
         const positionRelativeToSide = this.id % 9
         const coords = new Vector(tilesStartCoords[side].x, tilesStartCoords[side].y)
@@ -64,12 +65,14 @@ export class Tile implements Tile {
         sketch.rotateX(sketch.PI/2)
         sketch.rotateZ(side * sketch.PI / 2)
         sketch.textAlign(sketch.CENTER)
-        sketch.text(`${this.rent[this.currentLevel]}K`, 0, 0, 26)
+        const rentIndex = this.type === "gare" ? board.getNumberOfTrainStation(this.owner)-1 : this.currentLevel
+        
+        sketch.text(`${this.rent[rentIndex]}K`, 0, 0, 26)
         sketch.pop()
 
-        coords[offsetAxe] -= this.currentLevel * 2.5        
+        coords[offsetAxe] -= rentIndex * 2.5        
 
-        for (let i = 0; i < this.currentLevel + 1; i++) {
+        for (let i = 0; i < rentIndex + 1; i++) {
             sketch.push()
             sketch.fill(owner.color)
             sketch.translate(coords.x, 2.5, coords.y)

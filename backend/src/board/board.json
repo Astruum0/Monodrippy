@@ -132,7 +132,7 @@
          {
             "id": 9,
             "name": "Prison",
-            "type": "chance"
+            "type": "prison"
          },
          {
             "id": 10,
@@ -272,7 +272,7 @@
          {
             "id": 18,
             "name": "Ynov Circus",
-            "type": "chance"
+            "type": "ycircus"
          },
          {
             "id": 19,
@@ -412,7 +412,7 @@
          {
             "id": 27,
             "name": "GoToPrison",
-            "type": "chance"
+            "type": "goToJail"
          },
          {
             "id": 28,
@@ -550,7 +550,7 @@
          {
             "id": 1,
             "name": "Scammed",
-            "content": "Adrien vous à proposé un “bon plan no risque no cap”. Vous perdez 50K.",
+            "content": "Adrien vous a proposé un “bon plan no risque no cap”. Vous perdez 50K.",
             "cardEffect": {
                "effect": "loseMoney",
                "value": 50
@@ -604,7 +604,7 @@
          {
             "id": 7,
             "name": "Poopy break",
-            "content": "Benjam à boucher toutes les toilettes de Condés, dirigez vous vers le campus Chartrons.",
+            "content": "Benjam a bouché toutes les toilettes de Condés, dirigez vous vers le campus Chartrons.",
             "cardEffect": {
                "effect": "moveTo",
                "value": 32
@@ -615,7 +615,7 @@
             "name": "Tacos 3 viandes",
             "content": "Après un bon Cozy vous vous sentez repu. Votre prochain jet de dés est divisé par 2.",
             "cardEffect": {
-               "effect": "NextThrow",
+               "effect": "nextThrow",
                "value": 0.5
             }
          },
@@ -624,7 +624,7 @@
             "name": "MANGO LOCO",
             "content": "La Mango Loco coule dans vos veines et vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
             "cardEffect": {
-               "effect": "NextThrow",
+               "effect": "nextThrow",
                "value": 2
             }
          },
@@ -660,7 +660,7 @@
             "name": "grève TBM",
             "content": "La grêve des tramways vous met en retard. Votre prochain jet de dés est divisé par 2.",
             "cardEffect": {
-               "effect": "NextThrow",
+               "effect": "nextThrow",
                "value": 0.5
             }
          },
@@ -669,7 +669,7 @@
             "name": "BUBLIZ",
             "content": "Après un pari perdu, vous dégustez un sandwich poulet-crudité-bubliz. Bien qu'immonde ce repas vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
             "cardEffect": {
-               "effect": "NextThrow",
+               "effect": "nextThrow",
                "value": 2
             }
          },
@@ -685,7 +685,7 @@
          {
             "id": 16,
             "name": "Salaire",
-            "content": "Votre dure mois de labeur est enfin terminé. Vous gagnez 100K.",
+            "content": "Votre dur mois de labeur est enfin terminé. Vous gagnez 100K. (C'est un salaire d'alternant faut pas abuser non plus)",
             "cardEffect": {
                "effect": "gainMoney",
                "value": 100
@@ -698,6 +698,15 @@
             "cardEffect": {
                "effect": "moveTo",
                "value": 35
+            }
+         },
+         {
+            "id": 18,
+            "name": "Retour du cirque",
+            "content": "Nouvelle masterclass du Ynov Circus Pinder, rendez vous à la case Ycircus.",
+            "cardEffect": {
+               "effect": "moveTo",
+               "value": 18
             }
          }
       ],
@@ -836,7 +845,7 @@
          {
             "id": 9,
             "name": "Prison",
-            "type": "chance"
+            "type": "prison"
          },
          {
             "id": 10,
@@ -976,7 +985,7 @@
          {
             "id": 18,
             "name": "Ynov Circus",
-            "type": "chance"
+            "type": "ycircus"
          },
          {
             "id": 19,
@@ -1116,7 +1125,7 @@
          {
             "id": 27,
             "name": "GoToPrison",
-            "type": "chance"
+            "type": "goToJail"
          },
          {
             "id": 28,
@@ -1254,7 +1263,7 @@
          {
             "id": 1,
             "name": "Scammed",
-            "content": "Adrien vous à proposé un “bon plan no risque no cap”. Vous perdez 50K.",
+            "content": "Adrien vous a proposé un “bon plan no risque no cap”. Vous perdez 50K.",
             "cardEffect": {
                "effect": "loseMoney",
                "value": 50
@@ -1308,7 +1317,7 @@
          {
             "id": 7,
             "name": "Poopy break",
-            "content": "Benjam à boucher toutes les toilettes de Condés, dirigez vous vers le campus Chartrons.",
+            "content": "Benjam a bouché toutes les toilettes de Condés, dirigez vous vers le campus Chartrons.",
             "cardEffect": {
                "effect": "moveTo",
                "value": 32
@@ -1319,7 +1328,7 @@
             "name": "Tacos 3 viandes",
             "content": "Après un bon Cozy vous vous sentez repu. Votre prochain jet de dés est divisé par 2.",
             "cardEffect": {
-               "effect": "NextThrow",
+               "effect": "nextThrow",
                "value": 0.5
             }
          },
@@ -1328,7 +1337,7 @@
             "name": "MANGO LOCO",
             "content": "La Mango Loco coule dans vos veines et vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
             "cardEffect": {
-               "effect": "NextThrow",
+               "effect": "nextThrow",
                "value": 2
             }
          },
@@ -1364,7 +1373,7 @@
             "name": "grève TBM",
             "content": "La grêve des tramways vous met en retard. Votre prochain jet de dés est divisé par 2.",
             "cardEffect": {
-               "effect": "NextThrow",
+               "effect": "nextThrow",
                "value": 0.5
             }
          },
@@ -1373,7 +1382,7 @@
             "name": "BUBLIZ",
             "content": "Après un pari perdu, vous dégustez un sandwich poulet-crudité-bubliz. Bien qu'immonde ce repas vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
             "cardEffect": {
-               "effect": "NextThrow",
+               "effect": "nextThrow",
                "value": 2
             }
          },
@@ -1389,7 +1398,7 @@
          {
             "id": 16,
             "name": "Salaire",
-            "content": "Votre dure mois de labeur est enfin terminé. Vous gagnez 100K.",
+            "content": "Votre dur mois de labeur est enfin terminé. Vous gagnez 100K. (C'est un salaire d'alternant faut pas abuser non plus)",
             "cardEffect": {
                "effect": "gainMoney",
                "value": 100
@@ -1402,6 +1411,15 @@
             "cardEffect": {
                "effect": "moveTo",
                "value": 35
+            }
+         },
+         {
+            "id": 18,
+            "name": "Retour du cirque",
+            "content": "Nouvelle masterclass du Ynov Circus Pinder, rendez vous à la case Ycircus.",
+            "cardEffect": {
+               "effect": "moveTo",
+               "value": 18
             }
          }
       ],

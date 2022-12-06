@@ -1,0 +1,168 @@
+.invisible {
+  display: none !important;
+}
+.unavailable {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.start-game-btn {
+  position: absolute;
+  top: 90%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+
+  border: 1px solid white;
+  background-color: red;
+  color: white;
+  padding: 10px;
+  box-shadow: black 1px 1px 10px;
+}
+
+h1 {
+  font-size: medium !important;
+}
+p {
+  margin-bottom: 0 !important;
+}
+.user-info {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  border: 3px solid white;
+  background-color: red;
+  color: white;
+  padding: 5px;
+  box-shadow: black 1px 1px 10px;
+
+  /* vvvvv Unable to select text vvvvv */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+.user-info div {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-flow: column;
+}
+.user-info div::before {
+  content: "";
+  border: 1px solid white;
+  position: absolute;
+  left: 5px;
+  height: 60px;
+  width: 10px;
+}
+.unavailable::before {
+  display: none !important;
+}
+.user-info .unavailable {
+  margin-bottom: 0;
+}
+.user-div-0::before {
+  background-color: rgb(51, 102, 255);
+}
+.user-div-1::before {
+  background-color: rgb(245, 176, 65);
+}
+.user-div-2::before {
+  background-color: rgb(0, 204, 0);
+}
+.user-div-3::before {
+  background-color: rgb(255, 153, 255);
+}
+
+.luck-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border: 3px solid white;
+  background-color: red;
+  color: white;
+  padding: 50px;
+  box-shadow: black 1px 1px 10px;
+
+  /* vvvvv Unable to select text vvvvv */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+.hide-card {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  margin: auto;
+  color: white;
+  border: 0;
+  background-color: red;
+  padding: 3px 8px;
+  font-size: large !important;
+}
+.buy-tile-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+}
+.tile-name {
+  font-size: xx-large;
+  margin: 5px;
+  color: white;
+  text-shadow: black 1px 1px 10px;
+}
+.tile {
+  border: 1px solid white;
+  background-color: red;
+  color: white;
+  padding: 10px;
+  box-shadow: black 1px 1px 10px;
+}
+.turn-div {
+  font-weight: bold;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+
+  justify-content: center;
+  flex-direction: column;
+}
+.turn-info {
+  margin: 5px;
+  font-size: xx-large;
+
+  /* vvvvv Unable to select text vvvvv */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+.throw {
+  font-weight: bold;
+  background-color: papayawhip;
+  font-size: large;
+  padding: 5px;
+}
+
+.dices-div span {
+  margin: 3px;
+  font-size: x-large;
+}
+
+canvas {
+  margin: 0;
+  display: block;
+  background-image: url("../assets/sky.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}

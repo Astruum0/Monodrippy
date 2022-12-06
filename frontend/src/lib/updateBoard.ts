@@ -1,6 +1,6 @@
 import { Board } from "@/models/board";
 import { Action } from "@/models/game";
-import { CallbackFunction } from "./callbackHelper";
+import { Luck } from "@/models/luck";
 
 export function updateBoard(board: Board, newBoard: Board, history: Action[], newHistory: Action[], callback: (()=>void) | undefined = undefined) {
     const missedActions = newHistory.filter(a => !history.map(a => a.id).includes(a.id))
@@ -21,6 +21,12 @@ function applyAction(board: Board, actions: Action[], index: number , callback: 
             p && currAction.tilesConcerned && p.moveTo(currAction.tilesConcerned, () => {
                 applyAction(board, actions, index + 1, callback)
             })
+        } else if (currAction.description === "LUCK") {
+            const currentLuck = board.lucks.find(t => t.id === currAction.tilesConcerned)
+            Luck.div?.removeClass("invisible")
+            Luck.title?.html(currentLuck?.name)
+            Luck.desc?.html(currentLuck?.content)
+            applyAction(board, actions, index + 1, callback)
         } else {
             applyAction(board, actions, index + 1, callback)
         }
