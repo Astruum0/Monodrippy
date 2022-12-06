@@ -1,8 +1,33 @@
 <template>
   <div>
-    <button class="start-game-btn invisible" @click="startGame">
-      Commencer la partie
-    </button>
+    <div class="user-info">
+      <div class="user-div-0 invisible">
+        <h1 class="pseudo-0"></h1>
+        <p class="money-0"></p>
+      </div>
+      <div class="user-div-1 invisible">
+        <h1 class="pseudo-1"></h1>
+        <p class="money-1"></p>
+      </div>
+      <div class="user-div-2 invisible">
+        <h1 class="pseudo-2"></h1>
+        <p class="money-2"></p>
+      </div>
+      <div class="user-div-3 invisible">
+        <h1 class="pseudo-3"></h1>
+        <p class="money-3"></p>
+      </div>
+    </div>
+    <div class="turn-div">
+      <p class="turn-info"></p>
+      <button class="throw invisible" @click="throwDices">
+        Lancer les dés
+      </button>
+      <div class="dices-div invisible">
+        <span class="dice-1">1</span>
+        <span class="dice-2">1</span>
+      </div>
+    </div>
     <div class="buy-tile-div invisible">
       <p class="tile-name"></p>
       <div style="justify-content: space-around; flex-flow: row; display: flex">
@@ -14,19 +39,14 @@
       </div>
       <button @click="buy(-1)" class="tile mt-3">Ne pas acheter</button>
     </div>
-    <div class="turn-div">
-      <p class="turn-info"></p>
-      <button class="throw invisible" @click="throwDices">Lancer les dés</button>
-      <div class="dices-div invisible">
-        <span class="dice-1">1</span>
-        <span class="dice-2">1</span>
-      </div>
-    </div>
     <div class="luck-card invisible">
       <button class="hide-card" @click="hideCard">x</button>
       <h3 class="luck-title"></h3>
       <p class="luck-desc"></p>
     </div>
+    <button class="start-game-btn invisible" @click="startGame">
+      Commencer la partie
+    </button>
     <P5 v-on="{ setup, draw }" />
   </div>
 </template>
@@ -81,6 +101,10 @@ var luckCardDiv: Element | null;
 var luckCardTitle: Element | null;
 var luckCardDesc: Element | null;
 
+var playersDiv: (Element | null)[] = []
+var playersNames: (Element | null)[] = []
+var playersMoney: (Element | null)[] = []
+
 export default Vue.extend({
   components: { P5 },
   methods: {
@@ -118,9 +142,15 @@ export default Vue.extend({
       dicesDiv = sketch.select(".dices-div");
       dicesNumberDiv = [sketch.select(".dice-1"), sketch.select(".dice-2")];
 
+      for(let i = 0; i<= 3; i++) {
+        playersDiv.push(sketch.select(`.user-div-${i}`))
+        playersNames.push(sketch.select(`.pseudo-${i}`))
+        playersMoney.push(sketch.select(`.money-${i}`))
+      }
+
       buyTileDiv = sketch.select(".buy-tile-div");
       tileName = sketch.select(".tile-name");
-      for (const i in [0, 1, 2, 3, 4]) {
+      for (let i = 0; i <= 4; i++) {
         tilePrices.push(sketch.select(`.price-${i}`));
       }
 
@@ -155,8 +185,22 @@ export default Vue.extend({
               const yourTurn = userTurn?.id === loggedUser?.id;
               if (yourTurn) loggedUser = userTurn;
 
+              for (const [i, p] of currentBoard.players.entries()) {
+                playersDiv[i]?.removeClass("invisible")
+                playersNames[i]?.html(p.name)
+                let price = p.money + " K"
+                console.log(price);
+                
+                if (p.isImprisoned > 0) price += ` – En prison pour ${p.isImprisoned} tours`
+                playersMoney[i]?.html(price)
+              }
+
               currentBoard.currentTurn &&
-                turnInfoP?.html(yourTurn ? "C'est ton tour" : `C'est au tour de ${currentBoard.getNextPlayer()?.name}`);
+                turnInfoP?.html(
+                  yourTurn
+                    ? "C'est ton tour"
+                    : `C'est au tour de ${currentBoard.getNextPlayer()?.name}`
+                );
 
               if (yourTurn && nextAction?.description === "TURN") {
                 throwDicesButton?.removeClass("invisible");
@@ -173,7 +217,7 @@ export default Vue.extend({
                 );
                 tile && this.applyTilesPrices(tile, userTurn as Player);
               } else {
-                this.hideTilesPrices()
+                this.hideTilesPrices();
               }
 
               !currentBoard.hasStarted &&
@@ -220,9 +264,9 @@ export default Vue.extend({
           }K`
         );
         if (!(tile.type === "gare" && index > 0)) {
-          priceBtn?.removeClass("invisible")
+          priceBtn?.removeClass("invisible");
         }
-        if (tile.type === "gare") priceBtn?.html(`Prix : ${prices[0]}K`)
+        if (tile.type === "gare") priceBtn?.html(`Prix : ${prices[0]}K`);
         if (player.money < prices[index]) priceBtn?.addClass("unavailable");
         else priceBtn?.removeClass("unavailable");
       }
@@ -230,7 +274,7 @@ export default Vue.extend({
     hideTilesPrices() {
       buyTileDiv?.addClass("invisible");
       for (const priceBtn of tilePrices) {
-        priceBtn?.addClass("invisible")
+        priceBtn?.addClass("invisible");
       }
     },
     buy(amount: number) {

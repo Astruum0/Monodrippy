@@ -1,5 +1,5 @@
 .invisible {
-  display: none;
+  display: none !important;
 }
 .unavailable {
   pointer-events: none;
@@ -17,6 +17,58 @@
   padding: 10px;
   box-shadow: black 1px 1px 10px;
 }
+
+h1 {
+  font-size: medium !important;
+}
+p {
+  margin-bottom: 0 !important;
+}
+.user-info {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  border: 3px solid white;
+  background-color: red;
+  color: white;
+  padding: 5px;
+  box-shadow: black 1px 1px 10px;
+
+  /* vvvvv Unable to select text vvvvv */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+.user-info div {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-flow: column;
+}
+.user-info div::before {
+  content: "";
+  border: 1px solid white;
+  position: absolute;
+  left: 5px;
+  height: 60px;
+  width: 10px;
+}
+.user-div-0::before {
+  background-color: rgb(51, 102, 255);
+}
+.user-div-1::before {
+  background-color: rgb(245, 176, 65);
+}
+.user-div-2::before {
+  background-color: rgb(0, 204, 0);
+}
+.user-div-3::before {
+  background-color: rgb(255, 153, 255);
+}
+
 .luck-card {
   position: absolute;
   top: 50%;
@@ -102,9 +154,9 @@
 }
 
 canvas {
-    margin: 0;
-    display: block;
-    background-image: url("../assets/sky.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
+  margin: 0;
+  display: block;
+  background-image: url("../assets/sky.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
