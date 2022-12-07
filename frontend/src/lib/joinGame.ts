@@ -3,7 +3,7 @@ import { Player } from "@/models/player";
 export function joinGame(id: number, pseudo: string): Promise<Player> {
     console.log("PLAYER JOINED : ", pseudo, id);
     
-    const url = "http://localhost:3001/boards/join/" + id;
+    const url = "http://api.arthurvella.com:3001/boards/join/" + id;
 
     const data = {
         name: pseudo
