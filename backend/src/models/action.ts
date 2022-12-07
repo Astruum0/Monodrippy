@@ -4,7 +4,7 @@ export interface action {
   id: string
   description: string
   userConcerned: string | undefined
-  tilesConcerned: number | undefined
+  extraValue: number | undefined
 }
 
 export interface nextActionByBoard {
@@ -18,16 +18,16 @@ export class Action implements action{
   id: string
   description: string
   userConcerned: string | undefined
-  tilesConcerned: number | undefined
+  extraValue: number | undefined
 
   constructor(
     description: string,
     userConcerned: string | undefined = undefined,
-    tilesConcerned: number | undefined = undefined
+    extraValue: number | undefined = undefined
     ) {
     this.id = uuidv4()
     this.description = description
     this.userConcerned = userConcerned
-    this.tilesConcerned = tilesConcerned
+    this.extraValue = extraValue
   }
 }

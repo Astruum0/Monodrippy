@@ -11,6 +11,6 @@ export interface Game {
     id: string
     description: string
     userConcerned: string | undefined
-    tilesConcerned: number | undefined
+    extraValue: number | undefined
   }
   

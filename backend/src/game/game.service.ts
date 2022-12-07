@@ -38,7 +38,7 @@ export class gameService {
 			board.players[Math.floor(Math.random() * board.players.length)].id;
 
 		this.nextActionByBoard[board.id] = new Action('TURN', board.currentTurn);
-		this.historyByBoard[board.id] = [new Action('Game has started')];
+		this.historyByBoard[board.id] = [new Action('STARTED')];
 
 		board.save();
 
@@ -116,19 +116,31 @@ export class gameService {
 				dices.reduce((a, b) => a + b, 0),
 				board,
 			);
-			
-
 			this.nextActionByBoard[payload.boardId] = newAction;
 			this.historyByBoard[payload.boardId] =
 			this.historyByBoard[payload.boardId].concat(actionsDone);
+
+      const currentTile = board.tiles[currentPlayer.position]
+			const owner = currentTile.owner
+      if (owner) {
+        const action = owner === currentPlayer.id ? "UPGRADE" : "PAY"
+        try {
+          const tileHistory = this.tileAction(board, currentTile, currentPlayer, action) as Action[]
+          this.historyByBoard[payload.boardId] =
+          this.historyByBoard[payload.boardId].concat(tileHistory);
+          
+        } catch(e: unknown) {
+          throw e
+        }
+      }
+			
+
 		}
 
 		if (nextAction.description === 'BUY' && type === 'BUY') {
 			const { amount } = payload;
 
-			const [newAction, actionsDone] = await Promise.resolve(
-				this.tileAction(board, currentTile, currentPlayer, type, amount),
-			);
+			const [newAction, actionsDone] = this.tileAction(board, currentTile, currentPlayer, type, amount)
 
 			this.nextActionByBoard[payload.boardId] = newAction;
 			this.historyByBoard[payload.boardId] =
@@ -143,13 +155,13 @@ export class gameService {
 		return this.gameOutput(payload.boardId);
 	}
 
-	async tileAction(
+	tileAction(
 		board: board,
 		tile: tiles,
 		player: player,
 		action: 'BUY' | 'UPGRADE' | 'PAY',
 		amount: number = undefined,
-	): Promise<[Action, Action[]]> {
+	): [Action, Action[]] | Action[] {
 		if (action === 'BUY' && amount >= 0) {
 			return buyTile(board, player, tile, amount);
 		} else if (action === 'UPGRADE') {
@@ -164,7 +176,7 @@ export class gameService {
 					board.players,
 				).id,
 			);
-			const history = [new Action('NOT BOUGHT', player.id, tile.id)];
+			const history = [];
 			return [nextAction, history];
 		}
 	}

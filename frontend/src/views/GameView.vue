@@ -1,11 +1,6 @@
 <template>
   <div class="gamePage">
-    <div class="logsDiv">
-      <LogsBox></LogsBox>
-    </div>
-    <div class="gameDiv">
       <GameCanvas></GameCanvas>
-    </div>
   </div>
 </template>
 
