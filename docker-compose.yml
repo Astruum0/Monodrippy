@@ -1,43 +1,43 @@
-version: "3"
-services:
-  backend:
-    container_name: backend 
-    image: backend
-    entrypoint: ["npm", "run", "start:prod"]
-    depends_on:
-      - db  
-    volumes:
-      - ./backend:/usr/app
-      - /usr/app/node_modules
-    ports: ['3001:3001']
-    command: npm run start:prod 
-    networks:
-      - mongodb_network
+version: "3"	
+services:	
+  backend:	
+    container_name: backend 	
+    build:	
+        context: ./backend	
 
-  db:
-    container_name: db
-    image: mongo:latest
-    ports: 
-      - 27017:27017
-    volumes:
-      - ./backend/mountMongo.sh:/docker-entrypoint-initdb.d/mountMongo.sh
-      - ./db:/db
-    restart: always
-    networks:
-      - mongodb_network
+    depends_on:	
+      - db  	
+    volumes:	
+      - ./backend:/usr/app	
+      - /usr/app/node_modules	
+    ports: ['3001:3001']	
+    networks:	
+      - mongodb_network	
 
+  db:	
+    container_name: db	
+    image: mongo:latest	
+    ports: 	
+      - 27017:27017	
+    volumes:	
+      - ./backend/mountMongo.sh:/docker-entrypoint-initdb.d/mountMongo.sh	
+      - ./db:/db	
+    restart: always	
+    networks:	
+      - mongodb_network	
 
-  frontend:
-    container_name: frontend
-    image: frontend
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-    ports:
-      - '8080:8080'
-    environment:  
-      - BACKEND_URL=http://localhost/monodrippy
-
-networks:
-  mongodb_network:
+      
+  frontend:	
+    container_name: frontend	
+    build:	
+      context: ./frontend	
+    volumes:	
+      - ./frontend:/app	
+      - /app/node_modules	
+    ports:	
+      - '8080:8080'	
+    environment:  	
+      - BACKEND_URL=http://localhost/monodrippy	
+networks:	
+  mongodb_network:	
     name: mongodb_network
