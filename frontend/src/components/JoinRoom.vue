@@ -75,7 +75,7 @@ let JoinRoom = {
       console.log(this.pseudo)
     },
     getBoards() {
-      return fetch(`http://localhost:3001/boards/`)
+      return fetch(`http://api.arthurvella.com:3001/boards/`)
         .then(res => res.json())
         .then(data => this.rooms = data)
     }
