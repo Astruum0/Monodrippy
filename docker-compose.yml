@@ -4,7 +4,6 @@ services:
     container_name: backend 	
     build:	
         context: ./backend	
-
     depends_on:	
       - db  	
     volumes:	
@@ -13,6 +12,7 @@ services:
     ports: ['3001:3001']	
     networks:	
       - mongodb_network	
+    command: npm start
 
   db:	
     container_name: db	
@@ -38,6 +38,13 @@ services:
       - '8080:8080'	
     environment:  	
       - BACKEND_URL=http://localhost/monodrippy	
+    command: npm run serve
+    
+    
+    
+
+
+
 networks:	
   mongodb_network:	
     name: mongodb_network
