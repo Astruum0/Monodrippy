@@ -2,8 +2,7 @@ version: "3"
 services:
   backend:
     container_name: backend 
-    build:
-        context: ./backend
+    image: backend
     entrypoint: ["npm", "run", "start:prod"]
     depends_on:
       - db  
@@ -30,8 +29,7 @@ services:
 
   frontend:
     container_name: frontend
-    build:
-      context: ./frontend
+    image: frontend
     volumes:
       - ./frontend:/app
       - /app/node_modules
