@@ -132,7 +132,7 @@ export default Vue.extend({
     setup(sketch: P5Sketch) {
       MonoFont = sketch.loadFont("fonts/KabelBd-Normal.ttf");
 
-      boardId = parseInt(this.getCookie("id_cookie") || "0") | 1;
+      boardId = parseInt(this.getCookie("id_cookie") || "0");
       var pseudo = this.getCookie("pseudo_cookie");
 
       sketch.createCanvas(
