@@ -8,6 +8,6 @@ RUN npm install
 
 COPY . . 
 
-RUN npm run build
+RUN npm run start:prod
 
-CMD [ "npm", "start" ]
+CMD [ "node", "dist/main" ]

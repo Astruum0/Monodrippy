@@ -1,5 +1,5 @@
 export function startGame(boardId: number, userId: string): Promise<boolean> {
-    const url = `http://api.arthurvella.com.0.0.1:3001/game/start/${boardId}`;
+    const url = `http://api.arthurvella.com:3001/game/start/${boardId}`;
 
     return fetch(url, {
         method: "PATCH",
