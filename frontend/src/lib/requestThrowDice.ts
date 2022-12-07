@@ -7,7 +7,7 @@ export function requestThrowDice(boardId: number, userId: string, dices: number[
         boardId,
         dices
     }
-    const url = "http://127.0.0.1:3001/game/play";
+    const url = "http://api.arthurvella.com:3001/game/play";
 
     return fetch(url, {
         method: "POST",
