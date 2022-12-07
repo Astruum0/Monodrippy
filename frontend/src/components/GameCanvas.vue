@@ -1,5 +1,7 @@
 <template>
   <div>
+    <div class="history-div">
+    </div>
     <div class="user-info">
       <div class="user-div-0 invisible">
         <h1 class="pseudo-0"></h1>
@@ -72,6 +74,7 @@ import { Tile } from "@/models/tile";
 import { buyTile } from "@/lib/buyTile";
 import { startGame } from "@/lib/startGame";
 import { joinGame } from "@/lib/joinGame";
+import { updateHistory } from "@/lib/updateHistory"
 
 var loggedUser: Player | undefined;
 var boardId: number;
@@ -101,6 +104,8 @@ var luckCardDiv: Element | null;
 var luckCardTitle: Element | null;
 var luckCardDesc: Element | null;
 
+var historyDiv: Element | null
+
 var playersDiv: (Element | null)[] = []
 var playersNames: (Element | null)[] = []
 var playersMoney: (Element | null)[] = []
@@ -127,7 +132,7 @@ export default Vue.extend({
     setup(sketch: P5Sketch) {
       MonoFont = sketch.loadFont("fonts/KabelBd-Normal.ttf");
 
-      boardId = parseInt(this.getCookie("id_cookie") || "0") | 1;
+      boardId = parseInt(this.getCookie("id_cookie") || "0");
       var pseudo = this.getCookie("pseudo_cookie");
 
       sketch.createCanvas(
@@ -141,6 +146,8 @@ export default Vue.extend({
       throwDicesButton = sketch.select(".throw");
       dicesDiv = sketch.select(".dices-div");
       dicesNumberDiv = [sketch.select(".dice-1"), sketch.select(".dice-2")];
+
+      historyDiv = sketch.select(".history-div")
 
       for(let i = 0; i<= 3; i++) {
         playersDiv.push(sketch.select(`.user-div-${i}`))
@@ -188,11 +195,8 @@ export default Vue.extend({
               for (const [i, p] of currentBoard.players.entries()) {
                 playersDiv[i]?.removeClass("invisible")
                 playersNames[i]?.html(p.name)
-                console.log(p);
                 
                 if(p.hasLost) {
-                  console.log(p);
-                  
                   playersDiv[i]?.addClass("unavailable")
                   playersMoney[i]?.html("")  
                   continue
@@ -220,11 +224,19 @@ export default Vue.extend({
 
               if (yourTurn && nextAction?.description === "BUY") {
                 const tile = currentBoard.tiles.find(
-                  (t) => t.id === nextAction?.tilesConcerned
+                  (t) => t.id === nextAction?.extraValue
                 );
                 tile && this.applyTilesPrices(tile, userTurn as Player);
               } else {
                 this.hideTilesPrices();
+              }
+
+              const winner = currentBoard.players.find(p => p.id === nextAction?.userConcerned)
+              if (nextAction?.description === "WIN") {
+                turnInfoP?.html(`${winner?.name} a remporté la partie ! (Pas merité)`)
+                setTimeout(() => {
+                  document.location = "/"
+                }, 10000)
               }
 
               !currentBoard.hasStarted &&
@@ -233,6 +245,7 @@ export default Vue.extend({
                 startGameBtn?.removeClass("invisible");
             });
           }
+          updateHistory(history, res.history, historyDiv!, sketch, currentBoard)
           history = res.history;
         });
       }, 2000);

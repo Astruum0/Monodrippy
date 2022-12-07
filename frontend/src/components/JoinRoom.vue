@@ -72,7 +72,6 @@ let JoinRoom = {
       // Sélectionner l'élément input et récupérer sa valeur
       var input = document.getElementById("pseudo").value;
       this.pseudo = input;
-      console.log(this.pseudo)
     },
     getBoards() {
       return fetch(`http://api.arthurvella.com:3001/boards/`)

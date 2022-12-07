@@ -4,17 +4,16 @@ import { Action } from 'src/models/action';
 import { nextPlayer } from './playerMovement';
 
 
-export function cvec(board: board, player: player): [Action, Action[]] {
-	const history = [];
+export function cvec(board: board, player: player, history: Action[]): [Action, Action[]] {
 	let price = 80
 
 	if (player.money >= price) {
 		player.money -= price
-		history.push(new Action(`PAID CVEC ${price}`, player.id));
+		history.push(new Action(`PAID`, player.id, price));
 	} else {
 		player.money = 0
 		player.hasLost = true
-		history.push(new Action(`LOST GAME`, player.id));
+		history.push(new Action(`LOST`, player.id));
 	}
 	
 	player.position = 2
@@ -31,13 +30,10 @@ export function cvec(board: board, player: player): [Action, Action[]] {
 	];
 }
 
-export function pretEtudiant(board: board, player: player): [Action, Action[]] {
-	const history = [];
+export function pretEtudiant(board: board, player: player, history: Action[]): [Action, Action[]] {
 	let price = 0
 
 	let tilesOwned = board.tiles.filter((p) => p.owner === player.id)
-	console.log(player.id)
-	console.log(tilesOwned)
 	for (let index = 0; index < tilesOwned.length; index++) {
 		let tile = tilesOwned[index]
 		price += tile.rent[tile.currentLevel]
@@ -46,11 +42,11 @@ export function pretEtudiant(board: board, player: player): [Action, Action[]] {
 
 	if (player.money >= price) {
 		player.money -= price
-		history.push(new Action(`PAID PRET ETUDIANT ${price}`, player.id));
+		history.push(new Action(`PAID`, player.id, price));
 	} else {
 		player.money = 0
 		player.hasLost = true
-		history.push(new Action(`LOST GAME`, player.id));
+		history.push(new Action(`LOST`, player.id));
 	}
 
 	player.position = 34

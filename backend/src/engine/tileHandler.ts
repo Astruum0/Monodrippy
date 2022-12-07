@@ -74,7 +74,7 @@ export function upgradeTile(
   game: board,
   player: player,
   tile: tiles,
-): [Action, Action[]] {
+): Action[] {
   const history = [];
 
   if (tile.type == 'street') {
@@ -83,16 +83,6 @@ export function upgradeTile(
         tile.currentLevel += 1;
         player.money -= tile.prices['upgrade_cost'];
         history.push(new Action('UPGRADED', player.id, tile.id));
-        return [
-          new Action(
-            'TURN',
-            nextPlayer(
-              game.players.find((p) => p.id === player.id),
-              game.players,
-            ).id,
-          ),
-          history,
-        ];
       } else {
         throw new Error('Not enough money');
       }
@@ -102,13 +92,14 @@ export function upgradeTile(
   } else {
     throw new Error("Can't upgrade, not a street");
   }
+  return history
 }
 
 export function payRent(
   game: board,
   player: player,
   tile: tiles,
-): [Action, Action[]] {
+): Action[] {
   const history = [];
   if (tile.type == 'street') {
     if (tile.owner != player.id) {
@@ -117,25 +108,14 @@ export function payRent(
       if (player.money >= price) {
         player.money -= price;
         owner.money += price;
+        history.push(new Action(`PAID`, player.id, price));
       } else {
         price = player.money
         owner.money += price
         player.hasLost = true
-        history.push(new Action(`LOST GAME`, player.id));
+        history.push(new Action(`LOST`, player.id));
       }
-
-      history.push(new Action(`PAID ${price}`, player.id, tile.id));
-      history.push(new Action(`GAINED ${price}`), owner.id, tile.id);
-      return [
-        new Action(
-          'TURN',
-          nextPlayer(
-            game.players.find((p) => p.id === player.id),
-            game.players,
-          ).id,
-        ),
-        history,
-      ];
+      history.push(new Action(`GAINED`, owner.id, price));
     } else {
       throw new Error('Tiles belong to player');
     }
@@ -152,23 +132,15 @@ export function payRent(
       let price = tile.rent[gare_number - 1];
       player.money -= price;
       game['players'][owner_index].money += price;
-      history.push(new Action('PAID', player.id, tile.id));
-      return [
-        new Action(
-          'TURN',
-          nextPlayer(
-            game.players.find((p) => p.id === player.id),
-            game.players,
-          ).id,
-        ),
-        history,
-      ];
+      history.push(new Action('PAID', player.id, price));
+      history.push(new Action('GAINED', tile.owner, price));
     } else {
       throw new Error('Tiles belong to player');
     }
   } else {
     throw new Error("Can't pay rent on non gare or street tile");
   }
+  return history
 }
 
 function getTilePrice(tile: tiles, amount: number): number {

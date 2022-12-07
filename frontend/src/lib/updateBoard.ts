@@ -18,11 +18,11 @@ function applyAction(board: Board, actions: Action[], index: number , callback: 
     if (currAction) {
         if (currAction.description === "MOVED") {
             const p = board.players.find(p => p.id === currAction.userConcerned)
-            p && currAction.tilesConcerned && p.moveTo(currAction.tilesConcerned, () => {
+            p && currAction.extraValue && p.moveTo(currAction.extraValue, () => {
                 applyAction(board, actions, index + 1, callback)
             })
         } else if (currAction.description === "LUCK") {
-            const currentLuck = board.lucks.find(t => t.id === currAction.tilesConcerned)
+            const currentLuck = board.lucks.find(t => t.id === currAction.extraValue)
             Luck.div?.removeClass("invisible")
             Luck.title?.html(currentLuck?.name)
             Luck.desc?.html(currentLuck?.content)

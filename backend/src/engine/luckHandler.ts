@@ -14,31 +14,30 @@ export function luckAction(board: board, player: player, history: Action[]): [Ac
         case "loseMoney":
             if (player.money >= value) {
                 player.money -= value
-                history.push(new Action(`LOST ${value}`, player.id));
+                history.push(new Action(`PAID`, player.id, value));
             } else {
                 player.money = 0
                 player.hasLost = true
-                history.push(new Action(`LOST GAME`, player.id));
+                history.push(new Action(`LOST`, player.id));
             }
             break;
         case "gainMoney":
             player.money += value
-            history.push(new Action(`GAINED ${value}`, player.id));
+            history.push(new Action(`GAINED`, player.id, value));
             break;
         case "moveTo":
             history.push(new Action('MOVED', player.id, value));
             if (player.position > value) {
                 player.money += 150
-                history.push(new Action(`GAINED ${value}`, player.id));
+                history.push(new Action(`GAINED`, player.id, value));
             }
             player.position = value
             return movePlayer(player.id, 0, board, history)
         case "moveToStraight":
             player.position = value
-            history.push(new Action('MOVED STRAIGHT', player.id, player.position));
+            history.push(new Action('MOVED', player.id, player.position));
             return movePlayer(player.id, 0, board, history)
         case "nextThrow":
-            history.push(new Action("Next throw will be " + (value > 1 ? "doubled" : "divided by 2")))
             player.nextThrowModifier = value
             break;
         default:
