@@ -10,6 +10,7 @@ import { gameOutput } from 'src/models/gameOutput';
 import { IDicePlay, ITileAction } from 'src/models/IUserAction';
 import { player, playerDocument } from 'src/player/player.schema';
 import { tiles } from 'src/tiles/tiles.schema';
+import { getWinner } from 'src/engine/endGame';
 
 @Injectable()
 export class gameService {
@@ -148,6 +149,15 @@ export class gameService {
 		}
 
 		board.currentTurn = this.nextActionByBoard[payload.boardId].userConcerned;
+
+		const winner = getWinner(board)
+		if (winner) {
+			this.nextActionByBoard[payload.boardId] = new Action("WIN", winner.id);
+			this.historyByBoard[payload.boardId].push(new Action("WON", winner.id))
+			setTimeout(() => {
+				this.resetGame(board.id)
+			}, 10000)
+		}
 		
 		board.markModified('players');
 		board.markModified('tiles');

@@ -37,13 +37,15 @@ function formatAction(action: Action, board: Board): string {
         case "GAINED":
             return `${username} a gagné ${action.extraValue}K`
         case "LOST":
-            return `${username} n'a pas les fonds nécessaires, il est éliminé (bozo)`
+            return `${username} n'a pas les fonds nécessaires, il est éliminé (RIP bozo)`
         case "IMPRISONED":
             return `${username} est emprisonné`
         case "WAITED":
             return `${username} n'a pas fait de double, il reste sagement en prison (bon toutou)`
         case "NEXTTHROW":
             return `Le lancer de ${username} est ${action.extraValue! > 1 ? "doublé" : "divisé par 2"}`
+        case "WON":
+            return `Victoire de ${username} ! Arret du serveur dans 10 secondes...`
         default:
             return action.description
     }

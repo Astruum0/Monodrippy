@@ -55,5 +55,6 @@ export function movePlayer(
 
 export function nextPlayer(player: player, allPlayers: player[]): player {
 	const index = allPlayers.indexOf(player);
-	return allPlayers[(index + 1) % allPlayers.length];
+	const nextP = allPlayers[(index + 1) % allPlayers.length];
+	return nextP.hasLost ? nextPlayer(nextP, allPlayers) : nextP
 }

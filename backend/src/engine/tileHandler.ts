@@ -133,7 +133,7 @@ export function payRent(
       player.money -= price;
       game['players'][owner_index].money += price;
       history.push(new Action('PAID', player.id, price));
-      history.push(new Action('GAINED', player.id, price));
+      history.push(new Action('GAINED', tile.owner, price));
     } else {
       throw new Error('Tiles belong to player');
     }

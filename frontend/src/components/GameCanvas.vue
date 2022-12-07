@@ -114,8 +114,7 @@ export default Vue.extend({
   components: { P5 },
   methods: {
     throwDices() {
-      // const dices = [randint(1, 6), randint(1, 6)];
-      const dices = [2, 2]
+      const dices = [randint(1, 6), randint(1, 6)];
       rollingDices = false;
       dicesNumberDiv[0]?.html(dices[0].toString());
       dicesNumberDiv[1]?.html(dices[1].toString());
@@ -230,6 +229,14 @@ export default Vue.extend({
                 tile && this.applyTilesPrices(tile, userTurn as Player);
               } else {
                 this.hideTilesPrices();
+              }
+
+              const winner = currentBoard.players.find(p => p.id === nextAction?.userConcerned)
+              if (nextAction?.description === "WIN") {
+                turnInfoP?.html(`${winner?.name} a remporté la partie ! (Pas merité)`)
+                setTimeout(() => {
+                  document.location = "/"
+                }, 10000)
               }
 
               !currentBoard.hasStarted &&
