@@ -60,7 +60,8 @@
          100,
          200
       ],
-      "type": "gare"
+      "type": "gare",
+      "owner": null
    },
    {
       "id": 5,
@@ -127,7 +128,7 @@
    {
       "id": 9,
       "name": "Prison",
-      "type": "chance"
+      "type": "prison"
    },
    {
       "id": 10,
@@ -204,7 +205,8 @@
          100,
          200
       ],
-      "type": "gare"
+      "type": "gare",
+      "owner": null
    },
    {
       "id": 15,
@@ -266,7 +268,7 @@
    {
       "id": 18,
       "name": "Ynov Circus",
-      "type": "chance"
+      "type": "ycircus"
    },
    {
       "id": 19,
@@ -343,7 +345,8 @@
          100,
          200
       ],
-      "type": "gare"
+      "type": "gare",
+      "owner": null
    },
    {
       "id": 24,
@@ -369,7 +372,7 @@
       "name": "Csharp",
       "color": "#ffe401",
       "prices": {
-         "base": 0,
+         "base": 260,
          "upgrade_cost": 150
       },
       "rent": [
@@ -388,7 +391,7 @@
       "name": "Javascript",
       "color": "#ffe401",
       "prices": {
-         "base": 0,
+         "base": 280,
          "upgrade_cost": 150
       },
       "rent": [
@@ -405,7 +408,7 @@
    {
       "id": 27,
       "name": "GoToPrison",
-      "type": "chance"
+      "type": "goToJail"
    },
    {
       "id": 28,
@@ -482,7 +485,8 @@
          100,
          200
       ],
-      "type": "gare"
+      "type": "gare",
+      "owner": null
    },
    {
       "id": 33,
