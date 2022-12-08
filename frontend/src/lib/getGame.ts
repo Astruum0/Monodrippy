@@ -2,7 +2,7 @@ import { Board } from "@/models/board";
 import { Game } from "@/models/game";
 
 export function getBoard(id: number): Promise<Game>{
-    return fetch(`http://localhost:3001/game/${id}`)
+    return fetch(`${process.env.VUE_APP_API_URL}/game/${id}`)
         .then(res => res.json())
         .then(res => res as Game)
         .then(res => {
