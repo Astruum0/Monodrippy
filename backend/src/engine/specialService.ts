@@ -11,11 +11,13 @@ export function cvec(board: board, player: player, history: Action[]): [Action, 
 		player.money -= price
 		history.push(new Action(`PAID`, player.id, price));
 	} else {
-		player.money = 0
+		price = player.money
+		player.money -= price
 		player.hasLost = true
 		history.push(new Action(`LOST`, player.id));
 	}
 	
+	board.ycircus += price
 	player.position = 2
 
 	return [
@@ -50,6 +52,24 @@ export function pretEtudiant(board: board, player: player, history: Action[]): [
 	}
 
 	player.position = 34
+
+	return [
+		new Action(
+			'TURN',
+			nextPlayer(
+				board.players.find((p) => p.id === player.id),
+				board.players,
+			).id,
+		),
+		history,
+	];
+}
+
+export function yCircus(board: board, player: player, history: Action[]): [Action, Action[]] {
+	player.position = 18
+	player.money += board.ycircus
+	history.push(new Action(`GAINED`, player.id, board.ycircus));
+	board.ycircus = 0
 
 	return [
 		new Action(

@@ -2,7 +2,7 @@ import { board } from 'src/board/board.schema';
 import { Action } from 'src/models/action';
 import { player } from 'src/player/player.schema';
 import { goToJail } from './jailService';
-import { cvec, pretEtudiant } from './specialService';
+import { cvec, pretEtudiant, yCircus } from './specialService';
 import { luckAction } from './luckHandler';
 import { isBuyable } from './tileHandler';
 
@@ -27,10 +27,13 @@ export function movePlayer(
 	history.length === 0 && history.push(new Action('MOVED', currentPlayer.id, currentPlayer.position));
 	currentPlayer.nextThrowModifier = 1
 
-	if (currentPlayer.position === 27) {
-		return goToJail(board, currentPlayer, history);
-	} else if (currentPlayer.position === 2) {
+	
+	if (currentPlayer.position === 2) {
 		return cvec(board, currentPlayer, history);
+	} else if (currentPlayer.position === 18) {
+		return yCircus(board, currentPlayer, history);
+	} else if (currentPlayer.position === 27) {
+		return goToJail(board, currentPlayer, history);
 	} else if (currentPlayer.position === 34) {
 		return pretEtudiant(board, currentPlayer, history);
 	}

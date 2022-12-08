@@ -376,7 +376,7 @@
             "name": "Csharp",
             "color": "#ffe401",
             "prices": {
-               "base": 0,
+               "base": 260,
                "upgrade_cost": 150
             },
             "rent": [
@@ -395,7 +395,7 @@
             "name": "Javascript",
             "color": "#ffe401",
             "prices": {
-               "base": 0,
+               "base": 280,
                "upgrade_cost": 150
             },
             "rent": [
@@ -1089,7 +1089,7 @@
             "name": "Csharp",
             "color": "#ffe401",
             "prices": {
-               "base": 0,
+               "base": 260,
                "upgrade_cost": 150
             },
             "rent": [
@@ -1108,7 +1108,7 @@
             "name": "Javascript",
             "color": "#ffe401",
             "prices": {
-               "base": 0,
+               "base": 280,
                "upgrade_cost": 150
             },
             "rent": [
