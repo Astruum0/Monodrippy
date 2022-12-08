@@ -161,6 +161,7 @@ export class gameService {
 		
 		board.markModified('players');
 		board.markModified('tiles');
+		board.markModified('ycircus');
 		board.save();
 		return this.gameOutput(payload.boardId);
 	}
