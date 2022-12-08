@@ -74,7 +74,7 @@ let JoinRoom = {
       this.pseudo = input;
     },
     getBoards() {
-      return fetch(`http://api.arthurvella.com:3001/boards/`)
+      return fetch(`${process.env.VUE_APP_API_URL}/boards/`)
         .then(res => res.json())
         .then(data => this.rooms = data)
     }

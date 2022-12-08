@@ -64,3 +64,21 @@ export function pretEtudiant(board: board, player: player, history: Action[]): [
 		history,
 	];
 }
+
+export function yCircus(board: board, player: player, history: Action[]): [Action, Action[]] {
+	player.position = 18
+	player.money += board.ycircus
+	history.push(new Action(`GAINED`, player.id, board.ycircus));
+	board.ycircus = 0
+
+	return [
+		new Action(
+			'TURN',
+			nextPlayer(
+				board.players.find((p) => p.id === player.id),
+				board.players,
+			).id,
+		),
+		history,
+	];
+}

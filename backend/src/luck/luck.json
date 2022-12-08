@@ -1,164 +1,173 @@
 [
     {
-        "id": 0,
-        "name": "CAF",
-        "content": "Vous fraudez la prime d'activité pendant 6 mois. Vous gagnez 200K, mais attention au FISC.",
-        "cardEffect": {
-            "effect": "gainMoney",
-            "value": 200
-        }
+       "id": 0,
+       "name": "CAF",
+       "content": "Vous fraudez la prime d'activité pendant 6 mois. Vous gagnez 200K, mais attention au FISC.",
+       "cardEffect": {
+          "effect": "gainMoney",
+          "value": 200
+       }
     },
     {
-        "id": 1,
-        "name": "Scammed",
-        "content": "Adrien vous à proposé un “bon plan no risque no cap”. Vous perdez 50K.",
-        "cardEffect": {
-            "effect": "loseMoney",
-            "value": 50
-        }
+       "id": 1,
+       "name": "Scammed",
+       "content": "Adrien vous a proposé un “bon plan no risque no cap”. Vous perdez 50K.",
+       "cardEffect": {
+          "effect": "loseMoney",
+          "value": 50
+       }
     },
     {
-        "id": 2,
-        "name": "Boursorama",
-        "content": "Contre toute attente Adrien vous propose un nouveau plan qui fonctionne. Vous gagnez 100K, mais restez vigilant.",
-        "cardEffect": {
-            "effect": "gainMoney",
-            "value": 100
-        }
+       "id": 2,
+       "name": "Boursorama",
+       "content": "Contre toute attente Adrien vous propose un nouveau plan qui fonctionne. Vous gagnez 100K, mais restez vigilant.",
+       "cardEffect": {
+          "effect": "gainMoney",
+          "value": 100
+       }
     },
     {
-        "id": 3,
-        "name": "Norvitas",
-        "content": "La pyramide s'écroule, et tout votre investissement par la même occasion. Vous perdez 200K.",
-        "cardEffect": {
-            "effect": "loseMoney",
-            "value": 200
-        }
+       "id": 3,
+       "name": "Norvitas",
+       "content": "La pyramide s'écroule, et tout votre investissement par la même occasion. Vous perdez 200K.",
+       "cardEffect": {
+          "effect": "loseMoney",
+          "value": 200
+       }
     },
     {
-        "id": 4,
-        "name": "Oh Snap",
-        "content": "Vous avez oublié de formatter votre fichier Go avant de push. Avancez jusqu'au module Golang, ne passez pas par la case départ.",
-        "cardEffect": {
-            "effect": "moveToStraight",
-            "value": 8
-        }
+       "id": 4,
+       "name": "Oh Snap",
+       "content": "Vous avez oublié de formatter votre fichier Go avant de push. Avancez jusqu'au module Golang, ne passez pas par la case départ.",
+       "cardEffect": {
+          "effect": "moveToStraight",
+          "value": 8
+       }
     },
     {
-        "id": 5,
-        "name": "Arthured",
-        "content": "Vous avez pécho une 2004, allez en prison, ne passez pas par la case départ.",
-        "cardEffect": {
-            "effect": "moveToStraight",
-            "value": 27
-        }
+       "id": 5,
+       "name": "Arthured",
+       "content": "Vous avez pécho une 2004, allez en prison, ne passez pas par la case départ.",
+       "cardEffect": {
+          "effect": "moveToStraight",
+          "value": 27
+       }
     },
     {
-        "id": 6,
-        "name": "Snack time with PA",
-        "content": "Pause gouter avec PA avant le cours de SQL. Avancez jusqu'au module SQL.",
-        "cardEffect": {
-            "effect": "moveTo",
-            "value": 35
-        }
+       "id": 6,
+       "name": "Snack time with PA",
+       "content": "Pause gouter avec PA avant le cours de SQL. Avancez jusqu'au module SQL.",
+       "cardEffect": {
+          "effect": "moveTo",
+          "value": 35
+       }
     },
     {
-        "id": 7,
-        "name": "Poopy break",
-        "content": "Benjam à boucher toutes les toilettes de Condés, dirigez vous vers le campus Chartrons.",
-        "cardEffect": {
-            "effect": "moveTo",
-            "value": 32
-        }
+       "id": 7,
+       "name": "Poopy break",
+       "content": "Benjam a bouché toutes les toilettes de Condés, dirigez vous vers le campus Chartrons.",
+       "cardEffect": {
+          "effect": "moveTo",
+          "value": 32
+       }
     },
     {
-        "id": 8,
-        "name": "Tacos 3 viandes",
-        "content": "Après un bon Cozy vous vous sentez repu. Votre prochain jet de dés est divisé par 2.",
-        "cardEffect": {
-            "effect": "NextThrow",
-            "value": 0.5
-        }
+       "id": 8,
+       "name": "Tacos 3 viandes",
+       "content": "Après un bon Cozy vous vous sentez repu. Votre prochain jet de dés est divisé par 2.",
+       "cardEffect": {
+          "effect": "nextThrow",
+          "value": 0.5
+       }
     },
     {
-        "id": 9,
-        "name": "MANGO LOCO",
-        "content": "La Mango Loco coule dans vos veines et vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
-        "cardEffect": {
-            "effect": "NextThrow",
-            "value": 2
-        }
+       "id": 9,
+       "name": "MANGO LOCO",
+       "content": "La Mango Loco coule dans vos veines et vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
+       "cardEffect": {
+          "effect": "nextThrow",
+          "value": 2
+       }
     },
     {
-        "id": 10,
-        "name": "Yoink",
-        "content": "Mattéo vous YOINK votre argent et le YEET. Vous perdez 50K.",
-        "cardEffect": {
-            "effect": "loseMoney",
-            "value": 50
-        }
+       "id": 10,
+       "name": "Yoink",
+       "content": "Mattéo vous YOINK votre argent et le YEET. Vous perdez 50K.",
+       "cardEffect": {
+          "effect": "loseMoney",
+          "value": 50
+       }
     },
     {
-        "id": 11,
-        "name": "Ravezie",
-        "content": "Ynov vous demande une cotisation pour payer les nouveaux locaux. Vous perdez 60K.",
-        "cardEffect": {
-            "effect": "loseMoney",
-            "value": 60
-        }
+       "id": 11,
+       "name": "Ravezie",
+       "content": "Ynov vous demande une cotisation pour payer les nouveaux locaux. Vous perdez 60K.",
+       "cardEffect": {
+          "effect": "loseMoney",
+          "value": 60
+       }
     },
     {
-        "id": 12,
-        "name": "Nouvelle année",
-        "content": "C’est la nouvelle année et vous n’avez pas d’alternance. Rendez-vous à la case départ, ne recevez pas l’argent",
-        "cardEffect": {
-            "effect": "moveToStraight",
-            "value": 0
-        }
+       "id": 12,
+       "name": "Nouvelle année",
+       "content": "C’est la nouvelle année et vous n’avez pas d’alternance. Rendez-vous à la case départ, ne recevez pas l’argent",
+       "cardEffect": {
+          "effect": "moveToStraight",
+          "value": 0
+       }
     },
     {
-        "id": 13,
-        "name": "grève TBM",
-        "content": "La grêve des tramways vous met en retard. Votre prochain jet de dés est divisé par 2.",
-        "cardEffect": {
-            "effect": "NextThrow",
-            "value": 0.5
-        }
+       "id": 13,
+       "name": "grève TBM",
+       "content": "La grêve des tramways vous met en retard. Votre prochain jet de dés est divisé par 2.",
+       "cardEffect": {
+          "effect": "nextThrow",
+          "value": 0.5
+       }
     },
     {
-        "id": 14,
-        "name": "BUBLIZ",
-        "content": "Après un pari perdu, vous dégustez un sandwich poulet-crudité-bubliz. Bien qu'immonde ce repas vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
-        "cardEffect": {
-            "effect": "NextThrow",
-            "value": 2
-        }
+       "id": 14,
+       "name": "BUBLIZ",
+       "content": "Après un pari perdu, vous dégustez un sandwich poulet-crudité-bubliz. Bien qu'immonde ce repas vous donne de l'énergie. Votre prochain jet de dés est multiplié par 2.",
+       "cardEffect": {
+          "effect": "nextThrow",
+          "value": 2
+       }
     },
     {
-        "id": 15,
-        "name": "casque VR",
-        "content": "Mattéo vous embarque dans sa hype de casque VR et vous fait acheter un Oculus Quest 2. Vous perdez 35K.",
-        "cardEffect": {
-            "effect": "giveMoney",
-            "value": 35
-        }
+       "id": 15,
+       "name": "casque VR",
+       "content": "Mattéo vous embarque dans sa hype de casque VR et vous fait acheter un Oculus Quest 2. Vous perdez 35K.",
+       "cardEffect": {
+          "effect": "giveMoney",
+          "value": 35
+       }
     },
     {
-        "id": 16,
-        "name": "Salaire",
-        "content": "Votre dure mois de labeur est enfin terminé. Vous gagnez 100K.",
-        "cardEffect": {
-            "effect": "gainMoney",
-            "value": 100
-        }
+       "id": 16,
+       "name": "Salaire",
+       "content": "Votre dur mois de labeur est enfin terminé. Vous gagnez 100K. (C'est un salaire d'alternant faut pas abuser non plus)",
+       "cardEffect": {
+          "effect": "gainMoney",
+          "value": 100
+       }
     },
     {
-        "id": 17,
-        "name": "Module de la fraude",
-        "content": "C'est l'heure du pire cours de l'année. Avancez jusqu'au module Windows Server.",
-        "cardEffect": {
-            "effect": "moveTo",
-            "value": 35
-        }
+       "id": 17,
+       "name": "Module de la fraude",
+       "content": "C'est l'heure du pire cours de l'année. Avancez jusqu'au module Windows Server.",
+       "cardEffect": {
+          "effect": "moveTo",
+          "value": 35
+       }
+    },
+    {
+       "id": 18,
+       "name": "Retour du cirque",
+       "content": "Nouvelle masterclass du Ynov Circus Pinder, rendez vous à la case Ycircus.",
+       "cardEffect": {
+          "effect": "moveTo",
+          "value": 18
+       }
     }
-]
+ ]

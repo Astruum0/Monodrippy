@@ -12,7 +12,6 @@
   "dependencies": {
     "bootstrap-vue": "^2.23.1",
     "core-js": "^3.8.3",
-    "p5": "^1.5.0",
     "vue": "^2.7.13",
     "vue-class-component": "^7.2.3",
     "vue-p5": "^0.8.4",
@@ -25,6 +24,7 @@
     "@types/bootstrap": "^5.2.5",
     "@types/chai": "^4.2.15",
     "@types/mocha": "^8.2.1",
+    "@types/p5": "^1.4.3",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-babel": "~5.0.0",
@@ -43,6 +43,7 @@
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "jquery": "^3.6.1",
+    "p5": "^1.5.0",
     "popper.js": "^1.16.1",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
