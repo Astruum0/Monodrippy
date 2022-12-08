@@ -11,11 +11,13 @@ export function cvec(board: board, player: player, history: Action[]): [Action, 
 		player.money -= price
 		history.push(new Action(`PAID`, player.id, price));
 	} else {
-		player.money = 0
+		price = player.money
+		player.money -= price
 		player.hasLost = true
 		history.push(new Action(`LOST`, player.id));
 	}
 	
+	board.ycircus += price
 	player.position = 2
 
 	return [

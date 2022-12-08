@@ -7,7 +7,7 @@ import { movePlayer, nextPlayer } from "./playerMovement";
 export function luckAction(board: board, player: player, history: Action[]): [Action, Action[]] {
     const luckCard = getRandomLuckCard(board);
     const effect = luckCard.cardEffect.effect
-    const value = luckCard.cardEffect.value
+    let value = luckCard.cardEffect.value
     history.push(new Action("LUCK", player.id, luckCard.id))    
 
     switch (effect) {
@@ -16,10 +16,12 @@ export function luckAction(board: board, player: player, history: Action[]): [Ac
                 player.money -= value
                 history.push(new Action(`PAID`, player.id, value));
             } else {
-                player.money = 0
+                value = player.money
+                player.money -= value
                 player.hasLost = true
                 history.push(new Action(`LOST`, player.id));
             }
+            board.ycircus += value
             break;
         case "gainMoney":
             player.money += value
