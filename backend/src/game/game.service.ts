@@ -4,11 +4,11 @@ import { Model } from 'mongoose';
 import { board, boardDocument } from 'src/board/board.schema';
 import { movePlayer, nextPlayer } from 'src/engine/playerMovement';
 import { buyTile, payRent, upgradeTile } from 'src/engine/tileHandler';
-import { goToJail, turnInJail } from 'src/engine/jailService';
+import { turnInJail } from 'src/engine/jailService';
 import { Action, historyByBoard, nextActionByBoard } from 'src/models/action';
 import { gameOutput } from 'src/models/gameOutput';
 import { IDicePlay, ITileAction } from 'src/models/IUserAction';
-import { player, playerDocument } from 'src/player/player.schema';
+import { player } from 'src/player/player.schema';
 import { tiles } from 'src/tiles/tiles.schema';
 import { getWinner } from 'src/engine/endGame';
 
@@ -16,12 +16,36 @@ import { getWinner } from 'src/engine/endGame';
 export class gameService {
 	historyByBoard: historyByBoard = {};
 	nextActionByBoard: nextActionByBoard = {};
+	lastActionId: String = '';
 
 	constructor(
 		@InjectModel(board.name) private boardModel: Model<boardDocument>,
-		@InjectModel(player.name) private playerModel: Model<playerDocument>,
 	) {
 		// this.startGame(1, "bb0e11fe-a48d-4f29-8f57-7eae83cb0433"); // debug purposes
+	}
+
+	kickPlayer(player: player, board: board) {
+		this.lastActionId = this.nextActionByBoard[board.id].id;
+
+		let timeout = setTimeout(async () => {
+			if (this.lastActionId === this.nextActionByBoard[board.id].id) {
+				let game = await this.boardModel.findOne({ id: board.id }).exec();
+
+				player.hasLost = true;
+
+				let nextP = nextPlayer(player, board.players);
+				this.historyByBoard[board.id].push(new Action('DISCONNECTED'));
+				console.log(player);
+				console.log(nextP);
+				this.nextActionByBoard[board.id] = new Action('TURN', nextP.id);
+
+				game.markModified('players');
+				game.save();
+			} else {
+				clearTimeout(timeout);
+				this.kickPlayer(player, board);
+			}
+		}, 10000);
 	}
 
 	async startGame(gameId: Number, userId: string) {
@@ -119,29 +143,37 @@ export class gameService {
 			);
 			this.nextActionByBoard[payload.boardId] = newAction;
 			this.historyByBoard[payload.boardId] =
-			this.historyByBoard[payload.boardId].concat(actionsDone);
+				this.historyByBoard[payload.boardId].concat(actionsDone);
 
-      const currentTile = board.tiles[currentPlayer.position]
-			const owner = currentTile.owner
-      if (owner) {
-        const action = owner === currentPlayer.id ? "UPGRADE" : "PAY"
-        try {
-          const tileHistory = this.tileAction(board, currentTile, currentPlayer, action) as Action[]
-          this.historyByBoard[payload.boardId] =
-          this.historyByBoard[payload.boardId].concat(tileHistory);
-          
-        } catch(e: unknown) {
-          throw e
-        }
-      }
-			
-
+			const currentTile = board.tiles[currentPlayer.position];
+			const owner = currentTile.owner;
+			if (owner) {
+				const action = owner === currentPlayer.id ? 'UPGRADE' : 'PAY';
+				try {
+					const tileHistory = this.tileAction(
+						board,
+						currentTile,
+						currentPlayer,
+						action,
+					) as Action[];
+					this.historyByBoard[payload.boardId] =
+						this.historyByBoard[payload.boardId].concat(tileHistory);
+				} catch (e: unknown) {
+					throw e;
+				}
+			}
 		}
 
 		if (nextAction.description === 'BUY' && type === 'BUY') {
 			const { amount } = payload;
 
-			const [newAction, actionsDone] = this.tileAction(board, currentTile, currentPlayer, type, amount)
+			const [newAction, actionsDone] = this.tileAction(
+				board,
+				currentTile,
+				currentPlayer,
+				type,
+				amount,
+			);
 
 			this.nextActionByBoard[payload.boardId] = newAction;
 			this.historyByBoard[payload.boardId] =
@@ -150,15 +182,21 @@ export class gameService {
 
 		board.currentTurn = this.nextActionByBoard[payload.boardId].userConcerned;
 
-		const winner = getWinner(board)
+		const winner = getWinner(board);
 		if (winner) {
-			this.nextActionByBoard[payload.boardId] = new Action("WIN", winner.id);
-			this.historyByBoard[payload.boardId].push(new Action("WON", winner.id))
+			this.nextActionByBoard[payload.boardId] = new Action('WIN', winner.id);
+			this.historyByBoard[payload.boardId].push(new Action('WON', winner.id));
 			setTimeout(() => {
-				this.resetGame(board.id)
-			}, 10000)
+				this.resetGame(board.id);
+			}, 10000);
 		}
-		
+
+		const userNextTurn = board.players.find(
+			(p) => p.id === this.nextActionByBoard[board.id].userConcerned,
+		);
+
+		// this.kickPlayer(userNextTurn, board);
+
 		board.markModified('players');
 		board.markModified('tiles');
 		board.markModified('ycircus');
