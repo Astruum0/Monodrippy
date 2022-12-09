@@ -65,7 +65,7 @@ Example request body:
 
 ```json
 {
-  "userId": "",
+  "userId": "35cf3ef0-429e-4c07-b5d3-de6a30dce017",
   "boardId": 1,
   "dices": [3, 5]
 }
