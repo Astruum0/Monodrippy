@@ -41,7 +41,7 @@ export function pretEtudiant(board: board, player: player, history: Action[]): [
 		price += tile.rent[tile.currentLevel]
 	}
 	price *= 0.20
-
+	price = Math.round(price)
 	if (player.money >= price) {
 		player.money -= price
 		history.push(new Action(`PAID`, player.id, price));
