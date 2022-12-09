@@ -22,6 +22,7 @@ export class boardService {
   async addToGame(payload: any, game_id: Number) {
     let board = await this.boardModel.findOne({ id: game_id }).exec();
     let player_number = board.players.length
+    if (board.hasStarted) throw new Error("Games has already started")
     if(player_number <= 3){
         board.players.push(payload);
         return board.save();

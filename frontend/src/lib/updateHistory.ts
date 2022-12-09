@@ -31,6 +31,8 @@ function formatAction(action: Action, board: Board): string {
             return `${username} a pioché la carte ${luckConcerned?.name ?? "Inconnu"}`
         case "BOUGHT":
             return `${username} a acheté ${tileConcerned?.name ?? "Inconnu"} pour ${getTilePrice(tileConcerned!)}K`
+        case "UPGRADED":
+            return `${username} a mis à jour ${tileConcerned?.name ?? "Inconnu"}`
         case "PAID":
             return `${username} a perdu ${action.extraValue}K`
         case "GAINED":

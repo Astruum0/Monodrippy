@@ -17,15 +17,19 @@ export function movePlayer(
 	currentPlayer.nextThrowModifier !== 1 && history.push(new Action("NEXTTHROW", currentPlayer.id, currentPlayer.nextThrowModifier))
 	distance = Math.ceil(distance * currentPlayer.nextThrowModifier)
 	
+	let gainedMoney: number
 	if (currentPlayer.position + distance == 36) {
-		currentPlayer.money += 300;
+		currentPlayer.money += 400;
+		gainedMoney = 400
 	} else if (currentPlayer.position + distance > 36) {
-		currentPlayer.money += 150;
+		currentPlayer.money += 200;
+		gainedMoney = 200
 	}
 
 	currentPlayer.position = (currentPlayer.position + distance) % 36;
 	history.length === 0 && history.push(new Action('MOVED', currentPlayer.id, currentPlayer.position));
 	currentPlayer.nextThrowModifier = 1
+	gainedMoney && history.push(new Action('GAINED', currentPlayer.id, gainedMoney));
 
 	
 	if (currentPlayer.position === 2) {

@@ -63,5 +63,8 @@ export class gameController {
 		for (let id in players_id) {
 			this.playerService.deleteById(players_id[id]);
 		}
+		return {
+			message: `Game ${id} is reset`,
+		};
 	}
 }
