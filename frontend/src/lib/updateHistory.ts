@@ -9,7 +9,6 @@ export function updateHistory(currenthistory: Action[], newHistory: Action[], hi
     const missedActions = newHistory.filter(a => !currenthistory.map(a => a.id).includes(a.id))
 
     for (const action of missedActions) {
-        console.log(action);
         const pAction = sketch.createP(formatAction(action, board))
         historyDiv.html(`<p>${pAction.html()}</p>`, true)
     }

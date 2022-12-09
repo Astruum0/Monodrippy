@@ -56,7 +56,6 @@ let JoinRoom = {
       if (this.pseudo == "") {
         alert("Vous n'avez pas renseignez votre peusdo")
       } else {
-        console.log(e);
         var select  = $(e.target).closest(".card").attr("id");
         this.selected = select;
         this.setCookie(this.selected, this.pseudo)

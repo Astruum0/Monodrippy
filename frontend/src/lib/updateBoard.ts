@@ -31,7 +31,6 @@ function applyAction(board: Board, actions: Action[], index: number , callback: 
             applyAction(board, actions, index + 1, callback)
         }
     } else if (!currAction){
-        console.log("all done")
         callback && callback()
     }
 }

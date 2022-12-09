@@ -25,6 +25,8 @@ export class Player implements Player {
     color: number[]
     currentHeight = 0
 
+    jumpingCoord = 0;
+
     static model: P5Geometry | undefined = undefined
 
     constructor(payload: Partial<Player>, colorIndex = 0) {
@@ -46,7 +48,7 @@ export class Player implements Player {
 
         sketch.push()
         sketch.fill(this.color)
-        sketch.translate(coords.x, -this.currentHeight * 24, coords.y);
+        sketch.translate(coords.x, -(this.currentHeight * 24) - this.jumpingCoord, coords.y);
         sketch.rotateZ(sketch.PI)
         this.currentHeight % 2 == 1 && sketch.rotateZ(sketch.PI) && sketch.translate(0, -24, 0)
         sketch.scale(5)
@@ -56,16 +58,16 @@ export class Player implements Player {
     }
 
     moveTo(destinationCase: number, callback: CallbackFunction | undefined = undefined) {
-        let travellingDistance = destinationCase - this.position
-        if (travellingDistance < 0) { travellingDistance = 36 + travellingDistance  }
-        const travellingStep = travellingDistance / 50
         const movingInterval = setInterval(() => {
-            this.position = (this.position + travellingStep) % 36
-            if (this.position >= destinationCase - 0.3 && this.position <= destinationCase + 0.3) { 
+            this.position = (this.position + 0.1) % 36
+            const decimal = this.position - Math.floor(this.position)
+            this.jumpingCoord = Math.sin(decimal * Math.PI) * 8
+            
+            if (this.position >= destinationCase - 0.01 && this.position <= destinationCase + 0.01) { 
                 this.position = Math.trunc(destinationCase)
                 clearInterval(movingInterval) 
                 callback && callback()
             } 
-        }, 10)
+        }, 20)
     }
 }

@@ -119,9 +119,10 @@ export default Vue.extend({
       dicesNumberDiv[0]?.html(dices[0].toString());
       dicesNumberDiv[1]?.html(dices[1].toString());
 
-      requestThrowDice(boardId, loggedUser!.id, dices).then((res) => {
-        console.log(res);
-      });
+      requestThrowDice(boardId, loggedUser!.id, dices)
+      // .then((res) => {
+      //   console.log(res);
+      // });
     },
     startGame() {
       startGame(boardId, loggedUser!.id).then(
