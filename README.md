@@ -1,5 +1,7 @@
 # Monodrippy
 
+![logo](https://user-images.githubusercontent.com/60743111/206690416-02b7df58-8250-4bc9-9834-06a9dcc63c2c.png)
+
 Monodrippy est une application web vidéoludique basée sur le mythique jeu Monopoly mixé au plus récent business Tour.
 
 Jeu en ligne en tour par tour, avec des références à l'univers d'Ynov Bordeaux, des noms de rues faisant référence à des modules, des cartes chances nous rappelant des péripéties des années passées.
@@ -13,6 +15,7 @@ Pour gagner c'est simple, il suffit de ruiner ses adversaires, le dernier joueur
 
 Le projet est conteneurisé, pour le démarer il faut être sûr d'avoir installé sur sa machine docker ainsi que docker-compose.
 
+Dans la racine du projet, lancez
 
 ```docker
 docker compose up -d 
