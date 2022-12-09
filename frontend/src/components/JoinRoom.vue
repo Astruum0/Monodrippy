@@ -73,7 +73,7 @@ let JoinRoom = {
       this.pseudo = input;
     },
     getBoards() {
-      return fetch(`${process.env.VUE_APP_API_URL}/boards/`)
+      return fetch(`http://127.0.0.1:3001/boards/`)
         .then(res => res.json())
         .then(data => this.rooms = data)
     }
