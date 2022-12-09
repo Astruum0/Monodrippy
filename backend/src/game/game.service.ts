@@ -147,14 +147,14 @@ export class gameService {
 
 			const currentTile = board.tiles[currentPlayer.position];
 			const owner = currentTile.owner;
-			if (owner) {
-				const action = owner === currentPlayer.id && currentTile.type === "street" ? 'UPGRADE' : 'PAY';
+			if (owner && owner !== currentPlayer.id) {
+				// const action = owner === currentPlayer.id && currentTile.type === "street" ? 'UPGRADE' : 'PAY';
 				try {
 					const tileHistory = this.tileAction(
 						board,
 						currentTile,
 						currentPlayer,
-						action,
+						"PAY",
 					) as Action[];
 					this.historyByBoard[payload.boardId] =
 						this.historyByBoard[payload.boardId].concat(tileHistory);
